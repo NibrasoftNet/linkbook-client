@@ -1,18 +1,67 @@
 {
   "Landing": {
-    "landing_login": "Login",
+    "meta_title": "Linkbook",
+    "meta_description": "Pour la future génération",
+    "landing_login": "Connexion",
     "merchant_link": "Merchants",
     "team_link": "Teams",
     "template_link": "Templates",
     "statistic_link": "Statistics",
     "setting_link": "Settings",
     "helpdesk_link": "Helpdesk",
-    "landing_welcome": "welcome",
-    "landing_shop": "shop",
-    "landing_community": "community",
+    "landing_welcome": "bienvenue",
+    "landing_shop": "magasin",
+    "landing_community": "communauté",
     "landing_pack_promo": "pack promo",
     "landing_exposition": "exposition",
-    "landing_profile": "profile"
+    "landing_profile": "profil",
+    "landing_how_it_works": "Comment ça fonctionne ?",
+    "here_you_win": "ici, vous gagnez",
+    "community_offers": "offres communautaires",
+    "our_activities": "nos activités",
+    "testimonials": "témoignages"
+  },
+  "Sidebar": {
+    "main_dashboard": "Tableau de bord",
+    "donations": "Donations",
+    "swaps": "Echanges",
+    "marketplace": "Marché",
+    "search": "Recherche",
+    "ai_assistant": "Assistant IA",
+    "profile_settings": "Paramètres du profil",
+    "subscription": "Abonnement",
+    "pricing_page": "Page de tarification"
+  },
+  "Auth": {
+    "meta_sign_in_title": "Se connecter",
+    "meta_sign_in_description": "Connectez-vous à votre compte avec facilité.",
+    "meta_sign_up_title": "S'inscrire",
+    "meta_sign_up_description": "Créez un compte sans effort grâce à notre processus d'inscription intuitif.",
+    "meta_email_address": "Adresse e-mail",
+    "meta_password": "Mot de passe",
+    "meta_forget_password": "Mot de passe oublie ?",
+    "meta_forget_password_description": "Entrez votre adresse e-mail.",
+    "meta_sign_up_with_google": "Se connecter avec Google",
+    "meta_do_not_have_account": "Vous n'avez pas de compte ? ",
+    "meta_already_have_account": "Vous avez deja un compte ? ",
+    "meta_firstname": "Prénom",
+    "meta_lastname": "Nom",
+    "meta_photo": "Photo de profil",
+    "meta_email_verify": "Vérification e-mail",
+    "meta_return_sign_in": "Retourner à la connexion ? ",
+    "meta_reset_password": "Reinitialiser le mot de passe",
+    "meta_reset_your_password": "Reinitialisez votre mot de passe",
+    "meta_new_password": "Nouveau mot de passe",
+    "meta_confirm_new_password": "Confirmer le nouveau mot de passe",
+    "meta_reset_password_btn": "Reinitialisez"
+  },
+  "OurJob": {
+    "title": "Notre travail",
+    "description": "Permettre aux lecteurs d’échanger, de donner et d’échanger des livres en ligne, favorisant ainsi l’engagement communautaire et répandant la joie de lire dans le monde entier.",
+    "interest": "groupe d'interet",
+    "people": "personnes",
+    "economic": "economique",
+    "social": "sociaux"
   },
   "RootLayout": {
     "home_link": "Accueil",
@@ -22,64 +71,34 @@
     "sign_in_link": "Se connecter",
     "sign_up_link": "S'inscrire"
   },
-  "BaseTemplate": {
-    "description": "Code de démarrage pour Next.js avec Tailwind CSS",
-    "made_with": "Fait avec"
+  "DrawerPage": {
+    "verification_otp": "Verification OTP",
+    "verification_otp-msg": "Entrez le code OTP envoyé à votre email",
+    "verify-btn-msg": "Verify",
+    "cancel-btn-msg": "Cancel"
   },
-  "Index": {
-    "meta_title": "Présentation de Next.js Boilerplate",
-    "meta_description": "Next js Boilerplate est le code de démarrage parfait pour votre projet. Construisez votre application React avec le framework Next.js."
+  "Help&support": {
+    "help_and_support": "Aide & Support",
+    "faq_and_more": "FAQs & Plus"
   },
-  "Guestbook": {
-    "meta_title": "Livre d'or",
-    "meta_description": "Un exemple de fonctionnement CRUD",
-    "database_powered_by": "Base de données propulsée par",
-    "loading_guestbook": "Chargement du livre d'or..."
+  "ProfileNav": {
+    "my_account": "Mon compte",
+    "my_profile": "Profil",
+    "website": "Site web",
+    "support": "Support",
+    "logout": "Se déconnecter"
   },
-  "GuestbookForm": {
-    "username": "Nom d'utilisateur",
-    "body": "Message",
-    "save": "Sauvegarder"
+  "DonationsTab": {
+    "my_donations": "My Donations",
+    "my_donations_request": "My Donations Request"
   },
-  "About": {
-    "meta_title": "A propos",
-    "meta_description": "A propos description",
-    "about_paragraph": "Bienvenue sur notre page À propos ! Nous sommes une équipe de passionnés et dévoués à la création de logiciels.",
-    "translation_powered_by": "Traduction propulsée par"
+  "Forbidden": {
+    "title": "Interdit",
+    "description": "Vous n'avez pas la permission d'accéder à cette page"
   },
-  "Portfolio": {
-    "meta_title": "Portfolio",
-    "meta_description": "Bienvenue sur la page de mon portfolio !",
-    "presentation": "Bienvenue sur ma page portfolio ! Vous trouverez ici une collection soigneusement organisée de mon travail et de mes réalisations. À travers ce portfolio, je mets en valeur mon expertise, ma créativité et la valeur que je peux apporter à vos projets.",
-    "portfolio_name": "Portfolio {name}",
-    "monitoring_powered_by": "Monitoring propulsé par"
-  },
-  "PortfolioSlug": {
-    "meta_title": "Portfolio {slug}",
-    "meta_description": "Description du Portfolio {slug}",
-    "header": "Portfolio {slug}",
-    "content": "Créé un ensemble de matériel promotionnel et d'éléments de marquage pour un événement d'entreprise. Conçu un thème visuellement unifié, englobant un logo, des affiches, des bannières et des actifs numériques. Intégrer l'identité de marque du client tout en l'insufflant à une approche contemporaine et innovante. Des réponses favorables de la part des participants ont été obtenues, ce qui a donné lieu à un événement réussi avec un engagement accru des participants et une meilleure visibilité de la marque.",
-    "error_reporting_powered_by": "Rapport d'erreur propulsé par",
-    "coverage_powered_by": "Couverture de code propulsée par"
-  },
-  "SignIn": {
-    "meta_title": "Se connecter",
-    "meta_description": "Connectez-vous à votre compte avec facilité."
-  },
-  "SignUp": {
-    "meta_title": "S'inscrire",
-    "meta_description": "Créez un compte sans effort grâce à notre processus d'inscription intuitif."
-  },
-  "Dashboard": {
-    "meta_title": "Tableau de bord",
-    "hello_message": "Bonjour {email}!"
-  },
-  "UserProfile": {
-    "meta_title": "Profil de l'utilisateur"
-  },
-  "DashboardLayout": {
-    "dashboard_link": "Tableau de bord",
-    "user_profile_link": "Gérer votre compte",
-    "sign_out": "Se déconnecter"
+  "SuccessPage": {
+    "success_header": "Success",
+    "success_msg": "Votre message a été envoyé avec_succès",
+    "home_link": "Accueil"
   }
 }

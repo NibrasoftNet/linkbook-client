@@ -21,7 +21,7 @@ const frederickaTheGreat = Fredericka_the_Great({
 const OurActivities = () => {
   const t = useTranslations('Landing');
   return (
-    <section className="relative flex min-h-max w-full flex-col items-center bg-blue-100 p-4">
+    <section className="landing-section relative bg-blue-100 p-4">
       <Image
         src="/assets/images/landing/our_services.png"
         alt="our_service"

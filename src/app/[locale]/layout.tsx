@@ -1,34 +1,41 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'leaflet/dist/leaflet.css';
 import '@/styles/global.css';
 
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
-import React from 'react';
 
-import Providers from '@/lib/providers';
+import { Toaster } from '@/components/ui/sonner';
+import AuthProvider from '@/providers/AuthContext';
+import { NavigationLayoutProvider } from '@/providers/NavigationLayoutProvider';
+import TanstackQueryProvider from '@/providers/query-provider';
+import { ThemeProvider } from '@/providers/theme-provider';
 import { AppConfig } from '@/utils/AppConfig';
 
 export const metadata: Metadata = {
+  title: 'Linkbook',
+  description: 'Linkbook Edtion plateform',
   icons: [
     {
       rel: 'apple-touch-icon',
-      url: '/referral-logo.png',
+      url: '/assets/images/logo-LinkBook.png',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      url: '/referral-logo.png',
+      url: '/assets/images/logo-LinkBook.png',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      url: '/referral-logo.png',
+      url: '/assets/images/logo-LinkBook.png',
     },
     {
       rel: 'icon',
-      url: '/referral-logo.png',
+      url: '/assets/images/logo-LinkBook.png',
     },
   ],
 };
@@ -45,19 +52,23 @@ export default function RootLayout(props: {
 
   return (
     <html lang={props.params.locale}>
-      <body className="flex min-h-screen flex-col">
-        <NextIntlClientProvider
-          locale={props.params.locale}
-          messages={messages}
-        >
-          <Providers>{props.children}</Providers>
-        </NextIntlClientProvider>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <NextIntlClientProvider
+            locale={props.params.locale}
+            messages={messages}
+          >
+            <TanstackQueryProvider>
+              <AuthProvider>
+                <NavigationLayoutProvider>
+                  {props.children}
+                </NavigationLayoutProvider>
+              </AuthProvider>
+            </TanstackQueryProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
 }
-
-// Enable edge runtime but you are required to disable the `migrate` function in `src/libs/DB.ts`
-// Unfortunately, this also means it will also disable the automatic migration of the database
-// And, you will have to manually migrate it with `drizzle-kit push`
-// export const runtime = 'edge';

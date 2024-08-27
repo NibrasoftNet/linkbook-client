@@ -38,14 +38,14 @@ interface MultipleSelectorProps {
   loadingIndicator?: React.ReactNode;
   /** Empty component. */
   emptyIndicator?: React.ReactNode;
-  /** Debounce time for async search. Only work with `onSearch`. */
+  /** Debounce time for async search-unsubscribed. Only work with `onSearch`. */
   delay?: number;
   /**
-   * Only work with `onSearch` prop. Trigger search when `onFocus`.
-   * For example, when user click on the input, it will trigger the search to get initial options.
+   * Only work with `onSearch` prop. Trigger search-unsubscribed when `onFocus`.
+   * For example, when user click on the input, it will trigger the search-unsubscribed to get initial options.
    * */
   triggerSearchOnFocus?: boolean;
-  /** async search */
+  /** async search-unsubscribed */
   onSearch?: (value: string) => Promise<Option[]>;
   onChange?: (options: Option[]) => void;
   /** Limit the maximum number of selected options. */
@@ -179,8 +179,8 @@ const MultipleSelector = React.forwardRef<
     );
 
     const handleUnselect = React.useCallback(
-      (option: Option) => {
-        const newOptions = selected.filter((s) => s.value !== option.value);
+      (option?: Option) => {
+        const newOptions = selected.filter((s) => s.value !== option?.value);
         setSelected(newOptions);
         onChange?.(newOptions);
       },
@@ -242,9 +242,11 @@ const MultipleSelector = React.forwardRef<
         }
       };
 
+      // eslint-disable-next-line no-void
       void exec();
     }, [debouncedSearchTerm, open]);
 
+    // eslint-disable-next-line react/no-unstable-nested-components
     const CreatableItem = () => {
       if (!creatable) return undefined;
 
@@ -274,7 +276,7 @@ const MultipleSelector = React.forwardRef<
         return Item;
       }
 
-      // For async search creatable. avoid showing creatable item before loading at first.
+      // For async search-unsubscribed creatable. avoid showing creatable item before loading at first.
       if (onSearch && debouncedSearchTerm.length > 0 && !isLoading) {
         return Item;
       }
@@ -285,7 +287,7 @@ const MultipleSelector = React.forwardRef<
     const EmptyItem = React.useCallback(() => {
       if (!emptyIndicator) return undefined;
 
-      // For async search that showing emptyIndicator
+      // For async search-unsubscribed that showing emptyIndicator
       if (onSearch && !creatable && Object.keys(options).length === 0) {
         return (
           <CommandItem value="-" disabled>
@@ -355,7 +357,9 @@ const MultipleSelector = React.forwardRef<
                   data-disabled={disabled}
                 >
                   {option.label}
+                  {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                   <button
+                    type="button"
                     className={cn(
                       'ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2',
                       (disabled || option.fixed) && 'hidden',
@@ -392,6 +396,7 @@ const MultipleSelector = React.forwardRef<
               }}
               onFocus={(event) => {
                 setOpen(true);
+                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                 triggerSearchOnFocus && onSearch?.(debouncedSearchTerm);
                 inputProps?.onFocus?.(event);
               }}
@@ -411,6 +416,7 @@ const MultipleSelector = React.forwardRef<
           {open && (
             <CommandList className="absolute top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in">
               {isLoading ? (
+                // eslint-disable-next-line react/jsx-no-useless-fragment
                 <>{loadingIndicator}</>
               ) : (
                 <>

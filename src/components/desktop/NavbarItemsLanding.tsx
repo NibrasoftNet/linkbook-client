@@ -5,7 +5,7 @@ import React from 'react';
 const NavbarItemsLanding = () => {
   const t = useTranslations('Landing');
   return (
-    <ul className="flex size-full items-center gap-8 bg-white">
+    <ul className="flex size-full items-center gap-8">
       <Link href="/" className="cursor-pointer capitalize hover:underline">
         <span>{t('landing_welcome')}</span>
       </Link>

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .landing-section {
+        @apply flex min-h-max w-full flex-col items-center;
+    }
+}

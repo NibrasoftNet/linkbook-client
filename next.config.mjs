@@ -1,13 +1,20 @@
-import { withSentryConfig } from '@sentry/nextjs';
 /* eslint-disable import/no-extraneous-dependencies, import/extensions */
-import './src/libs/Env.mjs';
+import { fileURLToPath } from 'node:url';
+
 import withBundleAnalyzer from '@next/bundle-analyzer';
+import { withSentryConfig } from '@sentry/nextjs';
+import createJiti from 'jiti';
 import withNextIntl from 'next-intl/plugin';
+
+const jiti = createJiti(fileURLToPath(import.meta.url));
+
+jiti('./src/libs/Env');
 
 const withNextIntlConfig = withNextIntl('./src/libs/i18n.ts');
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
+
 });
 
 /** @type {import('next').NextConfig} */
@@ -20,19 +27,17 @@ export default withSentryConfig(
       poweredByHeader: false,
       reactStrictMode: true,
       experimental: {
-        // Related to Pino error with RSC: https://github.com/orgs/vercel/discussions/3150
-        serverComponentsExternalPackages: ['pino'],
+        serverComponentsExternalPackages: ['@electric-sql/pglite'],
       },
-      webpack: (config) => {
-        // config.externals is needed to resolve the following errors:
-        // Module not found: Can't resolve 'bufferutil'
-        // Module not found: Can't resolve 'utf-8-validate'
-        config.externals.push({
-          bufferutil: 'bufferutil',
-          'utf-8-validate': 'utf-8-validate',
-        });
-
-        return config;
+      images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'trash-back-bucket.s3.eu-west-3.amazonaws.com',
+            port: '',
+            pathname: '',
+          },
+        ],
       },
     }),
   ),

@@ -1,5 +1,7 @@
 {
   "Landing": {
+    "meta_title": "Linkbook",
+    "meta_description": "For future generation",
     "signIn": "Sign In",
     "signUp": "Sign Up",
     "merchant_link": "Merchants",
@@ -21,80 +23,75 @@
     "testimonials": "testimonials"
   },
   "Sidebar": {
-    "campaign_link": "Campaigns",
-    "merchant_link": "Merchants",
-    "team_link": "Teams",
-    "template_link": "Templates",
-    "statistic_link": "Statistics",
-    "setting_link": "Settings",
-    "helpdesk_link": "Helpdesk"
+    "main_dashboard": "Dashboard",
+    "donations": "Donations",
+    "swaps": "Swaps",
+    "marketplace": "Marketplace",
+    "search": "Search",
+    "ai_assistant": "Ai assistant",
+    "profile_settings": "Profile settings",
+    "subscription": "Subscription",
+    "pricing_page": "Pricing page"
   },
-  "RootLayout": {
-    "home_link": "Home",
-    "about_link": "About",
-    "guestbook_link": "Guestbook",
-    "portfolio_link": "Portfolio",
-    "sign_in_link": "Sign in",
-    "sign_up_link": "Sign up"
+  "Auth": {
+    "meta_sign_in_title": "Sign in",
+    "meta_sign_in_description": "Seamlessly sign in to your account with our user-friendly login process.",
+    "meta_sign_up_title": "Sign up",
+    "meta_sign_up_description": "Effortlessly create an account through our intuitive sign-up process.",
+    "meta_email_address": "Email address",
+    "meta_password": "Password",
+    "meta_forget_password": "Forgot password?",
+    "meta_forget_password_description": "Enter your email.",
+    "meta_sign_up_with_google": "Sign up with Google",
+    "meta_do_not_have_account": "Don't have an account? ",
+    "meta_already_have_account": "Already have an account? ",
+    "meta_firstname": "First name",
+    "meta_lastname": "Last name",
+    "meta_photo": "Profile Photo",
+    "meta_email_verify": "Email verify",
+    "meta_return_sign_in": "Return to sign in ? ",
+    "meta_reset_password": "Reset password",
+    "meta_reset_your_password": "Reset your password",
+    "meta_new_password": "New password",
+    "meta_confirm_new_password": "Confirm new password",
+    "meta_reset_password_btn": "Reset"
   },
-  "BaseTemplate": {
-    "description": "Starter code for your Nextjs Boilerplate with Tailwind CSS",
-    "made_with": "Made with"
+  "OurJob": {
+    "title": "Our Job",
+    "description": "Empowering readers to exchange, donate, and swap books online, fostering community engagement and spreading the joy of reading globally.",
+    "interest": "interest group of",
+    "people": "people",
+    "economic": "economic",
+    "social": "social"
   },
-  "Index": {
-    "meta_title": "Next.js Boilerplate Presentation",
-    "meta_description": "Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
+  "DrawerPage": {
+    "verification_otp": "Verification OTP",
+    "verification_otp-msg": "Enter the OTP sent to your email",
+    "verify-btn-msg": "Verify",
+    "cancel-btn-msg": "Cancel"
   },
-  "Guestbook": {
-    "meta_title": "Guestbook",
-    "meta_description": "An example of CRUD operation",
-    "database_powered_by": "Database powered by",
-    "loading_guestbook": "Loading guestbook..."
+  "Help&support": {
+    "help_and_support": "Help & Support",
+    "faq_and_more": "FAQs & More"
   },
-  "GuestbookForm": {
-    "username": "Username",
-    "body": "Body",
-    "save": "Save"
+  "ProfileNav": {
+    "my_account": "My Account",
+    "my_profile": "Profile",
+    "website": "Website",
+    "support": "Support",
+    "logout": "Log out"
   },
-  "About": {
-    "meta_title": "About",
-    "meta_description": "About page description",
-    "about_paragraph": "Welcome to our About page! We are a team of passionate individuals dedicated to creating amazing software.",
-    "translation_powered_by": "Translation powered by"
+  "DonationsTab": {
+    "my_donations": "My Donations",
+    "my_donations_request": "My Donations Request"
   },
-  "Portfolio": {
-    "meta_title": "Portfolio",
-    "meta_description": "Welcome to my portfolio page!",
-    "presentation": "Welcome to my portfolio page! Here you will find a carefully curated collection of my work and accomplishments. Through this portfolio, I'm to showcase my expertise, creativity, and the value I can bring to your projects.",
-    "portfolio_name": "Portfolio {name}",
-    "monitoring_powered_by": "Monitoring powered by"
+  "Forbidden": {
+    "title": "Forbidden",
+    "description": "You don't have permission to access this page"
   },
-  "PortfolioSlug": {
-    "meta_title": "Portfolio {slug}",
-    "meta_description": "Portfolio {slug} description",
-    "header": "Portfolio {slug}",
-    "content": "Created a set of promotional materials and branding elements for a corporate event. Crafted a visually unified theme, encompassing a logo, posters, banners, and digital assets. Integrated the client's brand identity while infusing it with a contemporary and innovative approach. Garnered favorable responses from event attendees, resulting in a successful event with heightened participant engagement and increased brand visibility.",
-    "error_reporting_powered_by": "Error reporting powered by",
-    "coverage_powered_by": "Code coverage powered by"
-  },
-  "SignIn": {
-    "meta_title": "Sign in",
-    "meta_description": "Seamlessly sign in to your account with our user-friendly login process."
-  },
-  "SignUp": {
-    "meta_title": "Sign up",
-    "meta_description": "Effortlessly create an account through our intuitive sign-up process."
-  },
-  "Dashboard": {
-    "meta_title": "Dashboard",
-    "hello_message": "Hello {email}!"
-  },
-  "UserProfile": {
-    "meta_title": "User Profile"
-  },
-  "DashboardLayout": {
-    "dashboard_link": "Dashboard",
-    "user_profile_link": "Manage your account",
-    "sign_out": "Sign out"
+  "SuccessPage": {
+    "success_header": "Success",
+    "success_msg": "Your message has been sent successfully",
+    "home_link": "Home"
   }
 }

@@ -27,7 +27,7 @@ const CommunityCard = ({
   imageSrc: string;
 }) => {
   return (
-    <div className="w-[350px] rounded-[30px] border-[1px] border-primary">
+    <div className="w-[350px] rounded-[30px] border border-primary">
       <div className="flex w-[350px] -translate-x-2 -translate-y-2 flex-col items-center rounded-[30px] border-[3px] border-primary bg-white p-2">
         <Image
           src={imageSrc}
@@ -60,7 +60,7 @@ const CommunityCard = ({
 const CommunityOffers = () => {
   const t = useTranslations('Landing');
   return (
-    <section className="flex min-h-max w-full flex-col items-center p-4">
+    <section className="landing-section p-4">
       <div className="flex size-full max-w-[1400px] flex-col items-center gap-10 text-center">
         <div className="flex flex-col justify-center gap-2 text-center">
           <h3 className="text-xl capitalize text-black">{t('here_you_win')}</h3>

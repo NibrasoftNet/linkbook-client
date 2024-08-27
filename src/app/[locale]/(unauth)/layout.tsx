@@ -1,13 +1,15 @@
-/* eslint-disable react/jsx-fragments */
+import type { ReactNode } from 'react';
 import React from 'react';
 
-import Footer from '@/components/desktop/Footer';
+import NavbarUnsubscribed from '@/components/navbar/NavbarUnsubscribed';
 
-export default function MainLayout(props: { children: React.ReactNode }) {
+const UnsubscribedLayout = (props: { children: ReactNode }) => {
   return (
-    <main className="flex flex-1 flex-col items-center">
-      <div className="flex flex-1">{props.children}</div>
-      <Footer />
+    <main className="flex h-screen w-screen flex-col">
+      <NavbarUnsubscribed />
+      <div className="size-full">{props.children}</div>
     </main>
   );
-}
+};
+
+export default UnsubscribedLayout;

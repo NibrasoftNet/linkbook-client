@@ -18,8 +18,8 @@ const frederickaTheGreat = Fredericka_the_Great({
 const HowItWorks = () => {
   const t = useTranslations('Landing');
   return (
-    <section className="flex min-h-max w-full flex-col items-center p-4">
-      <div className="max-w-1400px flex size-full flex-col items-center gap-10 text-center">
+    <section className="landing-section p-4">
+      <div className="flex size-full max-w-[1400px] flex-col items-center gap-10 text-center">
         <h1
           className={`${frederickaTheGreat.className} pb-6 text-6xl capitalize text-primary`}
         >
@@ -36,7 +36,7 @@ const HowItWorks = () => {
           </div>
           <div className="flex h-full w-1/2 flex-col justify-center">
             <div className="flex items-center gap-6">
-              <div className="size-[100px] rounded-[30px] border-[1px] border-primary bg-white">
+              <div className="size-[100px] rounded-[30px] border border-primary bg-white">
                 <div className="flex size-[100px] translate-x-2 translate-y-2 cursor-pointer items-center justify-center rounded-[30px] border-[3px] border-primary bg-white transition duration-300 ease-in-out hover:translate-x-0 hover:translate-y-0">
                   <RocketIcon iconClass="size-[70px]" />
                 </div>
@@ -58,7 +58,7 @@ const HowItWorks = () => {
               <CurvedArrowIcon iconClass="size-16 -rotate-90 text-tertiary" />
             </div>
             <div className="flex items-center gap-6">
-              <div className="size-[100px] rounded-[30px] border-[1px] border-primary bg-white">
+              <div className="size-[100px] rounded-[30px] border border-primary bg-white">
                 <div className="flex size-[100px] translate-x-2 translate-y-2 cursor-pointer items-center justify-center rounded-[30px] border-[3px] border-primary bg-white transition duration-300 ease-in-out hover:translate-x-0 hover:translate-y-0">
                   <SearchIcon iconClass="size-[70px]" />
                 </div>
@@ -80,7 +80,7 @@ const HowItWorks = () => {
               <CurvedArrowLeftIcon iconClass="size-16 rotate-90 text-tertiary" />
             </div>
             <div className="flex items-center gap-6">
-              <div className="size-[100px] rounded-[30px] border-[1px] border-primary bg-white">
+              <div className="size-[100px] rounded-[30px] border border-primary bg-white">
                 <div className="flex size-[100px] translate-x-2 translate-y-2 cursor-pointer items-center justify-center rounded-[30px] border-[3px] border-primary bg-white transition duration-300 ease-in-out hover:translate-x-0 hover:translate-y-0">
                   <BooksIcon iconClass="size-[70px]" />
                 </div>
