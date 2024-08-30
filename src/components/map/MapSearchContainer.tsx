@@ -1,5 +1,7 @@
 'use client';
 
+import 'node_modules/leaflet-geosearch/dist/geosearch.css';
+
 import type { LatLngLiteral } from 'leaflet';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import L from 'leaflet';
@@ -13,7 +15,7 @@ import {
   ZoomControl,
 } from 'react-leaflet';
 
-import SearchProduct from '@/components/map/SearchProduct';
+import SearchLocation from '@/components/map/SearchLocation';
 import useSearchStore from '@/zustand/searchStore';
 
 const MapSearchContainer = () => {
@@ -21,7 +23,7 @@ const MapSearchContainer = () => {
   const { category, city } = useSearchStore();
   console.log('werty', category, city);
   return (
-    <section className="relative z-0 size-full">
+    <section className="relative z-20 size-full">
       <MapContainer
         center={position}
         zoom={7}
@@ -33,7 +35,8 @@ const MapSearchContainer = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ZoomControl position="topright" />
-        <SearchProduct page="search" />
+        <SearchLocation />
+        {/* <SearchProduct page="search" /> */}
         <Marker
           position={position}
           icon={

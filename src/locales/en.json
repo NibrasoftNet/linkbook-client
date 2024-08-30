@@ -48,6 +48,7 @@
     "meta_firstname": "First name",
     "meta_lastname": "Last name",
     "meta_photo": "Profile Photo",
+    "meta_phone": "Profile Phone",
     "meta_email_verify": "Email verify",
     "meta_return_sign_in": "Return to sign in ? ",
     "meta_reset_password": "Reset password",
@@ -83,7 +84,8 @@
   },
   "DonationsTab": {
     "my_donations": "My Donations",
-    "my_donations_request": "My Donations Request"
+    "my_donations_request": "My Donations Request",
+    "latest_donations": "Latest"
   },
   "Forbidden": {
     "title": "Forbidden",
@@ -93,5 +95,22 @@
     "success_header": "Success",
     "success_msg": "Your message has been sent successfully",
     "home_link": "Home"
+  },
+  "ProfileDetails": {
+    "details": "Details",
+    "profile_details": "Profile Details",
+    "update_profile_details": "Update your personal information.",
+    "update_profile_image": "Profile Image",
+    "update_profile_image_change": "Change",
+    "security": "Security",
+    "update_profile_save_change": "Save Change"
+  },
+  "SecurityDetails": {
+    "security_details_title": "Account Security",
+    "security_details_description": "Update your password and security settings.",
+    "current_password": "Current Password",
+    "new_password": "New Password",
+    "confirm_new_password": "Confirm New Password",
+    "update_password": "Update Password"
   }
 }

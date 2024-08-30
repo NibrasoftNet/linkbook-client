@@ -132,9 +132,7 @@ export const donationListColumns: ColumnDef<DonationValueType>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>
-              <Link href={`donations/details/update?id=${row.original.id}`}>
-                Details
-              </Link>
+              <Link href={`details/update?id=${row.original.id}`}>Details</Link>
             </DropdownMenuItem>
             {/*            <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => handleEditUserStatus(row)}>

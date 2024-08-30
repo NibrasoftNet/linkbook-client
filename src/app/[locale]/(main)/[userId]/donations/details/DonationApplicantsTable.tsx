@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { donationApplicantsListColumns } from '@/components/DataTable/columns/donation-applicants.columns';
+import { donationApplicantsWithReplyListColumns } from '@/components/DataTable/columns/donation-applicants-with-reply.columns';
 import DataTable from '@/components/DataTable/DataTable';
 
 const DonationApplicantsTable = (applicants: any) => {
@@ -11,9 +11,9 @@ const DonationApplicantsTable = (applicants: any) => {
     <section className="flex size-full flex-col">
       <h1 className="text-3xl font-bold">Donations Applicants</h1>
       <DataTable
-        columns={donationApplicantsListColumns}
+        columns={donationApplicantsWithReplyListColumns}
         data={applicants.data}
-        filter="description"
+        filter="email"
       />
     </section>
   );

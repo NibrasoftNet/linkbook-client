@@ -20,6 +20,7 @@ import {
   useResetPasswordMutation,
   useVerifyOtpMutation,
 } from '@/tanstack/auth.query';
+import { useUpdateProfileMutation } from '@/tanstack/users.query';
 import type { AuthValuesType } from '@/types/auth.type';
 import type { User } from '@/types/users.type';
 import type { otpFormSchema } from '@/validations/otp-validation.schema';
@@ -27,6 +28,7 @@ import type { userForgetPasswordValidationSchema } from '@/validations/user-forg
 import type { userLoginSchema } from '@/validations/user-login-validation.schema';
 import type { userRegisterFormSchema } from '@/validations/user-register-validation.schema';
 import type { resetForgotPasswordSchema } from '@/validations/user-reset-forgot-password-schema.validator';
+import type { UserUpdateProfileFormType } from '@/validations/user-update-profile-schema.validator';
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -39,6 +41,7 @@ const defaultProvider: AuthValuesType = {
   reset: (value: any) => Promise.resolve(value),
   verifyOtp: (value: any) => Promise.resolve(value),
   logout: () => Promise.resolve(),
+  update: (value: any) => Promise.resolve(value),
   openAuthDrawer: false,
   setOpenAuthDrawer: () => Boolean,
   email: '',
@@ -79,6 +82,11 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   } = useResetPasswordMutation();
   const { mutateAsync: mutateVerifyOtp, isLoading: isVerifyOtpLoading } =
     useVerifyOtpMutation();
+
+  const {
+    mutateAsync: mutateUpdateProfile,
+    isLoading: isUpdateProfileLoading,
+  } = useUpdateProfileMutation();
 
   const handleRegister = async (
     values: z.infer<typeof userRegisterFormSchema>,
@@ -125,7 +133,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         });
         toast.dismiss(toastId);
         if (statusCode === 403) {
-          setOpenAuthDrawer(false);
+          setOpenAuthDrawer(true);
         }
         return;
       }
@@ -299,6 +307,50 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const handleUpdateProfile = async (
+    id: number,
+    userData: Partial<UserUpdateProfileFormType>,
+  ) => {
+    console.log('help', id, userData);
+    const formData = new FormData();
+    if (userData.photo) {
+      formData.append('files', userData.photo);
+    }
+    formData.append(
+      'data',
+      JSON.stringify({
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        phone: userData.phone,
+        address: userData.address,
+      }),
+    );
+    const toastId = toast('Begins...');
+    toast.loading('Loading...', {
+      description: 'OTP verification...',
+      id: toastId,
+    });
+    try {
+      const { status, message } = await mutateUpdateProfile({ id, formData });
+      if (!status) {
+        toast.error('Failed Update Profile', {
+          description: Object.values(JSON.parse(message)).join(', '),
+        });
+        toast.dismiss(toastId);
+        return;
+      }
+      toast.success('Success', {
+        description: 'Successful Update Profile',
+        id: toastId,
+      });
+    } catch (e) {
+      toast.error('Error', {
+        description: `${e}`,
+      });
+      toast.dismiss(toastId);
+    }
+  };
+
   const handleClientSession = async (): Promise<void> => {
     const cookiesSession = await getSession();
     setSession(cookiesSession?.user ?? null);
@@ -319,6 +371,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     forget: handleForgetPassword,
     reset: handleResetPassword,
     verifyOtp: handleVerifyOtp,
+    update: handleUpdateProfile,
     openAuthDrawer,
     setOpenAuthDrawer,
     email,
@@ -330,7 +383,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       isVerifyOtpLoading ||
       isConfirmEmailLoading ||
       isRefreshLoading ||
-      isLogoutLoading,
+      isLogoutLoading ||
+      isUpdateProfileLoading,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

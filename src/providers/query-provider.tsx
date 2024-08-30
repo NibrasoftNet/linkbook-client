@@ -12,6 +12,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { ReactNode } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ErrorBoundary } from 'react-error-boundary';
+import { MdWifiTetheringError } from 'react-icons/md';
 
 import { Button } from '@/components/ui/button';
 
@@ -61,9 +62,22 @@ export default function TanstackQueryProvider({
           <ErrorBoundary
             /* eslint-disable-next-line react/no-unstable-nested-components */
             fallbackRender={({ error, resetErrorBoundary }) => (
-              <div>
-                There was an error!{' '}
-                <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+              <div className="flex h-screen w-full flex-col items-center justify-center gap-4">
+                <MdWifiTetheringError className="size-40 text-primary" />
+                <div className="flex w-full flex-col justify-center">
+                  <h1 className="my-2 text-2xl font-bold text-gray-800">
+                    Website temporarily unavailable
+                  </h1>
+                  <p className="my-2 text-gray-800">
+                    Sorry about that! Please visit us later.
+                  </p>
+                </div>
+                <Button
+                  className="md my-2 rounded border bg-indigo-600 px-8 py-4 text-center text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50 sm:w-full lg:w-auto"
+                  onClick={() => resetErrorBoundary()}
+                >
+                  Try again
+                </Button>
                 <pre style={{ whiteSpace: 'normal' }}>{error.message}</pre>
               </div>
             )}

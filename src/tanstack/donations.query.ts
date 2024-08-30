@@ -1,9 +1,15 @@
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 
 import {
+  acceptRequestDonationAction,
+  applyRequestDonationAction,
+  cancelRequestDonationAction,
   createDonationAction,
   getDonationsList,
+  getOthersDonationsList,
+  getRequestedDonationsList,
   getSingleDonationAction,
+  rejectRequestDonationAction,
   updateDonationAction,
 } from '@/actions/donations.actions';
 
@@ -18,7 +24,29 @@ export function useGetDonations() {
   });
 }
 
-export function useGetSingleDonationQuery(id: number) {
+export function useGetRequestedDonations() {
+  return useSuspenseQuery({
+    queryFn: async () => getRequestedDonationsList(),
+    queryKey: ['donations-requested-list'],
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: false,
+  });
+}
+
+export function useGetOthersDonations() {
+  return useSuspenseQuery({
+    queryFn: async () => getOthersDonationsList(),
+    queryKey: ['donations-others-list'],
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: false,
+  });
+}
+
+export function useGetSingleDonationQuery(id: string) {
   return useSuspenseQuery({
     queryFn: async () => getSingleDonationAction(id),
     queryKey: ['get-single-donation'],
@@ -49,6 +77,58 @@ export const useUpdateDonationMutation = () => {
       id: number;
       formData: FormData;
     }) => updateDonationAction(donationWithIdData),
+  });
+  return {
+    mutateAsync: mutation.mutateAsync,
+    isLoading: mutation.isPending,
+    isError: mutation.isError,
+    error: mutation.error,
+    data: mutation.data,
+  };
+};
+
+export const useApplyRequestDonationMutation = () => {
+  const mutation = useMutation({
+    mutationFn: async (id: string) => applyRequestDonationAction(id),
+  });
+  return {
+    mutateAsync: mutation.mutateAsync,
+    isLoading: mutation.isPending,
+    isError: mutation.isError,
+    error: mutation.error,
+    data: mutation.data,
+  };
+};
+
+export const useAcceptRequestDonationMutation = () => {
+  const mutation = useMutation({
+    mutationFn: async (id: string) => acceptRequestDonationAction(id),
+  });
+  return {
+    mutateAsync: mutation.mutateAsync,
+    isLoading: mutation.isPending,
+    isError: mutation.isError,
+    error: mutation.error,
+    data: mutation.data,
+  };
+};
+
+export const useRejectRequestDonationMutation = () => {
+  const mutation = useMutation({
+    mutationFn: async (id: string) => rejectRequestDonationAction(id),
+  });
+  return {
+    mutateAsync: mutation.mutateAsync,
+    isLoading: mutation.isPending,
+    isError: mutation.isError,
+    error: mutation.error,
+    data: mutation.data,
+  };
+};
+
+export const useCancelRequestDonationMutation = () => {
+  const mutation = useMutation({
+    mutationFn: async (id: string) => cancelRequestDonationAction(id),
   });
   return {
     mutateAsync: mutation.mutateAsync,

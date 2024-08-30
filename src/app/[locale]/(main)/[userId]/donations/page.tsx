@@ -23,12 +23,12 @@ const DonationDetailsPage = async ({
 
   await queryClient.prefetchQuery({
     queryKey: ['get-single-donation'],
-    queryFn: () => getSingleDonationAction(Number(donationId)),
+    queryFn: () => getSingleDonationAction(String(donationId)),
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <React.Suspense fallback={<TableSkeleton />}>
-        <DonationDetails id={Number(donationId)} />
+        <DonationDetails id={String(donationId)} />
       </React.Suspense>
     </HydrationBoundary>
   );

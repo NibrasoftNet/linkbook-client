@@ -2,6 +2,7 @@
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
+import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import type * as z from 'zod';
 
@@ -17,7 +18,6 @@ import type { userLoginSchema } from '@/validations/user-login-validation.schema
 import type { userRegisterFormSchema } from '@/validations/user-register-validation.schema';
 import type { resetForgotPasswordSchema } from '@/validations/user-reset-forgot-password-schema.validator';
 import type { userResetPasswordFormSchema } from '@/validations/user-reset-password-schema.validator';
-import type { userUpdateProfileFormSchema } from '@/validations/user-update-profile-schema.validator';
 
 // @ts-ignore
 // eslint-disable-next-line consistent-return
@@ -160,11 +160,16 @@ export const userLogoutAction = async (token: string) => {
   }
 };
 
-export const updateProfileAction = async (
-  profileDate: z.infer<typeof userUpdateProfileFormSchema>,
-) => {
+export const updateProfileAction = async (userWithIdData: {
+  id: number;
+  formData: FormData;
+}) => {
   try {
-    const { data } = await axiosInstance.patch('auth/me', profileDate);
+    const { data } = await axiosInstance.patch(
+      'auth/me',
+      userWithIdData.formData,
+    );
+    revalidatePath('/[locale]/(main)/[userId]/profile');
     return data;
   } catch (error: any) {
     return error.response.data;

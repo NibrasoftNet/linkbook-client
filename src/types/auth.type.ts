@@ -26,6 +26,7 @@ export type AuthValuesType = {
   logout: () => Promise<void>;
   confirmEmail: (value: any) => Promise<void>;
   verifyOtp: (value: any) => Promise<void>;
+  update: (id: number, value: any) => Promise<void>;
   openAuthDrawer: boolean;
   setOpenAuthDrawer: Dispatch<SetStateAction<boolean>>;
   email: string;

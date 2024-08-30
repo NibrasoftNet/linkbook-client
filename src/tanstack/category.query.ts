@@ -13,6 +13,7 @@ export function useGetAllCategoriesQuery() {
       if (data) return data;
     },
     queryKey: ['all-categories'],
+    staleTime: 3600 * 1000,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,

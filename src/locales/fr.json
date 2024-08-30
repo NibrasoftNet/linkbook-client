@@ -47,6 +47,7 @@
     "meta_firstname": "Prénom",
     "meta_lastname": "Nom",
     "meta_photo": "Photo de profil",
+    "meta_phone": "Telephone",
     "meta_email_verify": "Vérification e-mail",
     "meta_return_sign_in": "Retourner à la connexion ? ",
     "meta_reset_password": "Reinitialiser le mot de passe",
@@ -90,7 +91,8 @@
   },
   "DonationsTab": {
     "my_donations": "My Donations",
-    "my_donations_request": "My Donations Request"
+    "my_donations_request": "My Donations Request",
+    "latest_donations": "Dernières"
   },
   "Forbidden": {
     "title": "Interdit",
@@ -100,5 +102,22 @@
     "success_header": "Success",
     "success_msg": "Votre message a été envoyé avec_succès",
     "home_link": "Accueil"
+  },
+  "ProfileDetails": {
+    "details": "Detailles",
+    "profile_details": "Detailles du profil",
+    "update_profile_details": "Mettre à jour vos informations personnelles.",
+    "update_profile_image": "Image du profil",
+    "update_profile_image_change": "Changer",
+    "security": "Securité",
+    "update_profile_save_change": "Sauvegarder les modifications"
+  },
+  "SecurityDetails": {
+    "security_details_title": "Paramètres de compte",
+    "security_details_description": "Mettre à jour votre mot de passe et vos paramètres de securité.",
+    "current_password": "Mot de passe actuel",
+    "new_password": "Nouveau mot de passe",
+    "confirm_new_password": "Confirmer le nouveau mot de passe",
+    "update_password": "Mettre à jour le mot de passe"
   }
 }

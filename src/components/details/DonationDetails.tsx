@@ -6,6 +6,8 @@ import React from 'react';
 import { BiDonateBlood } from 'react-icons/bi';
 import { SiGooglemaps } from 'react-icons/si';
 
+import AlertDialogCustom from '@/components/alert-dialog/AlertDialogCustom';
+import { AlertDialog, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,10 +27,10 @@ import {
 } from '@/components/ui/carousel';
 import { Label } from '@/components/ui/label';
 import { useGetSingleDonationQuery } from '@/tanstack/donations.query';
+import { DonationOperationEnum } from '@/types/donation.type';
 
-const DonationDetails = ({ id }: { id: number }) => {
+const DonationDetails = ({ id }: { id: string }) => {
   const { data: result } = useGetSingleDonationQuery(id);
-  console.log('ewq', id, result);
   return (
     <Card className="mx-auto w-full max-w-3xl gap-4">
       <CardHeader className="flex items-center">
@@ -58,19 +60,19 @@ const DonationDetails = ({ id }: { id: number }) => {
           }}
           className="mx-auto w-full max-w-xl justify-center"
         >
-          <CarouselContent>
+          <CarouselContent className="min-h-[150px]">
             {result.result.product.image.map((image: any) => (
               <CarouselItem key={image.id}>
                 <div>
                   <Card>
-                    <CardContent className="flex aspect-square items-center justify-center rounded-md border border-primary bg-blue-50">
+                    <CardContent className="flex aspect-square items-center justify-center rounded-md border-2 border-primary">
                       <Image
                         src={image.path}
                         alt="landing-hero-image"
                         width={220}
                         height={150}
                         unoptimized
-                        className="size-full object-center"
+                        className="size-full object-cover"
                       />
                     </CardContent>
                   </Card>
@@ -103,13 +105,24 @@ const DonationDetails = ({ id }: { id: number }) => {
         </div>
       </CardContent>
       <CardFooter className="flex w-full justify-center">
-        <Button
-          disabled={!result.result.active}
-          className="flex items-center justify-center gap-2 rounded-full"
-        >
-          <BiDonateBlood />
-          <span>Ask for donation</span>
-        </Button>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button
+              disabled={!result.result.active}
+              className="flex items-center justify-center gap-2 rounded-full"
+            >
+              <BiDonateBlood />
+              <span>Ask for donation</span>
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogCustom
+            title="Are you sure?"
+            description="Are you sure you want to make your request."
+            operation="Ask for donation"
+            method={DonationOperationEnum.APPLY}
+            param={id}
+          />
+        </AlertDialog>
       </CardFooter>
     </Card>
   );

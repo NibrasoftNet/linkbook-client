@@ -5,6 +5,7 @@ import { Check, ChevronsUpDown, Paperclip } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import type { DropzoneOptions } from 'react-dropzone';
 import { useForm } from 'react-hook-form';
+import { LiaHourglassEndSolid } from 'react-icons/lia';
 import { toast } from 'sonner';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useTranslations } from 'use-intl';
@@ -260,7 +261,9 @@ const DonationForm = ({
                   onValueChange={setFiles}
                   dropzoneOptions={dropZoneConfig}
                 >
-                  <FileInput className="border-2 border-dashed ">
+                  <FileInput
+                    className={`border-2 border-dashed ${operation === CrudOperationsEnum.UPDATE && 'hidden'}`}
+                  >
                     <div className="flex w-full flex-col items-center justify-center pb-4 pt-3 ">
                       <FileSvgDraw />
                     </div>
@@ -295,10 +298,11 @@ const DonationForm = ({
         )}
         <Button
           type="submit"
-          className="h-8 w-fit"
+          className="grid-cols-2 gap-2 md:grid-cols-1"
           disabled={donation.isLoading}
         >
-          Send
+          <LiaHourglassEndSolid className="size-6" />
+          <span>Send</span>
         </Button>
       </form>
     </Form>

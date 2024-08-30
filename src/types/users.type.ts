@@ -2,10 +2,11 @@ export type User = {
   address: any;
   createdAt: string;
   email: string;
+  phone: string;
   firstName: string;
   id: number;
   lastName: string;
-  photo: null;
+  photo: string;
   role: RoleEnum;
   status: StatusEnum;
   updatedAt: string;

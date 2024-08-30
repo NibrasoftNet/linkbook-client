@@ -7,6 +7,36 @@ export interface ApiResponse<T> {
   result: T;
 }
 
+export interface ApiResponsePaginated<T> {
+  status: boolean;
+  path: string;
+  statusCode: number;
+  result: PaginatedResponse<T>;
+}
+
+type Meta = {
+  itemsPerPage: number;
+  totalItems: number;
+  currentPage: number;
+  totalPages: number;
+  sortBy: [string, 'ASC' | 'DESC'][];
+  filters: { [key: string]: string };
+};
+
+type Links = {
+  first?: string;
+  previous?: string;
+  current: string;
+  next?: string;
+  last?: string;
+};
+
+type PaginatedResponse<T> = {
+  data: T[];
+  meta: Meta;
+  links: Links;
+};
+
 export interface TranslateBody {
   // inputLanguage: string;
   // outputLanguage: string;

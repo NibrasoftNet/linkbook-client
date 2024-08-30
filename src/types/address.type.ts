@@ -10,3 +10,12 @@ export type AddressValueType = {
   street: string;
   fullAddress: string;
 };
+
+export type CreateAddressProps = {
+  country: string;
+  city: string;
+  longitude: number;
+  latitude: number;
+  countryFlag: string;
+  street: string;
+};

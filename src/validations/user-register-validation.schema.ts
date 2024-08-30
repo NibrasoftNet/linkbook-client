@@ -1,5 +1,7 @@
 import * as z from 'zod';
 
+import { createAddressSchema } from '@/validations/create-address-schema.validator';
+
 export const passwordSchema = z
   .string()
   .min(5, 'Le mot de passe doit contenir au moins 5 caractères');
@@ -17,4 +19,5 @@ export const userRegisterFormSchema = z.object({
     .min(3, { message: 'Utilisateur a au moins 3 caractères' }),
   password: passwordSchema,
   email: z.string().email('Email invalide!'),
+  address: createAddressSchema.optional().nullable(),
 });

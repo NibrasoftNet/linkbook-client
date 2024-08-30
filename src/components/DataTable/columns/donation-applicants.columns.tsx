@@ -1,41 +1,19 @@
-import type { ColumnDef, Row } from '@tanstack/react-table';
+import type { ColumnDef } from '@tanstack/react-table';
 import dayjs from 'dayjs';
-import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
-import { toast } from 'sonner';
+import { ImCancelCircle } from 'react-icons/im';
 
+import AlertDialogCustom from '@/components/alert-dialog/AlertDialogCustom';
+import { AlertDialog, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import type { ApplicantToDonationType } from '@/types/donation.type';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import type { ApplicantToDonationValueType } from '@/types/applicant-to-donation.type';
+  DonationOperationEnum,
+  DonationStatusEnum,
+} from '@/types/donation.type';
 
-const handleEditUserRole = async (row: Row<ApplicantToDonationValueType>) => {
-  const toastId = toast('Begins...');
-  toast.loading('Loading...', {
-    description: 'Start Operation...',
-    id: toastId,
-  });
-  try {
-    row.getValue('product');
-    toast.success('Success', {
-      description: 'Operation Successful',
-      id: toastId,
-    });
-  } catch (e) {
-    toast.error('Error', {
-      description: `${e}`,
-    });
-    toast.dismiss(toastId);
-  }
-};
-
-export const donationApplicantsListColumns: ColumnDef<ApplicantToDonationValueType>[] =
+export const donationApplicantsListColumns: ColumnDef<ApplicantToDonationType>[] =
   [
     {
       id: 'select',
@@ -76,6 +54,13 @@ export const donationApplicantsListColumns: ColumnDef<ApplicantToDonationValueTy
       ),
     },
     {
+      accessorKey: 'applicant.email',
+      header: 'Email',
+      cell: ({ row }) => (
+        <div className="lowercase">{row.original.applicant.email}</div>
+      ),
+    },
+    {
       accessorKey: 'status',
       header: 'Status',
       cell: ({ row }) => (
@@ -83,65 +68,27 @@ export const donationApplicantsListColumns: ColumnDef<ApplicantToDonationValueTy
       ),
     },
     {
-      accessorKey: 'applicant.firstName',
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            className="w-full text-center capitalize"
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          >
-            Email
-            <ArrowUpDown className="ml-2 size-4" />
-          </Button>
-        );
-      },
-      cell: ({ row }) => (
-        <div className="text-center capitalize">
-          {row.original.applicant.email}
-        </div>
-      ),
-    },
-    {
-      accessorKey: 'applicant.address.city',
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          >
-            City
-            <ArrowUpDown className="ml-2 size-4" />
-          </Button>
-        );
-      },
-      cell: ({ row }) => (
-        <div className="capitalize">{row.original.applicant.address.city}</div>
-      ),
-    },
-    {
       id: 'actions',
-      enableHiding: false,
+      enableHiding: true,
       cell: ({ row }) => {
         return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="size-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="size-4" />
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                className={`${row.original.status !== DonationStatusEnum.PENDING && 'hidden'} w-full gap-2 bg-red-400`}
+              >
+                <ImCancelCircle />
+                <span className="capitalize">cancel</span>
               </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => handleEditUserRole(row)}>
-                Details
-              </DropdownMenuItem>
-              {/*            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => handleEditUserStatus(row)}>
-              Edit
-            </DropdownMenuItem> */}
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </AlertDialogTrigger>
+            <AlertDialogCustom
+              title="Are you sure?"
+              description="Are you sure you want to cancell your request."
+              method={DonationOperationEnum.CANCEL}
+              operation="Ask for cancellation"
+              param={row.original.id}
+            />
+          </AlertDialog>
         );
       },
     },

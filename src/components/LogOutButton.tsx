@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 const LogOutButton = () => {
   const router = useRouter();
   const { signOut } = useClerk();
-  const t = useTranslations('DashboardLayout');
+  const t = useTranslations('ProfileNav');
 
   return (
     <button
@@ -15,7 +15,7 @@ const LogOutButton = () => {
       type="button"
       onClick={() => signOut(() => router.push('/'))}
     >
-      {t('sign_out')}
+      {t('logout')}
     </button>
   );
 };

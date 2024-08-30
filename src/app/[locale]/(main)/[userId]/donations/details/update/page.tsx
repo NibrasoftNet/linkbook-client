@@ -22,7 +22,7 @@ const UpdateDonationPage = async ({
     redirect('donations/create');
   }
   const donation: ApiResponse<DonationProps> = await getSingleDonationAction(
-    Number(donationId),
+    String(donationId),
   );
   const defaultValues: Partial<DonationSchemaFormType> = {
     files: [] as File[],
@@ -31,9 +31,12 @@ const UpdateDonationPage = async ({
     product: donation?.result.product,
     address: donation?.result.address,
   };
+
   return (
     <React.Suspense fallback={<TableSkeleton />}>
-      <main className="flex size-full flex-col p-4">
+      <main
+        className={`flex size-full flex-col p-4 ${!donation?.result.active && 'pointer-events-none cursor-not-allowed'}`}
+      >
         <DonationApplicantsTable data={donation.result.applicants} />
         <Separator />
         <DonationForm
