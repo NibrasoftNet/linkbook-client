@@ -2,12 +2,11 @@
 
 import dayjs from 'dayjs';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
-import { BiDonateBlood } from 'react-icons/bi';
+import { MdSwapHorizontalCircle } from 'react-icons/md';
 import { SiGooglemaps } from 'react-icons/si';
 
-import AlertDialogCustom from '@/components/alert-dialog/AlertDialogCustom';
-import { AlertDialog, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -27,11 +26,10 @@ import {
 } from '@/components/ui/carousel';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/providers/AuthContext';
-import { useGetSingleDonationQuery } from '@/tanstack/donations.query';
-import { DonationOperationEnum } from '@/types/donation.type';
+import { useGetSingleSwapQuery } from '@/tanstack/swaps.query';
 
-const DonationDetails = ({ id }: { id: string }) => {
-  const { data: result } = useGetSingleDonationQuery(id);
+const SwapDetails = ({ id }: { id: string }) => {
+  const { data: result } = useGetSingleSwapQuery(id);
   const auth = useAuth();
   return (
     <Card className="mx-auto w-full max-w-3xl gap-4">
@@ -47,8 +45,8 @@ const DonationDetails = ({ id }: { id: string }) => {
         <CardDescription>
           {dayjs(result.result.createdAt).format('DD-MMM-YYYY')}
         </CardDescription>
-        <CardDescription className="flex items-center gap-2">
-          <SiGooglemaps />
+        <CardDescription className="flex gap-2 text-center">
+          <SiGooglemaps className="size-6" />
           <span>
             {result.result.address.city}, {result.result.address.country}
           </span>
@@ -67,14 +65,14 @@ const DonationDetails = ({ id }: { id: string }) => {
               <CarouselItem key={image.id}>
                 <div>
                   <Card>
-                    <CardContent className="flex aspect-square items-center justify-center rounded-md border-2 border-primary">
+                    <CardContent className="h-[450px] rounded-md border-2 border-primary">
                       <Image
                         src={image.path}
                         alt="landing-hero-image"
                         width={220}
                         height={150}
                         unoptimized
-                        className="size-full object-cover"
+                        className="size-full object-center"
                       />
                     </CardContent>
                   </Card>
@@ -107,30 +105,21 @@ const DonationDetails = ({ id }: { id: string }) => {
         </div>
       </CardContent>
       <CardFooter className="flex w-full justify-center">
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button
-              disabled={
-                !result.result.active ||
-                auth.session?.id === result.result.creator.id
-              }
-              className="flex items-center justify-center gap-2 rounded-full"
-            >
-              <BiDonateBlood />
-              <span>Ask for donation</span>
-            </Button>
-          </AlertDialogTrigger>
-          <AlertDialogCustom
-            title="Are you sure?"
-            description="Are you sure you want to make your request."
-            operation="Ask for donation"
-            method={DonationOperationEnum.APPLY}
-            param={id}
-          />
-        </AlertDialog>
+        <Link href={`swaps/details/apply?id=${result.result.id}`}>
+          <Button
+            disabled={
+              !result.result.active ||
+              auth.session?.id === result.result.creator.id
+            }
+            className="flex items-center justify-center gap-2 rounded-full"
+          >
+            <MdSwapHorizontalCircle className="size-6" />
+            <span>Ask for Swap</span>
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
 };
 
-export default DonationDetails;
+export default SwapDetails;

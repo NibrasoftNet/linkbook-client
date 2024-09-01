@@ -33,7 +33,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'swaps',
-    path: '/swaps',
+    path: '/swaps/details',
     icon: <PiSwapBold className="-mt-[7px] size-6 stroke-2 text-inherit" />,
     collapse: false,
     disabled: false,

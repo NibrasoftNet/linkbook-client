@@ -28,6 +28,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useAuth } from '@/providers/AuthContext';
+import { SubscriptionStatusEnum } from '@/types/types';
 import type { User } from '@/types/users.type';
 import type { UserUpdateProfileFormType } from '@/validations/user-update-profile-schema.validator';
 import { userUpdateProfileFormSchema } from '@/validations/user-update-profile-schema.validator';
@@ -173,7 +174,11 @@ const ProfileDetails = ({ session }: { session: User }) => {
               Update your address
             </FormLabel>
             <div className="h-[400px] w-full overflow-hidden rounded-xl">
-              <MapSearchContainerDynamic />;
+              <MapSearchContainerDynamic
+                search
+                searchMarkers={false}
+                subscriptionStatus={SubscriptionStatusEnum.SUBSCRIBED}
+              />
             </div>
           </CardContent>
           <CardFooter>

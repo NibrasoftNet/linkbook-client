@@ -34,6 +34,7 @@ import { Input } from '@/components/ui/input';
 import { imagesUrls } from '@/lib/constants';
 import { useAuth } from '@/providers/AuthContext';
 import { OperationEnum } from '@/types/auth.type';
+import { SubscriptionStatusEnum } from '@/types/types';
 import { userRegisterFormSchema } from '@/validations/user-register-validation.schema';
 import useAddressStore from '@/zustand/addressStore';
 
@@ -199,8 +200,13 @@ export default function SignUp() {
               </div>
             </CardContent>
           </Card>
-          <div className="h-[550px] w-[800px] overflow-hidden rounded-xl">
-            <MapSearchContainerDynamic />;
+          <div className="h-[600px] w-[800px] overflow-hidden rounded-xl">
+            <MapSearchContainerDynamic
+              search
+              searchMarkers={false}
+              subscriptionStatus={SubscriptionStatusEnum.UNSUBSCRIBED}
+            />
+            ;
           </div>
         </div>
       </section>

@@ -7,6 +7,15 @@
   height: 100%;
 }
 
+.leaflet-popup-content-wrapper {
+  background: transparent;
+  box-shadow: none;
+}
+
+.leaflet-popup-tip {
+  background: transparent;
+}
+
 
 @layer base {
   :root {

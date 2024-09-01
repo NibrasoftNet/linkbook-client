@@ -7,18 +7,19 @@ import { createContext, useContext } from 'react';
 import { toast } from 'sonner';
 
 import {
-  useAcceptRequestDonationMutation,
-  useApplyRequestDonationMutation,
-  useCancelRequestDonationMutation,
-  useCreateDonationMutation,
-  useRejectRequestDonationMutation,
-  useUpdateDonationMutation,
-} from '@/tanstack/donations.query';
-import type { DonationsContextType } from '@/types/donation.type';
-import type { DonationSchemaFormType } from '@/validations/create-donation-schema.validator';
+  useAcceptRequestSwapMutation,
+  useApplyRequestSwapMutation,
+  useCancelRequestSwapMutation,
+  useCreateSwapMutation,
+  useRejectRequestSwapMutation,
+  useUpdateSwapMutation,
+} from '@/tanstack/swaps.query';
+import type { SwapsContextType } from '@/types/swap.type';
+import type { ApplyToSwapSchemaFormType } from '@/validations/apply-to-swap-schema.validator';
+import type { SwapSchemaFormType } from '@/validations/create-swap-schema.validator';
 
 // ** Defaults
-const defaultProvider: DonationsContextType = {
+const defaultProvider: SwapsContextType = {
   create: (value: any) => Promise.resolve(value),
   update: (value: any) => Promise.resolve(value),
   delete: (value: any) => Promise.resolve(value),
@@ -29,68 +30,64 @@ const defaultProvider: DonationsContextType = {
   isLoading: false,
   setIsLoading: () => Boolean,
 };
-const DonationContext = createContext(defaultProvider);
+const SwapContext = createContext(defaultProvider);
 
 // Custom hook
-export const useDonation = () => useContext(DonationContext);
+export const useSwap = () => useContext(SwapContext);
 
 // Create the AuthContext
-const DonationProvider = ({ children }: { children: ReactNode }) => {
+const SwapProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
-  const {
-    mutateAsync: mutateCreateDonation,
-    isLoading: isCreateDonationLoading,
-  } = useCreateDonationMutation();
+  const { mutateAsync: mutateCreateSwap, isLoading: isCreateSwapLoading } =
+    useCreateSwapMutation();
+
+  const { mutateAsync: mutateUpdateSwap, isLoading: isUpdateSwapLoading } =
+    useUpdateSwapMutation();
 
   const {
-    mutateAsync: mutateUpdateDonation,
-    isLoading: isUpdateDonationLoading,
-  } = useUpdateDonationMutation();
+    mutateAsync: mutateApplyRequestSwap,
+    isLoading: isApplyRequestSwapLoading,
+  } = useApplyRequestSwapMutation();
 
   const {
-    mutateAsync: mutateApplyRequestDonation,
-    isLoading: isApplyRequestDonationLoading,
-  } = useApplyRequestDonationMutation();
+    mutateAsync: mutateAcceptRequestSwap,
+    isLoading: isAcceptRequestSwapLoading,
+  } = useAcceptRequestSwapMutation();
 
   const {
-    mutateAsync: mutateAcceptRequestDonation,
-    isLoading: isAcceptRequestDonationLoading,
-  } = useAcceptRequestDonationMutation();
+    mutateAsync: mutateRejectRequestSwap,
+    isLoading: isRejectRequestSwapLoading,
+  } = useRejectRequestSwapMutation();
 
   const {
-    mutateAsync: mutateRejectRequestDonation,
-    isLoading: isRejectRequestDonationLoading,
-  } = useRejectRequestDonationMutation();
+    mutateAsync: mutateCancelRequestSwap,
+    isLoading: isCancelRequestSwapLoading,
+  } = useCancelRequestSwapMutation();
 
-  const {
-    mutateAsync: mutateCancelRequestDonation,
-    isLoading: isCancelRequestDonationLoading,
-  } = useCancelRequestDonationMutation();
-
-  const handleCreateDonation = async (donationData: DonationSchemaFormType) => {
+  const handleCreateSwap = async (SwapData: SwapSchemaFormType) => {
     const formData = new FormData();
-    if (donationData.files) {
-      donationData.files.forEach((file) => {
+    if (SwapData.files) {
+      SwapData.files.forEach((file) => {
         formData.append('files', file);
       });
     }
     formData.append(
       'data',
       JSON.stringify({
-        description: donationData.description,
-        quantity: donationData.quantity,
-        product: donationData.product,
-        address: donationData.address,
+        description: SwapData.description,
+        quantity: SwapData.quantity,
+        product: SwapData.product,
+        address: SwapData.address,
       }),
     );
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'Create Donation...',
+      description: 'Create Swap...',
       id: toastId,
     });
 
     try {
-      const { status, message } = await mutateCreateDonation(formData);
+      const { status, message } = await mutateCreateSwap(formData);
       if (!status) {
         toast.error('Failed', {
           description: Object.values(JSON.parse(message)).join(', '),
@@ -111,13 +108,13 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const handleUpdateDonation = async (
+  const handleUpdateSwap = async (
     id: number,
-    donationData: Partial<DonationSchemaFormType>,
+    SwapData: Partial<SwapSchemaFormType>,
   ) => {
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'Create Donation...',
+      description: 'Create Swap...',
       id: toastId,
     });
 
@@ -125,15 +122,15 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
     formData.append(
       'data',
       JSON.stringify({
-        description: donationData.description,
-        quantity: donationData.quantity,
-        product: donationData.product,
-        address: donationData.address,
+        description: SwapData.description,
+        quantity: SwapData.quantity,
+        product: SwapData.product,
+        address: SwapData.address,
       }),
     );
 
     try {
-      const { status, message } = await mutateUpdateDonation({ id, formData });
+      const { status, message } = await mutateUpdateSwap({ id, formData });
       if (!status) {
         toast.error('Failed', {
           description: Object.values(JSON.parse(message)).join(', '),
@@ -145,6 +142,7 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
         description: 'Creation Success',
         id: toastId,
       });
+      router.push('../details');
     } catch (e) {
       toast.error('Error', {
         description: `${e}`,
@@ -153,15 +151,59 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const handleApplyRequestDonation = async (id: string) => {
+  const handleApplyRequestSwap = async (
+    id: number,
+    applyToSwapData: Partial<ApplyToSwapSchemaFormType>,
+  ) => {
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'Create Donation...',
+      description: 'Create Swap...',
+      id: toastId,
+    });
+
+    const formData = new FormData();
+    formData.append(
+      'data',
+      JSON.stringify({
+        quantity: applyToSwapData.quantity,
+        product: applyToSwapData.product,
+      }),
+    );
+
+    try {
+      const { status, message } = await mutateApplyRequestSwap({
+        id,
+        formData,
+      });
+      if (!status) {
+        toast.error('Failed', {
+          description: Object.values(JSON.parse(message)).join(', '),
+        });
+        toast.dismiss(toastId);
+        return;
+      }
+      toast.success('Success', {
+        description: 'Creation Success',
+        id: toastId,
+      });
+      router.push('../details');
+    } catch (e) {
+      toast.error('Error', {
+        description: `${e}`,
+      });
+      toast.dismiss(toastId);
+    }
+  };
+
+  const handleAcceptRequestSwap = async (id: string) => {
+    const toastId = toast('Begins...');
+    toast.loading('Loading...', {
+      description: 'Create Swap...',
       id: toastId,
     });
 
     try {
-      const { status, message } = await mutateApplyRequestDonation(id);
+      const { status, message } = await mutateAcceptRequestSwap(id);
       if (!status) {
         toast.error('Failed', {
           description: Object.values(JSON.parse(message)).join(', '),
@@ -181,15 +223,15 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const handleAcceptRequestDonation = async (id: string) => {
+  const handleRejectRequestSwap = async (id: string) => {
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'Create Donation...',
+      description: 'Create Swap...',
       id: toastId,
     });
 
     try {
-      const { status, message } = await mutateAcceptRequestDonation(id);
+      const { status, message } = await mutateRejectRequestSwap(id);
       if (!status) {
         toast.error('Failed', {
           description: Object.values(JSON.parse(message)).join(', '),
@@ -209,42 +251,14 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const handleRejectRequestDonation = async (id: string) => {
-    const toastId = toast('Begins...');
-    toast.loading('Loading...', {
-      description: 'Create Donation...',
-      id: toastId,
-    });
-
-    try {
-      const { status, message } = await mutateRejectRequestDonation(id);
-      if (!status) {
-        toast.error('Failed', {
-          description: Object.values(JSON.parse(message)).join(', '),
-        });
-        toast.dismiss(toastId);
-        return;
-      }
-      toast.success('Success', {
-        description: 'Creation Success',
-        id: toastId,
-      });
-    } catch (e) {
-      toast.error('Error', {
-        description: `${e}`,
-      });
-      toast.dismiss(toastId);
-    }
-  };
-
-  const handleCancelDonationRequest = async (id: string) => {
+  const handleCancelSwapRequest = async (id: string) => {
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
       description: 'Start Operation...',
       id: toastId,
     });
     try {
-      const { status, message } = await mutateCancelRequestDonation(id);
+      const { status, message } = await mutateCancelRequestSwap(id);
       if (!status) {
         toast.error('Failed', {
           description: Object.values(JSON.parse(message)).join(', '),
@@ -265,27 +279,23 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values: any = {
-    create: handleCreateDonation,
-    update: handleUpdateDonation,
-    delete: handleCreateDonation,
-    apply: handleApplyRequestDonation,
-    accept: handleAcceptRequestDonation,
-    reject: handleRejectRequestDonation,
-    cancel: handleCancelDonationRequest,
+    create: handleCreateSwap,
+    update: handleUpdateSwap,
+    delete: handleCreateSwap,
+    apply: handleApplyRequestSwap,
+    accept: handleAcceptRequestSwap,
+    reject: handleRejectRequestSwap,
+    cancel: handleCancelSwapRequest,
     isLoading:
-      isCreateDonationLoading ||
-      isUpdateDonationLoading ||
-      isAcceptRequestDonationLoading ||
-      isRejectRequestDonationLoading ||
-      isApplyRequestDonationLoading ||
-      isCancelRequestDonationLoading,
+      isCreateSwapLoading ||
+      isUpdateSwapLoading ||
+      isAcceptRequestSwapLoading ||
+      isRejectRequestSwapLoading ||
+      isApplyRequestSwapLoading ||
+      isCancelRequestSwapLoading,
   };
 
-  return (
-    <DonationContext.Provider value={values}>
-      {children}
-    </DonationContext.Provider>
-  );
+  return <SwapContext.Provider value={values}>{children}</SwapContext.Provider>;
 };
 
-export default DonationProvider;
+export default SwapProvider;

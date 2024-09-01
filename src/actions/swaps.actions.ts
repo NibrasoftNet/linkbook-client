@@ -5,10 +5,19 @@ import { revalidatePath } from 'next/cache';
 import axiosInstance from '@/lib/axiosInstance';
 import { Env } from '@/libs/Env';
 
-export const getDonationsList = async () => {
+export const getSwapsList = async () => {
+  try {
+    const { data } = await axiosInstance.get(`${Env.API_URL}/swaps/list/_me`);
+    return data;
+  } catch (error: any) {
+    return error.response.data;
+  }
+};
+
+export const getOthersSwapsList = async () => {
   try {
     const { data } = await axiosInstance.get(
-      `${Env.API_URL}/donations/list/_me`,
+      `${Env.API_URL}/swaps/list/others`,
     );
     return data;
   } catch (error: any) {
@@ -16,10 +25,10 @@ export const getDonationsList = async () => {
   }
 };
 
-export const getOthersDonationsList = async () => {
+export const getRequestedSwapsList = async () => {
   try {
     const { data } = await axiosInstance.get(
-      `${Env.API_URL}/donations/list/others`,
+      `${Env.API_URL}/applicant-to-swap/list/_me`,
     );
     return data;
   } catch (error: any) {
@@ -27,38 +36,27 @@ export const getOthersDonationsList = async () => {
   }
 };
 
-export const getRequestedDonationsList = async () => {
+export const createSwapAction = async (formData: FormData) => {
   try {
-    const { data } = await axiosInstance.get(
-      `${Env.API_URL}/applicant-to-donation/list/_me`,
-    );
-    return data;
-  } catch (error: any) {
-    return error.response.data;
-  }
-};
-
-export const createDonationAction = async (formData: FormData) => {
-  try {
-    const { data } = await axiosInstance.post(`donations/`, formData, {
+    const { data } = await axiosInstance.post(`swaps/`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
-    revalidatePath('/[locale]/(main)/[userId]/donations/details', 'page');
+    revalidatePath('/[locale]/(main)/[userId]/swaps/details', 'page');
     return data;
   } catch (error: any) {
     return error.response.data;
   }
 };
 
-export const updateDonationAction = async (donationWithIdData: {
+export const updateSwapAction = async (donationWithIdData: {
   id: number;
   formData: FormData;
 }) => {
   try {
     const { data } = await axiosInstance.patch(
-      `donations/${donationWithIdData.id}`,
+      `swaps/${donationWithIdData.id}`,
       donationWithIdData.formData,
       {
         headers: {
@@ -66,26 +64,26 @@ export const updateDonationAction = async (donationWithIdData: {
         },
       },
     );
-    revalidatePath('/[locale]/(main)/[userId]/donations/details', 'page');
+    revalidatePath('/[locale]/(main)/[userId]/swaps/details', 'page');
     return data;
   } catch (error: any) {
     return error.response.data;
   }
 };
 
-export const getSingleDonationAction = async (id: string) => {
+export const getSingleSwapAction = async (id: string) => {
   try {
-    const { data } = await axiosInstance.get(`donations/${id}`);
+    const { data } = await axiosInstance.get(`swaps/${id}`);
     return data;
   } catch (error: any) {
     return error.response.data;
   }
 };
 
-export const cancelRequestDonationAction = async (id: string) => {
+export const cancelRequestSwapAction = async (id: string) => {
   try {
     const { data } = await axiosInstance.put(
-      `applicant-to-donation/cancel/${id}`,
+      `applicant-to-swap/cancel/${id}`,
       {},
       {
         headers: {
@@ -93,38 +91,38 @@ export const cancelRequestDonationAction = async (id: string) => {
         },
       },
     );
-    revalidatePath('/[locale]/(main)/[userId]/donations/details', 'page');
+    revalidatePath('/[locale]/(main)/[userId]/swaps/details', 'page');
     return data;
   } catch (error: any) {
     return error.response.data;
   }
 };
 
-export const applyRequestDonationAction = async (id: string) => {
+export const applyRequestSwapAction = async (applySwapWithIdData: {
+  id: number;
+  formData: FormData;
+}) => {
   try {
     const { data } = await axiosInstance.post(
-      `applicant-to-donation/${id}`,
-      {},
+      `applicant-to-swap/${applySwapWithIdData.id}`,
+      applySwapWithIdData.formData,
       {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
       },
     );
-    revalidatePath(
-      '/[locale]/(main)/[userId]/donations/details/update',
-      'page',
-    );
+    revalidatePath('/[locale]/(main)/[userId]/swaps/details/update', 'page');
     return data;
   } catch (error: any) {
     return error.response.data;
   }
 };
 
-export const acceptRequestDonationAction = async (id: string) => {
+export const acceptRequestSwapAction = async (id: string) => {
   try {
     const { data } = await axiosInstance.put(
-      `applicant-to-donation/accept/${id}`,
+      `applicant-to-swap/accept/${id}`,
       {},
       {
         headers: {
@@ -132,20 +130,17 @@ export const acceptRequestDonationAction = async (id: string) => {
         },
       },
     );
-    revalidatePath(
-      '/[locale]/(main)/[userId]/donations/details/update',
-      'page',
-    );
+    revalidatePath('/[locale]/(main)/[userId]/swaps/details/update', 'page');
     return data;
   } catch (error: any) {
     return error.response.data;
   }
 };
 
-export const rejectRequestDonationAction = async (id: string) => {
+export const rejectRequestSwapAction = async (id: string) => {
   try {
     const { data } = await axiosInstance.put(
-      `applicant-to-donation/reject/${id}`,
+      `applicant-to-swap/reject/${id}`,
       {},
       {
         headers: {
@@ -153,10 +148,7 @@ export const rejectRequestDonationAction = async (id: string) => {
         },
       },
     );
-    revalidatePath(
-      '/[locale]/(main)/[userId]/donations/details/update',
-      'page',
-    );
+    revalidatePath('/[locale]/(main)/[userId]/swaps/details/update', 'page');
     return data;
   } catch (error: any) {
     return error.response.data;

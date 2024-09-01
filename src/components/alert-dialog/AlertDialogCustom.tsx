@@ -10,7 +10,9 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useDonation } from '@/providers/DonationContext';
+import { useSwap } from '@/providers/SwapContext';
 import { DonationOperationEnum } from '@/types/donation.type';
+import { SwapOperationEnum } from '@/types/swap.type';
 
 const AlertDialogCustom = ({
   title,
@@ -22,18 +24,22 @@ const AlertDialogCustom = ({
 }: {
   title: string;
   description: string;
-  method: DonationOperationEnum;
+  method: DonationOperationEnum | SwapOperationEnum;
   operation: string;
   param: string;
   color?: string;
 }) => {
   const donation = useDonation();
+  const swap = useSwap();
   const handleOperation = async () => {
     if (method === DonationOperationEnum.CANCEL) {
       await donation.cancel(param);
     }
     if (method === DonationOperationEnum.APPLY) {
       await donation.apply(param);
+    }
+    if (method === SwapOperationEnum.CANCEL) {
+      await swap.cancel(param);
     }
   };
   return (

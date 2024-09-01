@@ -91,8 +91,13 @@
   },
   "DonationsTab": {
     "my_donations": "My Donations",
-    "my_donations_request": "My Donations Request",
+    "my_donations_request": "Mes dons demandees",
     "latest_donations": "Dernières"
+  },
+  "SwapsTab": {
+    "my_swaps": "Mes echanges",
+    "my_swaps_request": "Mes echanges demandees",
+    "latest_swaps": "Dernières"
   },
   "Forbidden": {
     "title": "Interdit",
@@ -119,5 +124,27 @@
     "new_password": "Nouveau mot de passe",
     "confirm_new_password": "Confirmer le nouveau mot de passe",
     "update_password": "Mettre à jour le mot de passe"
+  },
+  "DonationForm": {
+    "details": "Description",
+    "product_details": "Details du produit",
+    "description": "Description",
+    "product_name": "Nom du produit",
+    "quantity": "Quantité",
+    "category": "Choisir une catégorie",
+    "search_category": "Rechercher une catégorie",
+    "product_description": "Description du produit",
+    "submit": "Envoyer"
+  },
+  "SwapForm": {
+    "details": "Description",
+    "product_details": "Product Details",
+    "description": "Description",
+    "product_name": "Product Name",
+    "quantity": "Quantity",
+    "category": "Select a category",
+    "search_category": "Search Category",
+    "product_description": "Product Description",
+    "submit": "Envoyer"
   }
 }

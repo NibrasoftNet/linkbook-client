@@ -1,11 +1,27 @@
-import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query';
 
-import { deleteHistoryAction, getUsersHistory } from '@/actions/search.actions';
+import {
+  deleteHistoryAction,
+  getSearchServiceAction,
+  getUsersHistory,
+} from '@/actions/search.actions';
+import type { SearchFormValues } from '@/components/map/SearchProduct';
 
 export function useGetHistories() {
   return useSuspenseQuery({
     queryFn: async () => getUsersHistory(),
     queryKey: ['histories'],
+  });
+}
+
+export function useSearchServiceQuery(data: SearchFormValues) {
+  return useQuery({
+    queryFn: async () => getSearchServiceAction(data),
+    queryKey: ['search-products'],
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: false,
   });
 }
 

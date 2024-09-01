@@ -162,10 +162,20 @@ export interface PremiumEssayBody {
   apiKey?: string | undefined;
 }
 
+export type ImagesProps = {
+  id: string;
+  path: string;
+};
+
 export enum SearchTypeEnum {
   'DONATIONS' = 'DONATIONS',
   'SWAPS' = 'SWAPS',
   'PURCHASES' = 'PURCHASES',
+}
+
+export enum SubscriptionStatusEnum {
+  SUBSCRIBED = 'SUBSCRIBED',
+  UNSUBSCRIBED = 'UNSUBSCRIBED',
 }
 
 export enum CrudOperationsEnum {

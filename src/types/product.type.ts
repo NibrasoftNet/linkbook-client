@@ -1,3 +1,5 @@
+import type { ImagesProps } from '@/types/types';
+
 export type ProductCategoryValueType = {
   id: number;
   name: string;
@@ -22,4 +24,5 @@ export type ProductProps = {
   price: number;
   description: string;
   categoryId: number;
+  image: ImagesProps[];
 };

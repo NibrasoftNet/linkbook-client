@@ -63,7 +63,6 @@ const ProfileSecurity = () => {
       });
       toast.dismiss(toastId);
     }
-    toast.dismiss(toastId);
   };
   return (
     <Card className="mt-6">

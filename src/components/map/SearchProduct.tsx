@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Check, ChevronsUpDown } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { Suspense, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
@@ -35,37 +36,41 @@ import {
 } from '@/components/ui/select';
 import { CircleIcon } from '@/icons/general';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/providers/AuthContext';
 import { useGetAllCitiesQuery } from '@/tanstack/address.query';
 import { useGetAllCategoriesQuery } from '@/tanstack/category.query';
-import { SearchTypeEnum } from '@/types/types';
+import { SearchTypeEnum, SubscriptionStatusEnum } from '@/types/types';
 import useSearchStore from '@/zustand/searchStore';
 
 import SearchIcon from '../../icons/general/Search.icon';
 
 const searchFormSchema = z.object({
-  type: z
-    .string()
-    .min(2, {
-      message: 'Name must be at least 2 characters.',
-    })
-    .max(30, {
-      message: 'Name must not be longer than 30 characters.',
-    }),
-  city: z.string({
-    message: 'Please select a city.',
-  }),
-  category: z
-    .number({
-      message: 'Please select a category.',
+  type: z.enum([
+    SearchTypeEnum.DONATIONS,
+    SearchTypeEnum.SWAPS,
+    SearchTypeEnum.PURCHASES,
+  ]),
+  subscriptionStatus: z.enum([
+    SubscriptionStatusEnum.SUBSCRIBED,
+    SubscriptionStatusEnum.UNSUBSCRIBED,
+  ]),
+  city: z
+    .string({
+      message: 'Please select a city.',
     })
     .optional()
     .nullable(),
+  category: z.number({
+    message: 'Please select a category.',
+  }),
 });
 
-type SearchFormValues = z.infer<typeof searchFormSchema>;
+export type SearchFormValues = z.infer<typeof searchFormSchema>;
 
 const SearchProduct = ({ page }: { page: string }) => {
-  const { setCity, setCategory, setType } = useSearchStore();
+  const { category, setCity, setCategory, setType } = useSearchStore();
+  const router = useRouter();
+  const auth = useAuth();
   const [openFilter, setOpenFilter] = useState<boolean>(false);
   const cities = useGetAllCitiesQuery();
   const categories = useGetAllCategoriesQuery();
@@ -73,20 +78,22 @@ const SearchProduct = ({ page }: { page: string }) => {
     resolver: zodResolver(searchFormSchema),
     defaultValues: {
       type: SearchTypeEnum.DONATIONS,
+      category,
+      subscriptionStatus: SubscriptionStatusEnum.UNSUBSCRIBED,
     },
   });
 
   const handleSearchSubmit = (data: SearchFormValues) => {
-    console.log('gsetgertgse', data);
-    /*    if (page === 'home') {
+    if (page === 'home') {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       auth.session?.id
         ? router.push(`/${auth.session.id}/search`)
         : router.push('/search-unsubscribed');
-    } */
+    }
     setType(data.type);
-    setCity(data.city);
+    setCategory(data.category);
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    data.category && setCategory(data.category);
+    data.city && setCity(data.city);
   };
 
   return (
@@ -143,7 +150,7 @@ const SearchProduct = ({ page }: { page: string }) => {
                 />
                 <FormField
                   control={form.control}
-                  name="city"
+                  name="category"
                   render={({ field }) => (
                     <FormItem className="col-span-1 md:col-span-2">
                       <Popover>
@@ -158,8 +165,8 @@ const SearchProduct = ({ page }: { page: string }) => {
                               )}
                             >
                               {field.value
-                                ? cities.data.result.find(
-                                    (city: any) => city.value === field.value,
+                                ? categories.data.result.find(
+                                    (cat: any) => cat.value === field.value,
                                   )?.label
                                 : 'Select a category'}
                               <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
@@ -170,25 +177,25 @@ const SearchProduct = ({ page }: { page: string }) => {
                           <Command>
                             <CommandInput placeholder="Search city..." />
                             <CommandList>
-                              <CommandEmpty>No city found.</CommandEmpty>
+                              <CommandEmpty>No category found.</CommandEmpty>
                               <CommandGroup>
-                                {cities.data.result.map((city: any) => (
+                                {categories.data.result.map((cat: any) => (
                                   <CommandItem
-                                    value={city.label}
-                                    key={city.value}
+                                    value={cat.label}
+                                    key={cat.value}
                                     onSelect={() => {
-                                      form.setValue('city', city.value);
+                                      form.setValue('category', cat.value);
                                     }}
                                   >
                                     <Check
                                       className={cn(
                                         'mr-2 h-4 w-4',
-                                        city.value === field.value
+                                        cat.value === field.value
                                           ? 'opacity-100'
                                           : 'opacity-0',
                                       )}
                                     />
-                                    {city.label}
+                                    {cat.label}
                                   </CommandItem>
                                 ))}
                               </CommandGroup>
@@ -226,7 +233,7 @@ const SearchProduct = ({ page }: { page: string }) => {
                 <div className="grid w-full grid-cols-1 flex-col items-center justify-center gap-2 rounded-md border-2 border-primary bg-white p-2 shadow-md shadow-gray-400 dark:bg-zinc-800 md:flex-row md:rounded-full">
                   <FormField
                     control={form.control}
-                    name="category"
+                    name="city"
                     render={({ field }) => (
                       <FormItem className="col-span-1 md:col-span-2">
                         <Popover>
@@ -241,10 +248,10 @@ const SearchProduct = ({ page }: { page: string }) => {
                                 )}
                               >
                                 {field.value
-                                  ? categories.data.result.find(
-                                      (cat: any) => cat.value === field.value,
+                                  ? cities.data.result.find(
+                                      (city: any) => city.value === field.value,
                                     )?.label
-                                  : 'Select a category'}
+                                  : 'Select an address'}
                                 <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
                               </Button>
                             </FormControl>
@@ -253,25 +260,25 @@ const SearchProduct = ({ page }: { page: string }) => {
                             <Command>
                               <CommandInput placeholder="Search city..." />
                               <CommandList>
-                                <CommandEmpty>No category found.</CommandEmpty>
+                                <CommandEmpty>No city found.</CommandEmpty>
                                 <CommandGroup>
-                                  {categories.data.result.map((cat: any) => (
+                                  {cities.data.result.map((city: any) => (
                                     <CommandItem
-                                      value={cat.label}
-                                      key={cat.value}
+                                      value={city.label}
+                                      key={city.value}
                                       onSelect={() => {
-                                        form.setValue('category', cat.value);
+                                        form.setValue('city', city.value);
                                       }}
                                     >
                                       <Check
                                         className={cn(
                                           'mr-2 h-4 w-4',
-                                          cat.value === field.value
+                                          city.value === field.value
                                             ? 'opacity-100'
                                             : 'opacity-0',
                                         )}
                                       />
-                                      {cat.label}
+                                      {city.label}
                                     </CommandItem>
                                   ))}
                                 </CommandGroup>

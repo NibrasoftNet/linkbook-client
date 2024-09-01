@@ -311,7 +311,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     id: number,
     userData: Partial<UserUpdateProfileFormType>,
   ) => {
-    console.log('help', id, userData);
     const formData = new FormData();
     if (userData.photo) {
       formData.append('files', userData.photo);

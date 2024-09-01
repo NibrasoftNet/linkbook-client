@@ -1,7 +1,66 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
+import { GrMapLocation } from 'react-icons/gr';
 
-const SearchResultCard = () => {
-  return <div>Card</div>;
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { CircleIcon, CurvedArrowLeftIcon } from '@/icons/general';
+import { imagesUrls } from '@/lib/constants';
+import type { SearchServiceProps } from '@/types/search.type';
+
+const SearchResultCard = ({ details }: { details: SearchServiceProps }) => {
+  console.log('azertyuiop', details);
+  return (
+    <Card className="size-full rounded-3xl border border-primary">
+      <Card className="h-full -translate-x-2 -translate-y-0.5 rounded-3xl border-2 border-primary">
+        <CardHeader className="flex w-full justify-between">
+          <div>
+            <CardTitle>{details.description}</CardTitle>
+            <CardDescription className="flex gap-2">
+              <GrMapLocation className="size-6" />
+              <span>{details.address.street}</span>
+            </CardDescription>
+          </div>
+          <span className="w-fit rounded-full border bg-tertiary px-2 capitalize text-white">
+            #donation
+          </span>
+        </CardHeader>
+        <CardContent>
+          <Image
+            alt="Product image"
+            className="max-h-[150px] w-full rounded-md object-contain"
+            height="30"
+            src={imagesUrls.logoImage}
+            width="30"
+            unoptimized
+          />
+        </CardContent>
+        <CardFooter>
+          <Link
+            href={`donations?id=${details.id}`}
+            className="flex w-full items-center justify-end gap-2"
+          >
+            <Button
+              type="button"
+              aria-label="shift"
+              className="group relative flex size-[50px] cursor-pointer items-center justify-center rounded-full bg-primary/30 hover:bg-primary/80"
+            >
+              <CircleIcon iconClass="size-[90%] absolute m-1 text-primary group-hover:text-white" />
+              <CurvedArrowLeftIcon iconClass="size-8 text-primary relative group-hover:text-white" />
+            </Button>
+          </Link>
+        </CardFooter>
+      </Card>
+    </Card>
+  );
 };
 
 export default SearchResultCard;

@@ -55,7 +55,7 @@ const pathname = usePathname()
             href="#"
           >
             {/* @ts-ignore */}
-            {t('donations')}
+            {t(brandText)}
           </NavLink>
         </div>
         <p className="text-md shrink capitalize text-zinc-950 dark:text-white md:text-3xl">
@@ -64,7 +64,7 @@ const pathname = usePathname()
             className="font-bold capitalize hover:text-zinc-950 dark:hover:text-white"
           >
             {/* @ts-ignore */}
-            {t('donations')}
+            {t(brandText)}
           </NavLink>
         </p>
       </div>

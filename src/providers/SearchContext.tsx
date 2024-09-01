@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { createContext, useContext } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -36,7 +35,6 @@ export const useDonation = () => useContext(DonationContext);
 
 // Create the AuthContext
 const DonationProvider = ({ children }: { children: ReactNode }) => {
-  const router = useRouter();
   const {
     mutateAsync: mutateCreateDonation,
     isLoading: isCreateDonationLoading,
@@ -102,7 +100,6 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
         description: 'Creation Success',
         id: toastId,
       });
-      router.push('../details');
     } catch (e) {
       toast.error('Error', {
         description: `${e}`,

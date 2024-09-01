@@ -42,29 +42,27 @@ import {
 } from '@/components/ui/popover';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
-import { useAuth } from '@/providers/AuthContext';
-import { useDonation } from '@/providers/DonationContext';
+import { useSwap } from '@/providers/SwapContext';
 import { useGetAllCategoriesQuery } from '@/tanstack/category.query';
 import { CrudOperationsEnum } from '@/types/types';
-import type { DonationSchemaFormType } from '@/validations/create-donation-schema.validator';
-import { createDonationSchema } from '@/validations/create-donation-schema.validator';
+import type { ApplyToSwapSchemaFormType } from '@/validations/apply-to-swap-schema.validator';
+import { applyToSwapSchema } from '@/validations/apply-to-swap-schema.validator';
 
-const DonationForm = ({
+const ApplyToSwapForm = ({
   operation,
   defaultValues,
-  donationId,
+  swapId,
 }: {
   operation: CrudOperationsEnum;
-  defaultValues: Partial<DonationSchemaFormType>;
-  donationId?: number;
+  defaultValues: Partial<ApplyToSwapSchemaFormType>;
+  swapId: number;
 }) => {
-  const t = useTranslations('DonationForm');
+  const t = useTranslations('SwapForm');
   const [files, setFiles] = useState<File[] | null>(null);
-  const auth = useAuth();
-  const donation = useDonation();
+  const swap = useSwap();
   const categories = useGetAllCategoriesQuery();
-  const form = useForm<DonationSchemaFormType>({
-    resolver: zodResolver(createDonationSchema),
+  const form = useForm<ApplyToSwapSchemaFormType>({
+    resolver: zodResolver(applyToSwapSchema),
     defaultValues,
     mode: 'onSubmit',
   });
@@ -76,29 +74,16 @@ const DonationForm = ({
 
   useEffect(() => {
     form.setValue('files', files);
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    auth.session && form.setValue('address', auth.session.address);
   }, [files]);
 
-  const onSubmit = async (donationData: Partial<DonationSchemaFormType>) => {
-    if (operation === CrudOperationsEnum.CREATE && !files?.length) {
+  const onSubmit = async (swapData: Partial<ApplyToSwapSchemaFormType>) => {
+    if (!files?.length) {
       toast.error('file', {
         description: `No attachement`,
       });
       return;
     }
-    if (operation === CrudOperationsEnum.CREATE) {
-      await donation.create(donationData);
-      return;
-    }
-    if (operation === CrudOperationsEnum.UPDATE && donationId) {
-      await donation.update(donationId, donationData);
-      return;
-    }
-
-    toast.error('Wrong Operation', {
-      description: `No ID provided for update`,
-    });
+    await swap.apply(swapId, swapData);
   };
   return (
     <Form {...form}>
@@ -106,27 +91,7 @@ const DonationForm = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="grid size-full grid-cols-2 items-center gap-4 p-2"
       >
-        <h1 className="text-2xl font-bold">{t('details')}</h1>
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => {
-            return (
-              <FormItem className="col-span-2">
-                <FormLabel>{t('description')}</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder={t('description')}
-                    className="resize-none"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
-        <h1 className="text-2xl font-bold">{t('product_details')}</h1>
+        <h1 className="text-2xl font-bold">Product Details</h1>
         <div className="col-span-2 grid w-full grid-cols-1 gap-4 md:grid-cols-2">
           <FormField
             control={form.control}
@@ -299,14 +264,14 @@ const DonationForm = ({
         <Button
           type="submit"
           className="grid-cols-2 gap-2 md:grid-cols-1"
-          disabled={donation.isLoading}
+          disabled={swap.isLoading}
         >
           <LiaHourglassEndSolid className="size-6" />
-          <span>Send</span>
+          <span>{t('submit')}</span>
         </Button>
       </form>
     </Form>
   );
 };
 
-export default DonationForm;
+export default ApplyToSwapForm;

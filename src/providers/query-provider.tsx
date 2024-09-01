@@ -64,7 +64,7 @@ export default function TanstackQueryProvider({
             fallbackRender={({ error, resetErrorBoundary }) => (
               <div className="flex h-screen w-full flex-col items-center justify-center gap-4">
                 <MdWifiTetheringError className="size-40 text-primary" />
-                <div className="flex w-full flex-col justify-center">
+                <div className="flex w-full flex-col items-center justify-center">
                   <h1 className="my-2 text-2xl font-bold text-gray-800">
                     Website temporarily unavailable
                   </h1>

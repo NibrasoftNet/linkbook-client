@@ -37,6 +37,12 @@ export default withSentryConfig(
             port: '',
             pathname: '',
           },
+          {
+            protocol: 'http',
+            hostname: 'localhost',
+            port: '',
+            pathname: '*',
+          },
         ],
       },
     }),
@@ -68,8 +74,7 @@ export default withSentryConfig(
     hideSourceMaps: true,
 
     // Automatically tree-shake Sentry logger statements to reduce bundle size
-    disableLogger: true,
-
+    disableLogger: false,
     // Enables automatic instrumentation of Vercel Cron Monitors.
     // See the following for more information:
     // https://docs.sentry.io/product/crons/
