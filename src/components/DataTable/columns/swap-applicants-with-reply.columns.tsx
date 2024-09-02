@@ -1,11 +1,18 @@
 import type { ColumnDef } from '@tanstack/react-table';
 import dayjs from 'dayjs';
-import { MoreHorizontal } from 'lucide-react';
+import { ImageIcon, MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
 
 import DonationActionButton from '@/components/action-buttons/DonationActionButton';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +20,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { imagesUrls } from '@/lib/constants';
 import { DonationOperationEnum } from '@/types/donation.type';
 import type { ApplicantToSwapType } from '@/types/swap.type';
 
@@ -44,7 +52,9 @@ export const swapApplicantsWithReplyListColumns: ColumnDef<ApplicantToSwapType>[
       accessorKey: 'id',
       header: 'Ref',
       cell: ({ row }) => (
-        <div className="capitalize">DON-{String(row.getValue('id'))}</div>
+        <div className="max-w-16 truncate capitalize">
+          DON-{String(row.getValue('id'))}
+        </div>
       ),
     },
     {
@@ -68,17 +78,92 @@ export const swapApplicantsWithReplyListColumns: ColumnDef<ApplicantToSwapType>[
       ),
     },
     {
-      accessorKey: 'applicant.address.city',
-      header: 'Address',
+      accessorKey: 'applicant.product.image',
+      header: 'Gallery',
       cell: ({ row }) => (
-        <div className="capitalize">{row.original.applicant.address.city}</div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline">
+              <ImageIcon className="mr-2 size-4" />
+              Open Gallery
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[800px]">
+            <div className="grid grid-cols-3 gap-4">
+              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
+              <img
+                src={
+                  row.original.product.image[0]?.path || imagesUrls.logoImage
+                }
+                width={600}
+                height={400}
+                alt="Gallery Image"
+                className="aspect-video w-full rounded-md object-cover"
+              />
+              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
+              <img
+                src={
+                  row.original.product.image[0]?.path || imagesUrls.logoImage
+                }
+                width={600}
+                height={400}
+                alt="Gallery Image"
+                className="aspect-video w-full rounded-md object-cover"
+              />
+              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
+              <img
+                src={
+                  row.original.product.image[0]?.path || imagesUrls.logoImage
+                }
+                width={600}
+                height={400}
+                alt="Gallery Image"
+                className="aspect-video w-full rounded-md object-cover"
+              />
+              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
+              <img
+                src={
+                  row.original.product.image[0]?.path || imagesUrls.logoImage
+                }
+                width={600}
+                height={400}
+                alt="Gallery Image"
+                className="aspect-video w-full rounded-md object-cover"
+              />
+              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
+              <img
+                src={
+                  row.original.product.image[0]?.path || imagesUrls.logoImage
+                }
+                width={600}
+                height={400}
+                alt="Gallery Image"
+                className="aspect-video w-full rounded-md object-cover"
+              />
+            </div>
+            <DialogFooter className="sm:justify-start">
+              <DialogClose asChild>
+                <Button type="button" variant="secondary">
+                  Close
+                </Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       ),
     },
     {
-      accessorKey: 'applicant.email',
-      header: 'Email',
+      accessorKey: 'applicant.product.name',
+      header: 'Product',
       cell: ({ row }) => (
-        <div className="lowercase">{row.original.applicant.email}</div>
+        <div className="capitalize">{row.original.product.name}</div>
+      ),
+    },
+    {
+      accessorKey: 'applicant.quantity',
+      header: 'Quantity',
+      cell: ({ row }) => (
+        <div className="lowercase">{row.original.quantity}</div>
       ),
     },
     {

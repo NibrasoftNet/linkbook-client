@@ -35,7 +35,7 @@ export type SwapProps = {
   product: ProductProps;
   address: AddressValueType;
   quantity: number;
-  applicants: User[];
+  applicants: ApplicantToSwapType[];
   creator: User;
 };
 
@@ -45,6 +45,8 @@ export type ApplicantToSwapType = {
   id: string;
   swap: SwapProps;
   applicant: User;
+  product: ProductProps;
+  quantity: number;
   status: string;
   active: boolean;
 };

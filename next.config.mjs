@@ -39,9 +39,9 @@ export default withSentryConfig(
           },
           {
             protocol: 'http',
-            hostname: 'localhost',
-            port: '',
-            pathname: '*',
+            hostname: '127.0.0.1',
+            port: '3001',
+            pathname: '/api/v1/files',
           },
         ],
       },

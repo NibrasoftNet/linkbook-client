@@ -186,7 +186,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
         description: 'Creation Success',
         id: toastId,
       });
-      router.push('../details');
+      router.back();
     } catch (e) {
       toast.error('Error', {
         description: `${e}`,
