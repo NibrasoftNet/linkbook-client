@@ -145,6 +145,7 @@ const DonationProvider = ({ children }: { children: ReactNode }) => {
         description: 'Creation Success',
         id: toastId,
       });
+      router.push('../details');
     } catch (e) {
       toast.error('Error', {
         description: `${e}`,

@@ -11,6 +11,7 @@ import { IoMdStopwatch } from 'react-icons/io';
 
 import AlertDialogCustom from '@/components/alert-dialog/AlertDialogCustom';
 import { AlertDialog, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -31,13 +32,10 @@ const DonationCard = ({ donation }: { donation: DonationProps }) => {
     <Card className="w-[550px] rounded-xl border p-4">
       <CardHeader className="flex w-full flex-row justify-between">
         <div className="flex w-fit items-center">
-          <Image
-            src={imagesUrls.logoImage}
-            alt="Image"
-            width="50"
-            height="50"
-            className="size-16 rounded-md border object-contain dark:brightness-[0.2] dark:grayscale"
-          />
+          <Avatar className="size-16 rounded-md border-2">
+            <AvatarImage src={donation.creator.photo ?? imagesUrls.logoImage} />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
           <div className="ml-1.5 text-sm leading-tight">
             <span className="block font-bold">{donation.creator.email}</span>
             <span className="block font-normal">@visualizevalue</span>
@@ -55,14 +53,14 @@ const DonationCard = ({ donation }: { donation: DonationProps }) => {
         <p className="text-md my-3 block text-center leading-snug">
           {donation.description}
         </p>
-        <div className="flex items-center rounded-xl border-2 border-primary">
+        <div className="flex items-center rounded-xl border border-primary">
           <Image
             src={donation.creator.photo ?? imagesUrls.logoImage}
             alt="Image"
             width="50"
             height="50"
             unoptimized
-            className="size-full -translate-x-1 -translate-y-2 rounded-xl border border-primary bg-white object-contain p-2 shadow-lg shadow-primary dark:brightness-[0.2] dark:grayscale"
+            className="size-full max-h-[300px] -translate-x-1 -translate-y-2 rounded-xl border-2 border-primary bg-white object-contain p-2 shadow-lg shadow-primary dark:brightness-[0.2] dark:grayscale"
           />
         </div>
         {/* eslint-disable-next-line tailwindcss/no-custom-classname */}

@@ -50,14 +50,14 @@ const SwapCard = ({ swap }: { swap: SwapProps }) => {
         <p className="text-md my-3 block text-center leading-snug">
           {swap.description}
         </p>
-        <div className="flex items-center rounded-xl border-2 border-primary">
+        <div className="flex items-center rounded-xl border border-primary">
           <Image
             src={swap.product.image[0]?.path ?? imagesUrls.logoImage}
             alt="Image"
             width="50"
             height="50"
             unoptimized
-            className="size-full max-h-[300px] -translate-x-1 -translate-y-2 rounded-xl border border-primary bg-white object-cover p-2 shadow-lg shadow-primary dark:brightness-[0.2] dark:grayscale"
+            className="size-full max-h-[300px] -translate-x-1 -translate-y-2 rounded-xl border-2 border-primary bg-white object-cover p-2 shadow-lg shadow-primary dark:brightness-[0.2] dark:grayscale"
           />
         </div>
         {/* eslint-disable-next-line tailwindcss/no-custom-classname */}

@@ -26,6 +26,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Label } from '@/components/ui/label';
+import { imagesUrls } from '@/lib/constants';
 import { useAuth } from '@/providers/AuthContext';
 import { useGetSingleDonationQuery } from '@/tanstack/donations.query';
 import { DonationOperationEnum } from '@/types/donation.type';
@@ -38,12 +39,12 @@ const DonationDetails = ({ id }: { id: string }) => {
       <CardHeader className="flex items-center">
         <Avatar className="h-14 min-w-14">
           <AvatarImage
-            src={result.result.creator.photo || 'https://github.com/shadcn.png'}
+            src={result.result.creator.photo || imagesUrls.logoImage}
           />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <CardTitle>{`${result.result.creator.firstName} ${result.result.creator.lastName}`}</CardTitle>
-        <CardDescription>{`${result.result.creator.firstName} ${result.result.creator.email}`}</CardDescription>
+        <CardDescription>{`${result.result.creator.email}`}</CardDescription>
         <CardDescription>
           {dayjs(result.result.createdAt).format('DD-MMM-YYYY')}
         </CardDescription>
