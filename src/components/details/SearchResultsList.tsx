@@ -12,7 +12,7 @@ const SearchResultsList = () => {
       {searchResults.map((result) => (
         <li
           key={result.id}
-          className="col-span-1 flex size-full h-[400px] max-w-[300px] items-center justify-center"
+          className="flex h-[320px] w-full items-center justify-center md:w-[250px]"
         >
           <SearchResultCard details={result} />
         </li>

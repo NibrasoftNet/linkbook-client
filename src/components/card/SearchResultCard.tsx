@@ -15,28 +15,29 @@ import {
 import { CircleIcon, CurvedArrowLeftIcon } from '@/icons/general';
 import { imagesUrls } from '@/lib/constants';
 import type { SearchServiceProps } from '@/types/search.type';
+import useSearchStore from '@/zustand/searchStore';
 
 const SearchResultCard = ({ details }: { details: SearchServiceProps }) => {
-  console.log('azertyuiop', details);
+  const { type } = useSearchStore();
   return (
-    <Card className="size-full rounded-3xl border border-primary">
+    <Card className="size-full min-w-[250px] rounded-3xl border border-primary">
       <Card className="h-full -translate-x-2 -translate-y-0.5 rounded-3xl border-2 border-primary">
-        <CardHeader className="flex w-full justify-between">
-          <div>
-            <CardTitle>{details.description}</CardTitle>
-            <CardDescription className="flex gap-2">
-              <GrMapLocation className="size-6" />
-              <span>{details.address.street}</span>
-            </CardDescription>
-          </div>
-          <span className="w-fit rounded-full border bg-tertiary px-2 capitalize text-white">
-            #donation
+        <CardHeader className="flex w-full">
+          <CardTitle className="truncate capitalize">
+            {details.description}
+          </CardTitle>
+          <CardDescription className="flex gap-2">
+            <GrMapLocation className="size-6" />
+            <span className="truncate">{details.address.street}</span>
+          </CardDescription>
+          <span className="w-fit rounded-full border bg-tertiary px-2 text-sm lowercase text-white">
+            #{type}
           </span>
         </CardHeader>
         <CardContent>
           <Image
             alt="Product image"
-            className="max-h-[150px] w-full rounded-md object-contain"
+            className="max-h-[100px] w-full rounded-md object-contain"
             height="30"
             src={imagesUrls.logoImage}
             width="30"

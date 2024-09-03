@@ -1,6 +1,7 @@
 import type { ColumnDef } from '@tanstack/react-table';
 import dayjs from 'dayjs';
 import { ImageIcon, MoreHorizontal } from 'lucide-react';
+import Image from 'next/image';
 import * as React from 'react';
 
 import DonationActionButton from '@/components/action-buttons/DonationActionButton';
@@ -23,6 +24,7 @@ import {
 import { imagesUrls } from '@/lib/constants';
 import { DonationOperationEnum } from '@/types/donation.type';
 import type { ApplicantToSwapType } from '@/types/swap.type';
+import type { ImagesProps } from '@/types/types';
 
 export const swapApplicantsWithReplyListColumns: ColumnDef<ApplicantToSwapType>[] =
   [
@@ -89,58 +91,19 @@ export const swapApplicantsWithReplyListColumns: ColumnDef<ApplicantToSwapType>[
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[800px]">
-            <div className="grid grid-cols-3 gap-4">
-              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
-              <img
-                src={
-                  row.original.product.image[0]?.path || imagesUrls.logoImage
-                }
-                width={600}
-                height={400}
-                alt="Gallery Image"
-                className="aspect-video w-full rounded-md object-cover"
-              />
-              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
-              <img
-                src={
-                  row.original.product.image[0]?.path || imagesUrls.logoImage
-                }
-                width={600}
-                height={400}
-                alt="Gallery Image"
-                className="aspect-video w-full rounded-md object-cover"
-              />
-              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
-              <img
-                src={
-                  row.original.product.image[0]?.path || imagesUrls.logoImage
-                }
-                width={600}
-                height={400}
-                alt="Gallery Image"
-                className="aspect-video w-full rounded-md object-cover"
-              />
-              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
-              <img
-                src={
-                  row.original.product.image[0]?.path || imagesUrls.logoImage
-                }
-                width={600}
-                height={400}
-                alt="Gallery Image"
-                className="aspect-video w-full rounded-md object-cover"
-              />
-              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt,@next/next/no-img-element */}
-              <img
-                src={
-                  row.original.product.image[0]?.path || imagesUrls.logoImage
-                }
-                width={600}
-                height={400}
-                alt="Gallery Image"
-                className="aspect-video w-full rounded-md object-cover"
-              />
-            </div>
+            <ul className="flex flex-wrap">
+              {row.original.product.image.map((image: ImagesProps) => (
+                // eslint-disable-next-line jsx-a11y/img-redundant-alt,react/jsx-key
+                <Image
+                  key={image.id}
+                  src={image.path || imagesUrls.logoImage}
+                  width={600}
+                  height={400}
+                  alt="Gallery Image"
+                  className="aspect-video w-full rounded-md object-contain"
+                />
+              ))}
+            </ul>
             <DialogFooter className="sm:justify-start">
               <DialogClose asChild>
                 <Button type="button" variant="secondary">

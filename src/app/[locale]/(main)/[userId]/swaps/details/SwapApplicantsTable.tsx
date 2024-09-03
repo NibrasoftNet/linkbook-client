@@ -13,7 +13,7 @@ const SwapApplicantsTable = (applicants: { data: ApplicantToSwapType[] }) => {
       <SwapApplicantsDataTable
         columns={swapApplicantsWithReplyListColumns}
         data={applicants.data}
-        filter="email"
+        filter="status"
       />
     </section>
   );
