@@ -139,5 +139,10 @@
     "search_category": "Search Category",
     "product_description": "Product Description",
     "submit": "Submit"
+  },
+  "SoonPage": {
+    "title": "Coming Soon",
+    "description": "We are working on this feature. Stay tuned!",
+    "later": "Come to visit us later"
   }
 }

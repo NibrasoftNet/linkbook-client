@@ -1,7 +1,13 @@
 import React from 'react';
 
+import Soon from '@/components/soon/Soon';
+
 const Page = () => {
-  return <div>hello</div>;
+  return (
+    <main className="h-screen">
+      <Soon />
+    </main>
+  );
 };
 
 export default Page;

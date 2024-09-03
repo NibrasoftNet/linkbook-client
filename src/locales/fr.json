@@ -146,5 +146,10 @@
     "search_category": "Search Category",
     "product_description": "Product Description",
     "submit": "Envoyer"
+  },
+  "SoonPage": {
+    "title": "Bientot",
+    "description": "Bientot, nous vous ferons une visite !",
+    "later": "Plus tard"
   }
 }
