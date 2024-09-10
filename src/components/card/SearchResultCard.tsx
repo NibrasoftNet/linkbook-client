@@ -46,7 +46,7 @@ const SearchResultCard = ({ details }: { details: SearchServiceProps }) => {
         </CardContent>
         <CardFooter>
           <Link
-            href={`donations?id=${details.id}`}
+            href={`${type.toLowerCase()}?id=${details.id}`}
             className="flex w-full items-center justify-end gap-2"
           >
             <Button

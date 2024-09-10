@@ -82,6 +82,15 @@ export const getSingleDonationAction = async (id: string) => {
   }
 };
 
+export const getSingleDonationByProductIdAction = async (id: string) => {
+  try {
+    const { data } = await axiosInstance.get(`donations/product/${id}`);
+    return data;
+  } catch (error: any) {
+    return error.response.data;
+  }
+};
+
 export const cancelRequestDonationAction = async (id: string) => {
   try {
     const { data } = await axiosInstance.put(

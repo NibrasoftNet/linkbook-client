@@ -9,9 +9,10 @@
     "statistic_link": "Statistics",
     "setting_link": "Settings",
     "helpdesk_link": "Helpdesk",
-    "landing_welcome": "bienvenue",
-    "landing_shop": "magasin",
-    "landing_community": "communauté",
+    "landing_community": "Communauté",
+    "landing_donations": "Donations",
+    "landing_swaps": "Swaps",
+    "landing_products": "Produits",
     "landing_pack_promo": "pack promo",
     "landing_exposition": "exposition",
     "landing_profile": "profil",
@@ -19,7 +20,8 @@
     "here_you_win": "ici, vous gagnez",
     "community_offers": "offres communautaires",
     "our_activities": "nos activités",
-    "testimonials": "témoignages"
+    "testimonials": "témoignages",
+    "meta_subscribe": "S'inscrire"
   },
   "Sidebar": {
     "main_dashboard": "Tableau de bord",
@@ -27,10 +29,12 @@
     "swaps": "Echanges",
     "marketplace": "Marché",
     "search": "Recherche",
-    "ai_assistant": "Assistant IA",
+    "products": "Produits",
+    "community": "Communauté",
     "profile_settings": "Paramètres du profil",
     "subscription": "Abonnement",
-    "pricing_page": "Page de tarification"
+    "pricing_page": "Page de tarification",
+    "Default Brand Text": "Linkbook"
   },
   "Auth": {
     "meta_sign_in_title": "Se connecter",
@@ -151,5 +155,14 @@
     "title": "Bientot",
     "description": "Bientot, nous vous ferons une visite !",
     "later": "Plus tard"
+  },
+  "Upgrade": {
+    "upgrade_pro": "Upgrade to Pro",
+    "upgrade_description": "Get access to exclusive features and benefits.",
+    "upgrade_btn": "Upgrade"
+  },
+  "Hero": {
+    "hero_title": "Mobilisons",
+    "hero_subTitle": "La force de la solidarité"
   }
 }

@@ -1,7 +1,8 @@
-import { Fredericka_the_Great } from 'next/font/google';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
+import { getSession } from '@/actions/auth.actions';
 import {
   ArrowThickIcon,
   ChildWhiteBgIcon,
@@ -9,12 +10,7 @@ import {
   DonationWhiteBgIcon,
   GroupWhiteBgIcon,
 } from '@/icons/general';
-
-const frederickaTheGreat = Fredericka_the_Great({
-  subsets: ['latin'],
-  weight: '400',
-  style: 'normal',
-});
+import { frederickaTheGreat } from '@/lib/constants';
 
 const styles = {
   jobMain:
@@ -25,8 +21,9 @@ const styles = {
     'relative flex size-[100px] items-center justify-center rounded-full',
 };
 
-const OurJob = () => {
+const OurJob = async () => {
   const t = useTranslations('OurJob');
+  const session = await getSession();
   return (
     <section className="landing-section p-4">
       <div className={styles.jobMain}>
@@ -40,8 +37,8 @@ const OurJob = () => {
             {t('description')}
           </p>
         </div>
-        <div className="flex w-full justify-around">
-          <div className="size-[300px] rounded-[50px] border-2 border-primary">
+        <div className="grid w-full grid-cols-1 justify-around justify-items-center gap-4 md:grid-cols-3">
+          <div className="col-span-1 size-[300px] rounded-[50px] border-2 border-primary text-primary">
             <div className={`${styles.jobCardMain} border-primary bg-white`}>
               <div className={`${styles.jobCardSub} bg-primary/30`}>
                 <CircleIcon iconClass="size-[90%] absolute m-1 text-primary" />
@@ -49,29 +46,51 @@ const OurJob = () => {
               </div>
               <h4 className="text-xl capitalize">{t('interest')}</h4>
               <h2 className="text-4xl font-bold capitalize">{t('people')}</h2>
-              <ArrowThickIcon iconClass="size-20 text-primary" />
+              <Link
+                href={
+                  session?.user ? `/${session.user.id}/dashboard` : '/sign-in'
+                }
+              >
+                <ArrowThickIcon iconClass="size-20 text-primary hover:rotate-45 transition-all ease-in-out duration-300" />
+              </Link>
             </div>
           </div>
-          <div className="size-[300px] rounded-[50px] border-2 border-tertiary">
-            <div className={`${styles.jobCardMain} border-tertiary`}>
+          <div className="col-span-1 size-[300px] rounded-[50px] border-2 border-tertiary">
+            <div
+              className={`${styles.jobCardMain} border-tertiary text-tertiary`}
+            >
               <div className={`${styles.jobCardSub} bg-tertiary/30`}>
                 <CircleIcon iconClass="size-[90%] absolute m-1 text-tertiary" />
                 <DonationWhiteBgIcon iconClass="size-16 text-primary text-white" />
               </div>
               <h4 className="text-xl capitalize">{t('interest')}</h4>
               <h2 className="text-4xl font-bold capitalize">{t('economic')}</h2>
-              <ArrowThickIcon iconClass="size-20 text-tertiary" />
+              <Link
+                href={
+                  session?.user ? `/${session.user.id}/dashboard` : '/sign-in'
+                }
+              >
+                <ArrowThickIcon iconClass="size-20 text-tertiary hover:rotate-45 transition-all ease-in-out duration-300" />
+              </Link>
             </div>
           </div>
-          <div className="size-[300px] rounded-[50px] border-2 border-primary">
-            <div className={`${styles.jobCardMain} border-primary`}>
+          <div className="col-span-1 size-[300px] rounded-[50px] border-2 border-primary">
+            <div
+              className={`${styles.jobCardMain} border-primary text-primary`}
+            >
               <div className={`${styles.jobCardSub} bg-primary/30`}>
                 <CircleIcon iconClass="size-[90%] absolute m-1 text-primary" />
                 <GroupWhiteBgIcon iconClass="size-20 text-white" />
               </div>
               <h4 className="text-xl capitalize">{t('interest')}</h4>
               <h2 className="text-4xl font-bold capitalize">{t('social')}</h2>
-              <ArrowThickIcon iconClass="size-20 text-primary" />
+              <Link
+                href={
+                  session?.user ? `/${session.user.id}/dashboard` : '/sign-in'
+                }
+              >
+                <ArrowThickIcon iconClass="size-20 text-primary cursor-pointer hover:rotate-45 transition-all ease-in-out duration-300" />
+              </Link>
             </div>
           </div>
         </div>

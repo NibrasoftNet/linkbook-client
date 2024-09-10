@@ -3,13 +3,13 @@ import '@/styles/landing.css';
 import { getTranslations } from 'next-intl/server';
 import * as React from 'react';
 
-import Footer from '@/components/desktop/Footer';
-import CommunityOffers from '@/components/desktop/landing/CommunityOffers';
-import Hero from '@/components/desktop/landing/Hero';
-import HowItWorks from '@/components/desktop/landing/HowItWorks';
-import OurActivities from '@/components/desktop/landing/OurActivities';
-import OurJob from '@/components/desktop/landing/OurJob';
-import Testimonials from '@/components/desktop/landing/Testimonials';
+import CommunityOffers from '@/components/landing/CommunityOffers';
+import Footer from '@/components/landing/Footer';
+import Hero from '@/components/landing/Hero';
+import HowItWorks from '@/components/landing/HowItWorks';
+import OurActivities from '@/components/landing/OurActivities';
+import OurJob from '@/components/landing/OurJob';
+import Testimonials from '@/components/landing/Testimonials';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -25,7 +25,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 
 export default async function Index() {
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex w-screen flex-col items-center gap-10 text-clip">
       <Hero />
       <OurJob />
       <HowItWorks />

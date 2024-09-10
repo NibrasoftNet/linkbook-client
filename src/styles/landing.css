@@ -4,6 +4,6 @@
 
 @layer components {
     .landing-section {
-        @apply flex min-h-max w-full flex-col items-center;
+        @apply flex min-h-max flex-1 flex-col items-center;
     }
 }

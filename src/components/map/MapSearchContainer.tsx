@@ -5,9 +5,12 @@ import 'node_modules/leaflet-geosearch/dist/geosearch.css';
 import type { UseQueryResult } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 import type { LatLngLiteral } from 'leaflet';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import L from 'leaflet';
-import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect } from 'react';
+import { FaCircleChevronLeft, FaCircleChevronRight } from 'react-icons/fa6';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
   MapContainer,
@@ -43,28 +46,51 @@ const MapSearchContainer = ({
   const position: LatLngLiteral = { lat: 51.505, lng: -0.09 };
   const { category, city, type, searchResults, setSearchResults } =
     useSearchStore();
-  console.log('azerty', search, subscriptionStatus, category, city, type);
-  const data: UseQueryResult<
-    ApiResponsePaginated<SearchServiceProps>,
+
+  const paginationParams = useSearchParams();
+  const page = Number(paginationParams.get('page')) || 1;
+  const limit = Number(paginationParams.get('limit')) || 20;
+
+  const {
+    data: searchResultQueryData,
+    refetch: refetchSearchData,
+  }: UseQueryResult<
+    ApiResponsePaginated<SearchServiceProps | []>,
     Error
   > = useQuery({
     // @ts-ignore
     queryFn: async () => {
       try {
-        const data: ApiResponsePaginated<SearchServiceProps> =
-          await getSearchServiceAction({
+        const data = await getSearchServiceAction(
+          {
             type,
             subscriptionStatus,
             category,
             city,
-          });
+          },
+          {
+            page,
+            limit,
+            filter: [
+              {
+                field: 'product.category.id',
+                operation: '$eq',
+                value: category,
+              },
+            ],
+          },
+        );
         if (!data.status) {
-          toast.error('Failed to search Profile', {});
-          return;
+          toast.error('Failed to search', {
+            description: `Your search has failed`,
+          });
+          setSearchResults([]);
+          return [];
         }
         setSearchResults(data.result.data);
         return data;
       } catch (e) {
+        setSearchResults([]);
         toast.error('Error', {
           description: `${e}`,
         });
@@ -78,8 +104,13 @@ const MapSearchContainer = ({
   });
 
   useEffect(() => {
-    data.refetch();
-  }, [category, city, type]);
+    refetchSearchData().catch((error) => {
+      setSearchResults([]);
+      toast.error('Error', {
+        description: `${error}`,
+      });
+    });
+  }, [category, city, type, page]);
 
   function FlyMapToLocation({
     zoomLevel,
@@ -95,15 +126,6 @@ const MapSearchContainer = ({
     return null;
   }
 
-  const isInitialized = useRef(false);
-  useEffect(() => {
-    isInitialized.current = true;
-    return () => {
-      isInitialized.current = false;
-    };
-  }, []);
-  if (!isInitialized) return null;
-
   return (
     <section className="relative z-20 size-full">
       <MapContainer
@@ -118,10 +140,54 @@ const MapSearchContainer = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ZoomControl position="topright" />
+
         {searchMarkers && searchResults[0] && (
           <FlyMapToLocation zoomLevel={4} search={searchResults[0]} />
         )}
         {search && <SearchLocation />}
+        {searchResultQueryData?.result.data.length && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '20px',
+              left: '20px',
+              zIndex: '1000',
+            }}
+            className="flex w-80 gap-2"
+          >
+            <Link
+              href={`search?page=${Number(page) - 1}&limit=${Number(limit)}`}
+              aria-label="Scroll left"
+              type="button"
+            >
+              <button
+                aria-label="Scroll left"
+                type="button"
+                disabled={Number(page) === 1}
+                className="text-primary hover:text-tertiary disabled:text-gray-400"
+              >
+                <FaCircleChevronLeft className="size-8" />
+              </button>
+            </Link>
+            <Link
+              href={`search?page=${Number(page) + 1}&limit=${Number(limit)}`}
+              aria-label="Scroll right"
+              type="button"
+            >
+              <button
+                aria-label="Scroll right"
+                type="button"
+                disabled={
+                  Number(page) === searchResultQueryData.result.meta.totalPages
+                }
+                className="text-primary hover:text-tertiary disabled:text-gray-400"
+              >
+                <FaCircleChevronRight className="size-8" />
+              </button>
+            </Link>
+          </div>
+        )}
+
         {searchMarkers && <SearchProduct page="search" />}
         {searchMarkers &&
           searchResults.map((result: SearchServiceProps) => (

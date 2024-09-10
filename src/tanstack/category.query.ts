@@ -13,10 +13,10 @@ export function useGetAllCategoriesQuery() {
       if (data) return data;
     },
     queryKey: ['all-categories'],
-    staleTime: 3600 * 1000,
-    refetchOnMount: false,
+    refetchOnMount: true,
     refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
+    refetchOnReconnect: true,
     refetchInterval: false,
+    retry: true,
   });
 }

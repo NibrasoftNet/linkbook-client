@@ -3,12 +3,14 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-import { CurvedArrowIcon, SearchIcon } from '@/icons/general';
+import {
+  BooksIcon,
+  CurvedArrowIcon,
+  CurvedArrowLeftIcon,
+  SearchIcon,
+} from '@/icons/general';
 import { RocketIcon } from '@/icons/landing';
 import { imagesUrls } from '@/lib/constants';
-
-import BooksIcon from '../../../icons/general/Books.icon';
-import CurvedArrowLeftIcon from '../../../icons/general/Curved.arrow.left.icon';
 
 const frederickaTheGreat = Fredericka_the_Great({
   subsets: ['latin'],
@@ -25,8 +27,8 @@ const HowItWorks = () => {
         >
           {t('landing_how_it_works')}
         </h1>
-        <div className="flex w-full items-center">
-          <div className="flex h-full w-1/2 items-center justify-center">
+        <div className="flex w-full flex-col-reverse items-center md:flex-row">
+          <div className="flex size-full items-center justify-center rounded-lg md:w-1/2">
             <Image
               src={imagesUrls.howItWorksImage}
               alt="HowItWorks"
@@ -34,7 +36,7 @@ const HowItWorks = () => {
               height={500}
             />
           </div>
-          <div className="flex h-full w-1/2 flex-col justify-center">
+          <div className="flex size-full flex-col justify-center md:w-1/2">
             <div className="flex items-center gap-6">
               <div className="size-[100px] rounded-[30px] border border-primary bg-white">
                 <div className="flex size-[100px] translate-x-2 translate-y-2 cursor-pointer items-center justify-center rounded-[30px] border-[3px] border-primary bg-white transition duration-300 ease-in-out hover:translate-x-0 hover:translate-y-0">
@@ -45,7 +47,7 @@ const HowItWorks = () => {
                 <h2
                   className={`${frederickaTheGreat.className} text-2xl text-primary`}
                 >
-                  Subscribe
+                  {t('meta_subscribe')}
                 </h2>
                 <p className="text-start">
                   Empowering readers to exchange, donate, and swap books online,
@@ -58,14 +60,14 @@ const HowItWorks = () => {
               <CurvedArrowIcon iconClass="size-16 -rotate-90 text-tertiary" />
             </div>
             <div className="flex items-center gap-6">
-              <div className="size-[100px] rounded-[30px] border border-primary bg-white">
-                <div className="flex size-[100px] translate-x-2 translate-y-2 cursor-pointer items-center justify-center rounded-[30px] border-[3px] border-primary bg-white transition duration-300 ease-in-out hover:translate-x-0 hover:translate-y-0">
-                  <SearchIcon iconClass="size-[70px]" />
+              <div className="size-[100px] rounded-[30px] border border-tertiary bg-white">
+                <div className="flex size-[100px] translate-x-2 translate-y-2 cursor-pointer items-center justify-center rounded-[30px] border-[3px] border-tertiary bg-white transition duration-300 ease-in-out hover:translate-x-0 hover:translate-y-0">
+                  <SearchIcon iconClass="size-[70px] text-tertiary" />
                 </div>
               </div>
               <div className="flex size-full flex-col items-start justify-center">
                 <h2
-                  className={`${frederickaTheGreat.className} text-2xl text-primary`}
+                  className={`${frederickaTheGreat.className} text-2xl text-tertiary`}
                 >
                   Join a community
                 </h2>

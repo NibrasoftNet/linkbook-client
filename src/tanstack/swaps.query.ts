@@ -8,6 +8,7 @@ import {
   getOthersSwapsList,
   getRequestedSwapsList,
   getSingleSwapAction,
+  getSingleSwapByProductIdAction,
   getSwapsList,
   rejectRequestSwapAction,
   updateSwapAction,
@@ -69,6 +70,17 @@ export const useCreateSwapMutation = () => {
     data: mutation.data,
   };
 };
+
+export function useGetSingleSwapByProductIdQuery(id: string) {
+  return useSuspenseQuery({
+    queryFn: async () => getSingleSwapByProductIdAction(id),
+    queryKey: ['get-single-swap-by-product-id'],
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: false,
+  });
+}
 
 export const useUpdateSwapMutation = () => {
   const mutation = useMutation({

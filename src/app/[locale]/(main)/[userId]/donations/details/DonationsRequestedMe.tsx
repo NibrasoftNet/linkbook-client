@@ -17,7 +17,7 @@ const DonationsRequestsTable = () => {
     <section className="flex size-full flex-col items-center">
       <Link
         type="button"
-        href="donations/create"
+        href="details/create"
         className="flex w-full items-center justify-center md:w-1/3"
       >
         <Button className="flex w-full items-center justify-center gap-2">

@@ -14,16 +14,34 @@ export interface ApiResponsePaginated<T> {
   result: PaginatedResponse<T>;
 }
 
-type Meta = {
+export interface SortByProps {
+  field: string;
+  direction: 'ASC' | 'DESC';
+}
+
+export interface FilterProps {
+  field: string;
+  operation: string;
+  value?: string | number | string[] | number[]; // Value can be string, number, or array for operations like $in
+}
+
+export type PaginationProps = {
+  page: number;
+  limit: number;
+  sortBy?: SortByProps[];
+  filter?: FilterProps[];
+};
+
+export type PaginationMeta = {
   itemsPerPage: number;
   totalItems: number;
   currentPage: number;
   totalPages: number;
   sortBy: [string, 'ASC' | 'DESC'][];
-  filters: { [key: string]: string };
+  filters?: { [key: string]: string };
 };
 
-type Links = {
+export type PaginationLinks = {
   first?: string;
   previous?: string;
   current: string;
@@ -33,8 +51,8 @@ type Links = {
 
 type PaginatedResponse<T> = {
   data: T[];
-  meta: Meta;
-  links: Links;
+  meta: PaginationMeta;
+  links: PaginationLinks;
 };
 
 export interface TranslateBody {

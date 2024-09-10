@@ -10,6 +10,7 @@ import { Toaster } from '@/components/ui/sonner';
 import AuthProvider from '@/providers/AuthContext';
 import { NavigationLayoutProvider } from '@/providers/NavigationLayoutProvider';
 import TanstackQueryProvider from '@/providers/query-provider';
+import SearchProvider from '@/providers/SearchContext';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -60,9 +61,11 @@ export default function RootLayout(props: {
           >
             <TanstackQueryProvider>
               <AuthProvider>
-                <NavigationLayoutProvider>
-                  {props.children}
-                </NavigationLayoutProvider>
+                <SearchProvider>
+                  <NavigationLayoutProvider>
+                    {props.children}
+                  </NavigationLayoutProvider>
+                </SearchProvider>
               </AuthProvider>
             </TanstackQueryProvider>
           </NextIntlClientProvider>

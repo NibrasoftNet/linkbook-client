@@ -4,21 +4,34 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import React, { useRef } from 'react';
+import { LiaHamburgerSolid } from 'react-icons/lia';
 
+import ProductsDropdown from '@/components/items-select/ProductsDropdown';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import NavbarItemsLanding from '@/components/desktop/NavbarItemsLanding';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
+import WordRotate from '@/components/magicui/word-rotate';
 import SearchProduct from '@/components/map/SearchProduct';
-import TableSkeleton from '@/components/skeleton/TableSkeleton';
+import NavbarItemsLanding from '@/components/navbar/NavbarItemsLanding';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
-import { CartIcon } from '@/icons/general';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import { FaceBookIcon, RocketIcon, XIcon } from '@/icons/landing';
 import ChildIcon from '@/icons/landing/Child.icon';
 import InstagramIcon from '@/icons/landing/Instagram.icon';
-import { imagesUrls } from '@/lib/constants';
+import { frederickaTheGreat, imagesUrls } from '@/lib/constants';
 import { useAuth } from '@/providers/AuthContext';
-import { useGetAllCitiesQuery } from '@/tanstack/address.query';
 
 const styles = {
   socialIcons:
@@ -26,7 +39,7 @@ const styles = {
   navBar:
     'fixed top-0 z-10 flex w-full max-w-[1300px] flex-col items-center pt-2',
   navBarItems:
-    'z-10 flex h-[70px] w-full items-center justify-between rounded-2xl border border-primary bg-white px-6',
+    'z-10 flex h-[70px] w-full items-center justify-between rounded-2xl border border-primary px-6 bg-white dark:bg-black',
   childIconBtn:
     'flex size-20 rotate-45 items-center justify-center rounded-[30px] bg-white shadow-xl shadow-blue-400 hover:scale-105 transition-all ease-in-out cursor-pointer',
   rocketIcon:
@@ -34,6 +47,7 @@ const styles = {
 };
 
 function Hero() {
+  const t = useTranslations('Hero');
   const router = useRouter();
   const auth = useAuth();
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -42,20 +56,27 @@ function Hero() {
     offset: ['end end', 'end start'],
   });
   // Transform the y position of NavbarItemsLanding based on scroll progress
-  const translateY = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const translateY = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.5, 0.7, 0.9],
+    [0, -20, -70, -90, -100],
+  );
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.5, 0.7, 1],
+    [1, 1, 0.5, 0.2, 0],
+  );
   const handleUserLogin = async () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     auth.session
       ? router.push(`/${auth.session.id}/dashboard`)
       : router.push('/sign-in');
   };
-  const cities = useGetAllCitiesQuery();
-  if (cities.isFetching) {
-    return <TableSkeleton />;
-  }
   return (
-    <section ref={targetRef} className="landing-section z-20">
+    <section
+      ref={targetRef}
+      className="landing-section relative z-20 min-h-screen w-screen"
+    >
       <nav className={`${styles.navBar}`}>
         <motion.div
           style={{ opacity }}
@@ -67,9 +88,9 @@ function Hero() {
             width={120}
             height={75}
             unoptimized
-            className="object-contain"
+            className="hidden object-contain md:block"
           />
-          <div className="flex h-full items-center justify-center gap-4">
+          <div className="hidden h-full items-center justify-center gap-4 md:flex">
             <Link
               href="/facebook"
               className={`${styles.socialIcons} hover:border-primary`}
@@ -89,7 +110,7 @@ function Hero() {
               <InstagramIcon iconClass="w-10 h-10" />
             </Link>
           </div>
-          <div className="flex h-full items-center gap-4">
+          <div className="flex w-full items-center justify-end gap-4 md:w-fit">
             <ThemeSwitcher />
             <LocaleSwitcher />
             <button
@@ -98,8 +119,18 @@ function Hero() {
               onClick={() => handleUserLogin()}
               className={`${styles.childIconBtn}`}
             >
-              {auth.session?.photo || (
-                <ChildIcon iconClass="w-16 h-16 text-primary -rotate-45" />
+              {auth.session ? (
+                <Avatar className="h-9 min-w-9 -rotate-45 rounded-md object-contain shadow-md hover:border md:min-h-10 md:min-w-10">
+                  <AvatarImage
+                    src={auth.session?.photo || imagesUrls.logoImage}
+                    alt="linkbook-logo"
+                  />
+                  <AvatarFallback className="font-bold dark:text-zinc-950">
+                    US
+                  </AvatarFallback>
+                </Avatar>
+              ) : (
+                <ChildIcon iconClass="w-12 h-12 text-primary -rotate-45" />
               )}
             </button>
             <div className={`${styles.rocketIcon}`}>
@@ -107,28 +138,18 @@ function Hero() {
             </div>
           </div>
         </motion.div>
-        {/*        <div className="flex w-full justify-end gap-4">
-          <button
-            type="button"
-            aria-label="login"
-            className="px-3 h-8 cursor-pointer rounded-t-2xl bg-primary text-lg font-semibold text-white hover:bg-primary/50"
-          >
-            {t('signIn')}
-          </button>
-          <button
-            type="button"
-            aria-label="login"
-            className="px-2 h-8 cursor-pointer rounded-t-2xl bg-primary text-lg font-semibold text-white hover:bg-primary/50"
-          >
-            {t('signUp')}
-          </button>
-        </div> */}
         <motion.div
-          className={`${styles.navBarItems}`}
+          className={`${styles.navBarItems} hidden md:flex`}
           style={{ y: translateY }}
         >
           <NavbarItemsLanding />
-          <CartIcon iconClass="w-12 h-12 text-[#ff4d16]" />
+          <ProductsDropdown />
+        </motion.div>
+        <motion.div style={{ opacity }}>
+          <WordRotate
+            className={`${frederickaTheGreat.className}  mt-10 w-full text-center text-5xl font-bold text-tertiary md:text-8xl`}
+            words={[t('hero_title'), t('hero_subTitle')]}
+          />
         </motion.div>
       </nav>
       <motion.section className="top-0" style={{ opacity }}>
@@ -138,9 +159,41 @@ function Hero() {
           width={1920}
           height={1076}
           unoptimized
-          className="object-cover"
+          className="h-screen object-cover"
         />
       </motion.section>
+      <Sheet>
+        <SheetTrigger asChild className="fixed left-2 top-2 z-10 md:hidden">
+          <button
+            type="button"
+            aria-label="open menu"
+            className="flex size-14 items-center justify-center rounded-full border p-1"
+          >
+            <LiaHamburgerSolid className="size-10" />
+          </button>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-[300px]">
+          <SheetHeader className="mb-4 flex w-full items-center justify-center">
+            <SheetTitle>Linkbook</SheetTitle>
+            <SheetDescription>
+              <Image
+                src={imagesUrls.logoImage}
+                alt="landing-hero-image"
+                width={80}
+                height={80}
+                unoptimized
+                className="object-contain"
+              />
+            </SheetDescription>
+          </SheetHeader>
+          <NavbarItemsLanding />
+          <SheetFooter>
+            <SheetClose asChild>
+              <Button type="submit">User Details</Button>
+            </SheetClose>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
       <SearchProduct page="home" />
     </section>
   );

@@ -9,6 +9,7 @@ import {
   getOthersDonationsList,
   getRequestedDonationsList,
   getSingleDonationAction,
+  getSingleDonationByProductIdAction,
   rejectRequestDonationAction,
   updateDonationAction,
 } from '@/actions/donations.actions';
@@ -39,6 +40,17 @@ export function useGetOthersDonations() {
   return useSuspenseQuery({
     queryFn: async () => getOthersDonationsList(),
     queryKey: ['donations-others-list'],
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    refetchInterval: false,
+  });
+}
+
+export function useGetSingleDonationByProductIdQuery(id: string) {
+  return useSuspenseQuery({
+    queryFn: async () => getSingleDonationByProductIdAction(id),
+    queryKey: ['get-single-donation-by-product-id'],
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: true,

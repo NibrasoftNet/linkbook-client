@@ -5,10 +5,9 @@ import Link from 'next/link';
 import React from 'react';
 
 import LocaleSwitcher from '@/components/LocaleSwitcher';
+import NavbarItemsLanding from '@/components/navbar/NavbarItemsLanding';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { imagesUrls } from '@/lib/constants';
-
-import NavbarItemsLanding from '../desktop/NavbarItemsLanding';
 
 export default function NavbarUnsubscribed() {
   return (

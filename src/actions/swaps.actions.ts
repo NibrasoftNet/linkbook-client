@@ -50,6 +50,15 @@ export const createSwapAction = async (formData: FormData) => {
   }
 };
 
+export const getSingleSwapByProductIdAction = async (id: string) => {
+  try {
+    const { data } = await axiosInstance.get(`swaps/product/${id}`);
+    return data;
+  } catch (error: any) {
+    return error.response.data;
+  }
+};
+
 export const updateSwapAction = async (donationWithIdData: {
   id: number;
   formData: FormData;

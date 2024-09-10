@@ -17,7 +17,7 @@ const Footer = () => {
         unoptimized
         className="object-contain"
       />
-      <ul className="flex w-full max-w-[1000px] items-center justify-between border-y-2 border-slate-200 bg-white p-4">
+      <ul className="flex w-full max-w-[1000px] items-center justify-between border-y-2 border-slate-200 p-4">
         {['welcome', 'shop', 'search', 'contact'].map((item: string) => (
           <li
             key={item}

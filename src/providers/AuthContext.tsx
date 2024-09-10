@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 import type * as z from 'zod';
 
 import { getSession } from '@/actions/auth.actions';
+import { useGetAllCitiesQuery } from '@/tanstack/address.query';
 import {
   useConfirmEmailMutation,
   useCredentialsLoginMutation,
@@ -20,6 +21,8 @@ import {
   useResetPasswordMutation,
   useVerifyOtpMutation,
 } from '@/tanstack/auth.query';
+import { useGetAllCategoriesQuery } from '@/tanstack/category.query';
+import { useGetAllProductsQuery } from '@/tanstack/search.query';
 import { useUpdateProfileMutation } from '@/tanstack/users.query';
 import type { AuthValuesType } from '@/types/auth.type';
 import type { User } from '@/types/users.type';
@@ -29,6 +32,7 @@ import type { userLoginSchema } from '@/validations/user-login-validation.schema
 import type { userRegisterFormSchema } from '@/validations/user-register-validation.schema';
 import type { resetForgotPasswordSchema } from '@/validations/user-reset-forgot-password-schema.validator';
 import type { UserUpdateProfileFormType } from '@/validations/user-update-profile-schema.validator';
+import useSearchStore from '@/zustand/searchStore';
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -62,6 +66,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     defaultProvider.openAuthDrawer,
   );
   const router = useRouter();
+  const { setAllCities, setAllCategories, setAllProducts } = useSearchStore();
   const { mutateAsync: mutateRegister, isLoading: isRegisterLoading } =
     useCredentialsRegisterMutation();
   const { mutateAsync: mutateLogin, isLoading: isLoginLoading } =
@@ -87,6 +92,10 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     mutateAsync: mutateUpdateProfile,
     isLoading: isUpdateProfileLoading,
   } = useUpdateProfileMutation();
+
+  const { data: allCities } = useGetAllCitiesQuery();
+  const { data: allCategories } = useGetAllCategoriesQuery();
+  const { data: allProducts } = useGetAllProductsQuery();
 
   const handleRegister = async (
     values: z.infer<typeof userRegisterFormSchema>,
@@ -350,6 +359,12 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const handleSearchParams = async (): Promise<void> => {
+    setAllCities(allCities.result);
+    setAllCategories(allCategories.result);
+    setAllProducts(allProducts.result);
+  };
+
   const handleClientSession = async (): Promise<void> => {
     const cookiesSession = await getSession();
     setSession(cookiesSession?.user ?? null);
@@ -357,6 +372,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useLayoutEffect(() => {
     handleClientSession();
+    handleSearchParams();
   }, []);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values

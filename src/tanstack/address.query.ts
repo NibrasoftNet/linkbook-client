@@ -13,9 +13,10 @@ export function useGetAllCitiesQuery() {
       if (data) return data;
     },
     queryKey: ['all-cities'],
-    refetchOnMount: false,
+    refetchOnMount: true,
     refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
+    refetchOnReconnect: true,
     refetchInterval: false,
+    retry: true,
   });
 }

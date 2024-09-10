@@ -26,3 +26,16 @@ export type ProductProps = {
   categoryId: number;
   image: ImagesProps[];
 };
+
+export enum ProductTypeEnum {
+  'DONATIONS' = 'DONATIONS',
+  'SWAPS' = 'SWAPS',
+  'PURCHASES' = 'PURCHASES',
+}
+
+export type SearchProductsTypeValue = {
+  id: number;
+  label: string;
+  value: string;
+  type: ProductTypeEnum;
+};

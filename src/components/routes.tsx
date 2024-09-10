@@ -2,13 +2,13 @@
 import {
   HiOutlineAcademicCap,
   HiOutlineCog8Tooth,
-  HiOutlineCpuChip,
   HiOutlineCreditCard,
   HiOutlineCurrencyDollar,
   HiOutlineHome,
   HiOutlineShoppingBag,
+  HiOutlineUserGroup,
 } from 'react-icons/hi2';
-import { PiSwapBold } from 'react-icons/pi';
+import { PiBookOpenTextBold, PiSwapBold } from 'react-icons/pi';
 import { TbMapPinSearch } from 'react-icons/tb';
 
 import type { IRoute } from '@/types/types';
@@ -50,21 +50,31 @@ export const routes: IRoute[] = [
   },
   {
     name: 'search',
-    path: '/search',
+    path: '/search?page=1&limit=2',
     icon: <TbMapPinSearch className="-mt-[7px] size-6 stroke-2 text-inherit" />,
     collapse: false,
     disabled: false,
     invisible: false,
   },
   {
-    name: 'ai_assistant',
-    path: '/ai-chat',
+    name: 'products',
+    path: '/products?page=1&limit=2',
     icon: (
-      <HiOutlineCpuChip className="-mt-[7px] size-6 stroke-2 text-inherit" />
+      <PiBookOpenTextBold className="-mt-[7px] size-6 stroke-2 text-inherit" />
     ),
     collapse: false,
     disabled: false,
-    invisible: true,
+    invisible: false,
+  },
+  {
+    name: 'community',
+    path: '/community?page=1&limit=2',
+    icon: (
+      <HiOutlineUserGroup className="-mt-[7px] size-6 stroke-2 text-inherit" />
+    ),
+    collapse: false,
+    disabled: false,
+    invisible: false,
   },
   {
     name: 'profile_settings',

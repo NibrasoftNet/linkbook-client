@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from 'react';
+
 import type { AddressValueType } from '@/types/address.type';
 import type { User } from '@/types/users.type';
 
@@ -9,4 +11,10 @@ export type SearchServiceProps = {
   active: boolean;
   address: AddressValueType;
   creator: User;
+};
+
+export type SearchContextType = {
+  getSearchPaginated: (value: any) => Promise<void>;
+  isLoading: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
 };

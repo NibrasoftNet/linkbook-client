@@ -16,6 +16,26 @@
   background: transparent;
 }
 
+.underline-hover {
+  position: relative;
+}
+
+.underline-hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px; /* Adjust underline thickness */
+  background-color: chocolate;
+  transition: width 0.3s ease-in-out;
+}
+
+.underline-hover:hover::after {
+  width: 100%;
+}
+
+
 
 @layer base {
   :root {
@@ -74,7 +94,7 @@
   }
 }
 
- 
+
 @layer base {
   * {
     @apply border-border;

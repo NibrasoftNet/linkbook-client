@@ -10,9 +10,11 @@
     "statistic_link": "Statistics",
     "setting_link": "Settings",
     "helpdesk_link": "Helpdesk",
-    "landing_welcome": "welcome",
+    "landing_community": "Community",
+    "landing_donations": "Donations",
+    "landing_swaps": "Swaps",
+    "landing_products": "Products",
     "landing_shop": "shop",
-    "landing_community": "community",
     "landing_pack_promo": "pack promo",
     "landing_exposition": "exposition",
     "landing_profile": "profile",
@@ -20,7 +22,8 @@
     "here_you_win": "here you win",
     "community_offers": "community offers",
     "our_activities": "our activities",
-    "testimonials": "testimonials"
+    "testimonials": "testimonials",
+    "meta_subscribe": "subscribe"
   },
   "Sidebar": {
     "main_dashboard": "Dashboard",
@@ -28,10 +31,12 @@
     "swaps": "Swaps",
     "marketplace": "Marketplace",
     "search": "Search",
-    "ai_assistant": "Ai assistant",
+    "products": "Products",
+    "community": "Community",
     "profile_settings": "Profile settings",
     "subscription": "Subscription",
-    "pricing_page": "Pricing page"
+    "pricing_page": "Pricing page",
+    "Default Brand Text": "Linkbook"
   },
   "Auth": {
     "meta_sign_in_title": "Sign in",
@@ -144,5 +149,14 @@
     "title": "Coming Soon",
     "description": "We are working on this feature. Stay tuned!",
     "later": "Come to visit us later"
+  },
+  "Upgrade": {
+    "upgrade_pro": "Upgrade to Pro",
+    "upgrade_description": "Get access to exclusive features and benefits.",
+    "upgrade_btn": "Upgrade"
+  },
+  "Hero": {
+    "hero_title": "Let's mobilize",
+    "hero_subTitle": "The power of solidarity"
   }
 }

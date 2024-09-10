@@ -3,10 +3,14 @@
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
 import * as React from 'react';
 
 import { Button } from '@/components/ui/button';
+import {
+  CircleIcon,
+  CurvedArrowIcon,
+  CurvedArrowLeftIcon,
+} from '@/icons/general';
 import { cn } from '@/lib/utils';
 
 type CarouselApi = UseEmblaCarouselType[1];
@@ -207,7 +211,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        'absolute  h-8 w-8 rounded-full',
+        'group relative flex size-[70px] cursor-pointer items-center justify-center rounded-full bg-primary/30 hover:bg-primary/80 hover:text-white',
         orientation === 'horizontal'
           ? '-left-12 top-1/2 -translate-y-1/2'
           : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -217,8 +221,8 @@ const CarouselPrevious = React.forwardRef<
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="size-4" />
-      <span className="sr-only">Previous slide</span>
+      <CircleIcon iconClass="size-[90%] absolute m-1 text-primary group-hover:text-white" />
+      <CurvedArrowIcon iconClass="size-8 text-primary relative group-hover:text-white" />
     </Button>
   );
 });
@@ -236,7 +240,7 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        'absolute h-8 w-8 rounded-full',
+        'group relative flex size-[70px] cursor-pointer items-center justify-center rounded-full bg-tertiary/30 hover:bg-tertiary/80',
         orientation === 'horizontal'
           ? '-right-12 top-1/2 -translate-y-1/2'
           : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -246,8 +250,8 @@ const CarouselNext = React.forwardRef<
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="size-4" />
-      <span className="sr-only">Next slide</span>
+      <CircleIcon iconClass="size-[90%] absolute m-1 text-tertiary group-hover:text-white" />
+      <CurvedArrowLeftIcon iconClass="size-8 text-tertiary relative group-hover:text-white" />
     </Button>
   );
 });

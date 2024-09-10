@@ -11,8 +11,8 @@ import { SubscriptionStatusEnum } from '@/types/types';
 
 const SearchPage = () => {
   return (
-    <section className="size-full min-h-svh">
-      <ResizablePanelGroup direction="horizontal" className="h-full min-h-svh">
+    <section className="size-full md:h-[calc(100vh-7rem)]">
+      <ResizablePanelGroup direction="horizontal" className="size-full">
         <ResizablePanel defaultSize={25}>
           <SearchResultsList />
         </ResizablePanel>
