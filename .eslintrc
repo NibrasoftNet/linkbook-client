@@ -71,7 +71,8 @@
         "@typescript-eslint/no-shadow": "off",
         "tailwindcss/no-custom-classnames": "off",
         "react/jsx-no-constructed-context-values": "off",
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "react-hooks/exhaustive-deps": "off"
       }
     },
     // Configuration for testing
