@@ -110,7 +110,7 @@ export default function SwapApplicantsDataTable<T>({
         </DropdownMenu>
       </div>
       <div className="rounded-md border">
-        <Table>
+        <Table className="border-separate border-spacing-y-4 border-none">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

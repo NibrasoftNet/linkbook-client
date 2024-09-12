@@ -80,6 +80,11 @@ export const swapApplicantsWithReplyListColumns: ColumnDef<ApplicantToSwapType>[
       ),
     },
     {
+      accessorKey: 'applicant.phone',
+      header: 'Phone',
+      cell: ({ row }) => <div>{`${row.original.applicant.phone}`}</div>,
+    },
+    {
       accessorKey: 'applicant.product.image',
       header: 'Gallery',
       cell: ({ row }) => (
