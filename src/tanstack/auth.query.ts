@@ -1,8 +1,7 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import type * as z from 'zod';
 
 import {
-  connectedUserAction,
   refreshTokenAction,
   updateSecurityAction,
   userConfirmEmailAction,
@@ -19,15 +18,6 @@ import type { userLoginSchema } from '@/validations/user-login-validation.schema
 import type { userRegisterFormSchema } from '@/validations/user-register-validation.schema';
 import type { resetForgotPasswordSchema } from '@/validations/user-reset-forgot-password-schema.validator';
 import type { userResetPasswordFormSchema } from '@/validations/user-reset-password-schema.validator';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-
-export function useConnectedUserQuery() {
-  return useQuery({
-    queryFn: async () => connectedUserAction(),
-    queryKey: ['me'],
-  });
-}
 
 export const useCredentialsRegisterMutation = () => {
   const mutation = useMutation({

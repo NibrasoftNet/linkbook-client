@@ -9,6 +9,7 @@ import React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { HiOutlineArrowRightOnRectangle } from 'react-icons/hi2';
 
+import { TestimonialDialog } from '@/components/alert-dialog/TestimonialDialog';
 import UpgradeCard from '@/components/card/UpgradeCard';
 import {
   renderThumb,
@@ -93,6 +94,7 @@ function Sidebar(props: SidebarProps) {
                 <Links routes={routes} />
               </ul>
             </div>
+            <TestimonialDialog />
             <div className="mt-auto p-4">
               <UpgradeCard />
             </div>

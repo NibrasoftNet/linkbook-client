@@ -1,4 +1,9 @@
-import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useSuspenseQuery,
+} from '@tanstack/react-query';
 
 import {
   acceptRequestDonationAction,
@@ -13,6 +18,7 @@ import {
   rejectRequestDonationAction,
   updateDonationAction,
 } from '@/actions/donations.actions';
+import type { PaginationProps } from '@/types/types';
 
 export function useGetDonations() {
   return useSuspenseQuery({
@@ -36,10 +42,11 @@ export function useGetRequestedDonations() {
   });
 }
 
-export function useGetOthersDonations() {
-  return useSuspenseQuery({
-    queryFn: async () => getOthersDonationsList(),
-    queryKey: ['donations-others-list'],
+export function useGetOthersDonations(paginationParams: PaginationProps) {
+  return useQuery({
+    queryFn: async () => getOthersDonationsList(paginationParams),
+    queryKey: ['donations-others-list', paginationParams.page],
+    placeholderData: keepPreviousData,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: true,

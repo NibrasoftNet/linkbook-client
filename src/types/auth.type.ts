@@ -18,6 +18,7 @@ export enum OperationEnum {
 
 export type AuthValuesType = {
   session: User | null;
+  setSession: Dispatch<SetStateAction<User | null>>;
   register: (value: any) => Promise<void>;
   login: (value: any) => Promise<void>;
   refresh: () => Promise<void>;
@@ -31,6 +32,7 @@ export type AuthValuesType = {
   setOpenAuthDrawer: Dispatch<SetStateAction<boolean>>;
   email: string;
   setEmail: () => Dispatch<SetStateAction<string>>;
+  connected: (value: any) => Promise<void>;
   isLoading: boolean;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
 };

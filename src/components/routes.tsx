@@ -11,6 +11,7 @@ import {
 import { PiBookOpenTextBold, PiSwapBold } from 'react-icons/pi';
 import { TbMapPinSearch } from 'react-icons/tb';
 
+import { defaultPaginationLimit } from '@/lib/constants';
 import type { IRoute } from '@/types/types';
 
 export const routes: IRoute[] = [
@@ -24,7 +25,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'donations',
-    path: '/donations/details',
+    path: `/donations/details?page=1&limit=${defaultPaginationLimit}`,
     icon: (
       <HiOutlineAcademicCap className="-mt-[7px] size-6 stroke-2 text-inherit" />
     ),
@@ -33,7 +34,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'swaps',
-    path: '/swaps/details',
+    path: `/swaps/details?page=1&limit=${defaultPaginationLimit}`,
     icon: <PiSwapBold className="-mt-[7px] size-6 stroke-2 text-inherit" />,
     collapse: false,
     disabled: false,
@@ -50,7 +51,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'search',
-    path: '/search?page=1&limit=2',
+    path: `/search?page=1&limit=${defaultPaginationLimit}`,
     icon: <TbMapPinSearch className="-mt-[7px] size-6 stroke-2 text-inherit" />,
     collapse: false,
     disabled: false,
@@ -58,7 +59,7 @@ export const routes: IRoute[] = [
   },
   {
     name: 'products',
-    path: '/products?page=1&limit=2',
+    path: `/products?page=1&limit=${defaultPaginationLimit}`,
     icon: (
       <PiBookOpenTextBold className="-mt-[7px] size-6 stroke-2 text-inherit" />
     ),

@@ -32,6 +32,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { imagesUrls } from '@/lib/constants';
+import { Env } from '@/libs/Env';
 import { useAuth } from '@/providers/AuthContext';
 import { OperationEnum } from '@/types/auth.type';
 import { SubscriptionStatusEnum } from '@/types/types';
@@ -187,7 +188,15 @@ export default function SignUp() {
                   >
                     {t('meta_sign_up_title')}
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full"
+                    /* eslint-disable-next-line no-return-assign */
+                    onClick={() =>
+                      (window.location.href = `${Env.NEXT_PUBLIC_API_URL}/auth/google`)
+                    }
+                  >
                     {t('meta_sign_up_with_google')}
                   </Button>
                 </form>

@@ -19,14 +19,6 @@ import type { userRegisterFormSchema } from '@/validations/user-register-validat
 import type { resetForgotPasswordSchema } from '@/validations/user-reset-forgot-password-schema.validator';
 import type { userResetPasswordFormSchema } from '@/validations/user-reset-password-schema.validator';
 
-// @ts-ignore
-// eslint-disable-next-line consistent-return
-export const connectedUserAction = async () => {
-  const { data } = await axios.get(`${Env.API_URL}/auth/me`);
-  if (!data) return { error: 'No user 😓' };
-  if (data) return data;
-};
-
 export const userRegisterAction = async (
   registerData: z.infer<typeof userRegisterFormSchema>,
 ) => {
@@ -42,7 +34,7 @@ export const userRegisterAction = async (
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -63,7 +55,7 @@ export const userLoginAction = async (
     await createSession(data.result);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -82,7 +74,7 @@ export const userConfirmEmailAction = async (
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -101,7 +93,7 @@ export const userForgetPasswordAction = async (
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -120,7 +112,7 @@ export const userResetPasswordAction = async (
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -138,7 +130,7 @@ export const refreshTokenAction = async (token: string) => {
     await createSession(data.result);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -156,7 +148,21 @@ export const userLogoutAction = async (token: string) => {
     await destroySession();
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
+  }
+};
+
+export const getProfileAction = async (token: string) => {
+  try {
+    const { data } = await axios.get(`${Env.API_URL}/auth/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    await createSession(data.result);
+    return data.result;
+  } catch (error: any) {
+    return error.response.data ?? error;
   }
 };
 
@@ -172,7 +178,7 @@ export const updateProfileAction = async (userWithIdData: {
     revalidatePath('/[locale]/(main)/[userId]/profile');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -186,7 +192,7 @@ export const updateSecurityAction = async (
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -205,7 +211,7 @@ export const userVerifyOtpAction = async (
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 

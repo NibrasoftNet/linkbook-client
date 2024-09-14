@@ -21,7 +21,7 @@ const Footer = () => {
         {['welcome', 'shop', 'search', 'contact'].map((item: string) => (
           <li
             key={item}
-            className="cursor-pointer font-bold capitalize hover:underline"
+            className="underline-hover cursor-pointer font-bold capitalize"
           >
             {item}
           </li>

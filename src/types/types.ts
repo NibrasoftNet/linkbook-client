@@ -37,7 +37,7 @@ export type PaginationMeta = {
   totalItems: number;
   currentPage: number;
   totalPages: number;
-  sortBy: [string, 'ASC' | 'DESC'][];
+  sortBy?: [string, 'ASC' | 'DESC'][];
   filters?: { [key: string]: string };
 };
 

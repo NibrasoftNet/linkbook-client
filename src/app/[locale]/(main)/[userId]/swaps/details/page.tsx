@@ -13,12 +13,17 @@ import {
 } from '@/actions/swaps.actions';
 import TableSkeleton from '@/components/skeleton/TableSkeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import type { PaginationProps } from '@/types/types';
 
 import OthersSwaps from './OthersSwaps';
 import SwapsRequestedMe from './SwapsRequestedMe';
 import SwapsTable from './SwapsTable';
 
-export default async function DonationsPage() {
+export default async function DonationsPage({
+  searchParams,
+}: {
+  searchParams: PaginationProps;
+}) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
@@ -30,8 +35,8 @@ export default async function DonationsPage() {
     queryFn: getRequestedSwapsList,
   });
   await queryClient.prefetchQuery({
-    queryKey: ['swaps-others-list'],
-    queryFn: getOthersSwapsList,
+    queryKey: ['swaps-others-list', searchParams.page],
+    queryFn: () => getOthersSwapsList(searchParams),
   });
   const t = await getTranslations('SwapsTab');
   return (
@@ -51,7 +56,7 @@ export default async function DonationsPage() {
               </TabsTrigger>
             </TabsList>
             <TabsContent id="#details" value="latest_swaps">
-              <OthersSwaps />
+              <OthersSwaps searchParams={searchParams} />
             </TabsContent>
             <TabsContent id="#details" value="my_swaps">
               <SwapsTable />

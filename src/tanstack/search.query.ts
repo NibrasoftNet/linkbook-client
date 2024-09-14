@@ -53,7 +53,7 @@ export function useGetAllProductsQuery() {
         `${Env.NEXT_PUBLIC_API_URL}/products/find/all-products`,
       );
       if (!data) return [];
-      if (data) return data;
+      return data;
     },
     queryKey: ['all-products'],
     refetchOnMount: true,

@@ -6,6 +6,7 @@ import { devtools, persist } from 'zustand/middleware';
 import type { CategoryTypeValue, CityTypeValue } from '@/types/category.type';
 import type { SearchProductsTypeValue } from '@/types/product.type';
 import type { SearchServiceProps } from '@/types/search.type';
+import type { TestimonialsPropsType } from '@/types/testimonials.type';
 import { SearchTypeEnum } from '@/types/types';
 
 interface SearchProps {
@@ -19,10 +20,12 @@ interface SearchProps {
   setSearchResults: (results: SearchServiceProps[]) => void;
   allCities: CityTypeValue[];
   allCategories: CategoryTypeValue[];
+  allTestimonials: TestimonialsPropsType[];
   setAllCities: (cities: CityTypeValue[]) => void;
   setAllCategories: (categories: CategoryTypeValue[]) => void;
   allProducts: SearchProductsTypeValue[];
   setAllProducts: (products: SearchProductsTypeValue[]) => void;
+  setAllTestimonials: (testimonials: TestimonialsPropsType[]) => void;
 }
 
 const useSearchStore = create<SearchProps>()(
@@ -36,6 +39,7 @@ const useSearchStore = create<SearchProps>()(
         allCities: [],
         allCategories: [],
         allProducts: [],
+        allTestimonials: [],
         setType: (type: SearchTypeEnum) => set({ type }),
         setCategory: (category: number) => set({ category }),
         setCity: (city: string) => set({ city }),
@@ -46,6 +50,8 @@ const useSearchStore = create<SearchProps>()(
           set({ allCategories: categories }),
         setAllProducts: (product: SearchProductsTypeValue[]) =>
           set({ allProducts: product }),
+        setAllTestimonials: (testimonials: TestimonialsPropsType[]) =>
+          set({ allTestimonials: testimonials }),
       }),
       { name: 'searchStore' },
     ),

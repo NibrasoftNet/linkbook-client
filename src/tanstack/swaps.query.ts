@@ -1,4 +1,4 @@
-import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useSuspenseQuery } from '@tanstack/react-query';
 
 import {
   acceptRequestSwapAction,
@@ -13,6 +13,7 @@ import {
   rejectRequestSwapAction,
   updateSwapAction,
 } from '@/actions/swaps.actions';
+import type { PaginationProps } from '@/types/types';
 
 export function useGetSwaps() {
   return useSuspenseQuery({
@@ -36,10 +37,10 @@ export function useGetRequestedSwaps() {
   });
 }
 
-export function useGetOthersSwaps() {
-  return useSuspenseQuery({
-    queryFn: async () => getOthersSwapsList(),
-    queryKey: ['swaps-others-list'],
+export function useGetOthersSwaps(paginationParams: PaginationProps) {
+  return useQuery({
+    queryFn: async () => getOthersSwapsList(paginationParams),
+    queryKey: ['swaps-others-list', paginationParams.page],
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: true,

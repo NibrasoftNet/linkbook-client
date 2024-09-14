@@ -20,7 +20,8 @@ export function SidebarLinks(props: SidebarLinksProps) {
   // verifies if routeName is the one active (in browser input)
   const activeRoute = useCallback(
     (routeName: string) => {
-      return pathname?.includes(routeName);
+      const cleanedRouteName = routeName?.split('?')[0] || '';
+      return pathname?.includes(cleanedRouteName);
     },
     [pathname],
   );

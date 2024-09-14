@@ -1,10 +1,15 @@
+'use client';
+
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
+import { TestimonialCard } from '@/components/card/TestimonialCard';
 import Marquee from '@/components/magicui/marquee';
 import * as icons from '@/icons/general';
 import { frederickaTheGreat } from '@/lib/constants';
+import type { TestimonialsPropsType } from '@/types/testimonials.type';
+import useSearchStore from '@/zustand/searchStore';
 
 export function getRandomIcon(props: IconProps): React.JSX.Element {
   const iconKeys = Object.keys(icons);
@@ -14,25 +19,11 @@ export function getRandomIcon(props: IconProps): React.JSX.Element {
   return <SelectedIcon {...props} />;
 }
 
-const TestimonialCard = () => {
-  const randomIcon = getRandomIcon({
-    iconClass: 'size-20 text-tertiary',
-  });
-  return (
-    <div className="z-10 flex size-[300px] flex-col gap-2 rounded-[50px] border-2 border-primary bg-white p-4">
-      {randomIcon}
-      <p className="text-left font-semibold text-black">
-        find your wy to achieve your goals as long as you still breathing, ind
-        your wy to achieve your goals as long as you still breathing
-      </p>
-    </div>
-  );
-};
-
 const Testimonials = () => {
   const t = useTranslations('Landing');
+  const { allTestimonials } = useSearchStore();
   return (
-    <section className="landing-section relative w-screen bg-blue-100 p-4">
+    <section className="landing-section relative w-screen overflow-hidden bg-blue-100 p-4">
       <Image
         src="/assets/images/landing/our_services.png"
         alt="our_service"
@@ -45,11 +36,10 @@ const Testimonials = () => {
         >
           {t('testimonials')}
         </h1>
-        <Marquee pauseOnHover className="gap-4 [--duration:20s]">
-          <TestimonialCard />
-          <TestimonialCard />
-          <TestimonialCard />
-          <TestimonialCard />
+        <Marquee pauseOnHover className="gap-8 [--duration:20s]">
+          {allTestimonials.map((testimonial: TestimonialsPropsType) => (
+            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+          ))}
         </Marquee>
       </div>
     </section>

@@ -1,6 +1,5 @@
 'use client';
 
-// Create the AuthContext
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useRouter } from 'next/navigation';
 import type { ReactNode } from 'react';
@@ -23,6 +22,7 @@ import {
 } from '@/tanstack/auth.query';
 import { useGetAllCategoriesQuery } from '@/tanstack/category.query';
 import { useGetAllProductsQuery } from '@/tanstack/search.query';
+import { useGetAllTestimonialsQuery } from '@/tanstack/testimonial.query';
 import { useUpdateProfileMutation } from '@/tanstack/users.query';
 import type { AuthValuesType } from '@/types/auth.type';
 import type { User } from '@/types/users.type';
@@ -37,6 +37,7 @@ import useSearchStore from '@/zustand/searchStore';
 // ** Defaults
 const defaultProvider: AuthValuesType = {
   session: null,
+  setSession: () => {},
   register: (value: any) => Promise.resolve(value),
   login: (value: any) => Promise.resolve(value),
   confirmEmail: (value: any) => Promise.resolve(value),
@@ -50,6 +51,7 @@ const defaultProvider: AuthValuesType = {
   setOpenAuthDrawer: () => Boolean,
   email: '',
   setEmail: () => String,
+  connected: (value: any) => Promise.resolve(value),
   isLoading: false,
   setIsLoading: () => Boolean,
 };
@@ -66,7 +68,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     defaultProvider.openAuthDrawer,
   );
   const router = useRouter();
-  const { setAllCities, setAllCategories, setAllProducts } = useSearchStore();
+  const { setAllCities, setAllCategories, setAllProducts, setAllTestimonials } =
+    useSearchStore();
   const { mutateAsync: mutateRegister, isLoading: isRegisterLoading } =
     useCredentialsRegisterMutation();
   const { mutateAsync: mutateLogin, isLoading: isLoginLoading } =
@@ -96,6 +99,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { data: allCities } = useGetAllCitiesQuery();
   const { data: allCategories } = useGetAllCategoriesQuery();
   const { data: allProducts } = useGetAllProductsQuery();
+  const { data: allTestimonials } = useGetAllTestimonialsQuery();
 
   const handleRegister = async (
     values: z.infer<typeof userRegisterFormSchema>,
@@ -363,6 +367,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     setAllCities(allCities.result);
     setAllCategories(allCategories.result);
     setAllProducts(allProducts.result);
+    setAllTestimonials(allTestimonials.result.data);
   };
 
   const handleClientSession = async (): Promise<void> => {
@@ -390,6 +395,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     openAuthDrawer,
     setOpenAuthDrawer,
     email,
+    setSession,
     isLoading:
       isLoginLoading ||
       isRegisterLoading ||

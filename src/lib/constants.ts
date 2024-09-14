@@ -13,3 +13,5 @@ export const frederickaTheGreat = Fredericka_the_Great({
   weight: '400',
   style: 'normal',
 });
+
+export const defaultPaginationLimit = 5;

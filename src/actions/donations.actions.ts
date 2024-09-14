@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 
 import axiosInstance from '@/lib/axiosInstance';
 import { Env } from '@/libs/Env';
+import type { PaginationProps } from '@/types/types';
 
 export const getDonationsList = async () => {
   try {
@@ -12,18 +13,24 @@ export const getDonationsList = async () => {
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
-export const getOthersDonationsList = async () => {
+export const getOthersDonationsList = async (
+  paginationParams: PaginationProps,
+) => {
   try {
-    const { data } = await axiosInstance.get(
-      `${Env.API_URL}/donations/list/others`,
-    );
+    // Set default values for pagination
+    const { page = 1, limit = 20 } = paginationParams || {};
+
+    // Construct the URL with pagination parameters
+    const url = `${Env.API_URL}/donations/list/others?page=${page}&limit=${limit}`;
+
+    const { data } = await axiosInstance.get(url);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -34,7 +41,7 @@ export const getRequestedDonationsList = async () => {
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -48,7 +55,7 @@ export const createDonationAction = async (formData: FormData) => {
     revalidatePath('/[locale]/(main)/[userId]/donations/details', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -69,7 +76,7 @@ export const updateDonationAction = async (donationWithIdData: {
     revalidatePath('/[locale]/(main)/[userId]/donations/details', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -78,7 +85,7 @@ export const getSingleDonationAction = async (id: string) => {
     const { data } = await axiosInstance.get(`donations/${id}`);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -87,7 +94,7 @@ export const getSingleDonationByProductIdAction = async (id: string) => {
     const { data } = await axiosInstance.get(`donations/product/${id}`);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -105,7 +112,7 @@ export const cancelRequestDonationAction = async (id: string) => {
     revalidatePath('/[locale]/(main)/[userId]/donations/details', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -126,7 +133,7 @@ export const applyRequestDonationAction = async (id: string) => {
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -147,7 +154,7 @@ export const acceptRequestDonationAction = async (id: string) => {
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -168,6 +175,6 @@ export const rejectRequestDonationAction = async (id: string) => {
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };

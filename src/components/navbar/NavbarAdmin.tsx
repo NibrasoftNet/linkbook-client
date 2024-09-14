@@ -22,9 +22,6 @@ const pathname = usePathname()
       isWindowAvailable() && window.removeEventListener('scroll', changeNavbar);
     };
   });
-
-  console.log("fdsgfsg", brandText);
-
   // const { brandText, userDetails, onOpen } = props;
   const changeNavbar = () => {
     if (isWindowAvailable() && window.scrollY > 1) {

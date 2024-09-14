@@ -4,24 +4,29 @@ import { revalidatePath } from 'next/cache';
 
 import axiosInstance from '@/lib/axiosInstance';
 import { Env } from '@/libs/Env';
+import type { PaginationProps } from '@/types/types';
 
 export const getSwapsList = async () => {
   try {
     const { data } = await axiosInstance.get(`${Env.API_URL}/swaps/list/_me`);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
-export const getOthersSwapsList = async () => {
+export const getOthersSwapsList = async (paginationParams: PaginationProps) => {
   try {
-    const { data } = await axiosInstance.get(
-      `${Env.API_URL}/swaps/list/others`,
-    );
+    // Set default values for pagination
+    const { page = 1, limit = 20 } = paginationParams || {};
+
+    // Construct the URL with pagination parameters
+    const url = `${Env.API_URL}/swaps/list/others?page=${page}&limit=${limit}`;
+
+    const { data } = await axiosInstance.get(url);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -32,7 +37,7 @@ export const getRequestedSwapsList = async () => {
     );
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -46,7 +51,7 @@ export const createSwapAction = async (formData: FormData) => {
     revalidatePath('/[locale]/(main)/[userId]/swaps/details', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -55,7 +60,7 @@ export const getSingleSwapByProductIdAction = async (id: string) => {
     const { data } = await axiosInstance.get(`swaps/product/${id}`);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -76,7 +81,7 @@ export const updateSwapAction = async (donationWithIdData: {
     revalidatePath('/[locale]/(main)/[userId]/swaps/details', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -85,7 +90,7 @@ export const getSingleSwapAction = async (id: string) => {
     const { data } = await axiosInstance.get(`swaps/${id}`);
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -103,7 +108,7 @@ export const cancelRequestSwapAction = async (id: string) => {
     revalidatePath('/[locale]/(main)/[userId]/swaps/details', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -124,7 +129,7 @@ export const applyRequestSwapAction = async (applySwapWithIdData: {
     revalidatePath('/[locale]/(main)/[userId]/swaps/details/update', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -142,7 +147,7 @@ export const acceptRequestSwapAction = async (id: string) => {
     revalidatePath('/[locale]/(main)/[userId]/swaps/details/update', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };
 
@@ -160,6 +165,6 @@ export const rejectRequestSwapAction = async (id: string) => {
     revalidatePath('/[locale]/(main)/[userId]/swaps/details/update', 'page');
     return data;
   } catch (error: any) {
-    return error.response.data;
+    return error.response.data ?? error;
   }
 };

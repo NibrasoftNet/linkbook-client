@@ -13,12 +13,17 @@ import {
 } from '@/actions/donations.actions';
 import TableSkeleton from '@/components/skeleton/TableSkeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import type { PaginationProps } from '@/types/types';
 
 import DonationsRequestedMe from './DonationsRequestedMe';
 import DonationsTable from './DonationsTable';
 import OthersDonations from './OthersDonations';
 
-export default async function DonationsPage() {
+export default async function DonationsPage({
+  searchParams,
+}: {
+  searchParams: PaginationProps;
+}) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
@@ -30,8 +35,8 @@ export default async function DonationsPage() {
     queryFn: getRequestedDonationsList,
   });
   await queryClient.prefetchQuery({
-    queryKey: ['donations-others-list'],
-    queryFn: getOthersDonationsList,
+    queryKey: ['donations-others-list', searchParams.page],
+    queryFn: () => getOthersDonationsList(searchParams),
   });
   const t = await getTranslations('DonationsTab');
   return (
@@ -51,7 +56,7 @@ export default async function DonationsPage() {
               </TabsTrigger>
             </TabsList>
             <TabsContent id="#details" value="latest_donations">
-              <OthersDonations />
+              <OthersDonations searchParams={searchParams} />
             </TabsContent>
             <TabsContent id="#details" value="my_donations">
               <DonationsTable />
