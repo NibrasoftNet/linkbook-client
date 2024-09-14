@@ -5,6 +5,7 @@ import { Star } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
+import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -32,6 +33,7 @@ import { testimonialSchema } from '@/validations/create-testimonial-schema.valid
 
 export function TestimonialDialog() {
   const [open, setOpen] = useState(false);
+  const t = useTranslations('Testimonial');
   const {
     mutateAsync: mutateCreateTestimonial,
     isLoading: isCreateTestimonialLoading,
@@ -76,14 +78,12 @@ export function TestimonialDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">Leave a Testimonial</Button>
+        <Button variant="outline">{t('testimonial_btn')}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Leave a Testimonial</DialogTitle>
-          <DialogDescription>
-            Share your experience with us. Your feedback is valuable!
-          </DialogDescription>
+          <DialogTitle>{t('testimonial_btn')}</DialogTitle>
+          <DialogDescription>{t('testimonial_subTitle')}</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -108,7 +108,7 @@ export function TestimonialDialog() {
                       ))}
                     </div>
                   </FormControl>
-                  <FormDescription>Click on a star to rate</FormDescription>
+                  <FormDescription>{t('testimonial_rate')}</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -118,24 +118,22 @@ export function TestimonialDialog() {
               name="comment"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Comment</FormLabel>
+                  <FormLabel>{t('testimonial_comment')}</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us about your experience..."
+                      placeholder={t('testimonial_details')}
                       className="resize-none"
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>
-                    Your detailed feedback helps us improve
-                  </FormDescription>
+                  <FormDescription>{t('testimonial_details')}</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <DialogFooter>
               <Button disabled={isCreateTestimonialLoading} type="submit">
-                Submit Testimonial
+                {t('testimonial_submit')}
               </Button>
             </DialogFooter>
           </form>

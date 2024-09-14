@@ -164,5 +164,13 @@
   "Hero": {
     "hero_title": "Mobilisons",
     "hero_subTitle": "La force de la solidarité"
+  },
+  "Testimonial": {
+    "testimonial_btn": "Laissez un témoignage",
+    "testimonial_subTitle": "Partagez votre expérience avec nous, vos retours sont précieux !",
+    "testimonial_rate": "Cliquez sur une étoile pour noter",
+    "testimonial_comment": "Commenter",
+    "testimonial_details": "Vos commentaires nous aideront à nous améliorer!",
+    "testimonial_submit": "Envoyer"
   }
 }
