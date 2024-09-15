@@ -12,6 +12,8 @@ export const frederickaTheGreat = Fredericka_the_Great({
   subsets: ['latin'],
   weight: '400',
   style: 'normal',
+  display: 'swap',
+  adjustFontFallback: false,
 });
 
 export const defaultPaginationLimit = 5;

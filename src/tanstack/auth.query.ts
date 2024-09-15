@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import type * as z from 'zod';
 
 import {
+  activateNotificationAction,
   refreshTokenAction,
   updateSecurityAction,
   userConfirmEmailAction,
@@ -135,6 +136,19 @@ export const useVerifyOtpMutation = () => {
   const mutation = useMutation({
     mutationFn: async (userData: z.infer<typeof otpFormSchema>) =>
       userVerifyOtpAction(userData),
+  });
+  return {
+    mutateAsync: mutation.mutateAsync,
+    isLoading: mutation.isPending,
+    isError: mutation.isError,
+    error: mutation.error,
+    data: mutation.data,
+  };
+};
+
+export const useActivateNotificationMutation = () => {
+  const mutation = useMutation({
+    mutationFn: async (token: string) => activateNotificationAction(token),
   });
   return {
     mutateAsync: mutation.mutateAsync,

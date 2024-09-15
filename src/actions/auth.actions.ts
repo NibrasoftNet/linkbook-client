@@ -152,16 +152,29 @@ export const userLogoutAction = async (token: string) => {
   }
 };
 
-export const getProfileAction = async (token: string) => {
+export const getProfileAction = async ({
+  accessToken,
+  token,
+}: {
+  accessToken: string;
+  token?: string;
+}) => {
   try {
-    const { data } = await axios.get(`${Env.API_URL}/auth/me`, {
+    console.log('aqw', token);
+    let url = `${Env.API_URL}/auth/me`;
+    if (token) {
+      url += `?token=${token}`;
+    }
+
+    const { data } = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
     await createSession(data.result);
     return data.result;
   } catch (error: any) {
+    console.log(error);
     return error.response.data ?? error;
   }
 };
@@ -209,6 +222,18 @@ export const userVerifyOtpAction = async (
         },
       },
     );
+    return data;
+  } catch (error: any) {
+    return error.response.data ?? error;
+  }
+};
+
+export const activateNotificationAction = async (token: string) => {
+  console.log('aqwsdc', token);
+  try {
+    const { data } = await axiosInstance.put('auth/google/activate', {
+      notificationToken: token,
+    });
     return data;
   } catch (error: any) {
     return error.response.data ?? error;

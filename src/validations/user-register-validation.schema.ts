@@ -20,4 +20,5 @@ export const userRegisterFormSchema = z.object({
   password: passwordSchema,
   email: z.string().email('Email invalide!'),
   address: createAddressSchema.optional().nullable(),
+  notificationsToken: z.string().nullable().optional(),
 });

@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { imagesUrls } from '@/lib/constants';
+import useFcmToken from '@/lib/useFcmToken';
 import { Env } from '@/libs/Env';
 import { useAuth } from '@/providers/AuthContext';
 import { OperationEnum } from '@/types/auth.type';
@@ -35,10 +36,16 @@ import { userLoginSchema } from '@/validations/user-login-validation.schema';
 export default function SignIn() {
   const auth = useAuth();
   const t = useTranslations('Auth');
+  const { token } = useFcmToken();
   const form = useForm<z.infer<typeof userLoginSchema>>({
     resolver: zodResolver(userLoginSchema),
   });
+
   const handleSubmit = async (values: z.infer<typeof userLoginSchema>) => {
+    if (token) {
+      // eslint-disable-next-line no-param-reassign
+      values.notificationsToken = token;
+    }
     await auth.login(values);
   };
   return (

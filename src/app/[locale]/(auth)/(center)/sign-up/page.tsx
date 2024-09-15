@@ -32,6 +32,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { imagesUrls } from '@/lib/constants';
+import useFcmToken from '@/lib/useFcmToken';
 import { Env } from '@/libs/Env';
 import { useAuth } from '@/providers/AuthContext';
 import { OperationEnum } from '@/types/auth.type';
@@ -42,6 +43,7 @@ import useAddressStore from '@/zustand/addressStore';
 export default function SignUp() {
   const auth = useAuth();
   const t = useTranslations('Auth');
+  const { token } = useFcmToken();
   const { address } = useAddressStore();
   const form = useForm<z.infer<typeof userRegisterFormSchema>>({
     resolver: zodResolver(userRegisterFormSchema),
@@ -59,6 +61,10 @@ export default function SignUp() {
         description: 'address is required. Please select your address.',
       });
       return;
+    }
+    if (token) {
+      // eslint-disable-next-line no-param-reassign
+      values.notificationsToken = token;
     }
     await auth.register(values);
   };

@@ -11,6 +11,7 @@ import type * as z from 'zod';
 import { getSession } from '@/actions/auth.actions';
 import { useGetAllCitiesQuery } from '@/tanstack/address.query';
 import {
+  useActivateNotificationMutation,
   useConfirmEmailMutation,
   useCredentialsLoginMutation,
   useCredentialsRegisterMutation,
@@ -32,6 +33,7 @@ import type { userLoginSchema } from '@/validations/user-login-validation.schema
 import type { userRegisterFormSchema } from '@/validations/user-register-validation.schema';
 import type { resetForgotPasswordSchema } from '@/validations/user-reset-forgot-password-schema.validator';
 import type { UserUpdateProfileFormType } from '@/validations/user-update-profile-schema.validator';
+import useNotificationTokenStore from '@/zustand/notificationTokenStore';
 import useSearchStore from '@/zustand/searchStore';
 
 // ** Defaults
@@ -70,6 +72,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const { setAllCities, setAllCategories, setAllProducts, setAllTestimonials } =
     useSearchStore();
+  const { token } = useNotificationTokenStore();
   const { mutateAsync: mutateRegister, isLoading: isRegisterLoading } =
     useCredentialsRegisterMutation();
   const { mutateAsync: mutateLogin, isLoading: isLoginLoading } =
@@ -90,11 +93,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   } = useResetPasswordMutation();
   const { mutateAsync: mutateVerifyOtp, isLoading: isVerifyOtpLoading } =
     useVerifyOtpMutation();
-
   const {
     mutateAsync: mutateUpdateProfile,
     isLoading: isUpdateProfileLoading,
   } = useUpdateProfileMutation();
+
+  const { mutateAsync: mutateActivateNotification } =
+    useActivateNotificationMutation();
 
   const { data: allCities } = useGetAllCitiesQuery();
   const { data: allCategories } = useGetAllCategoriesQuery();
@@ -137,7 +142,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       description: 'Using sign-in...',
       id: toastId,
     });
-
     try {
       const { result, status, message, statusCode } = await mutateLogin(values);
       if (!status) {
@@ -271,6 +275,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       router.push('/sign-up');
     }
   };
+
   const handleLogout = async () => {
     try {
       const cookiesSession = await getSession();
@@ -371,7 +376,11 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleClientSession = async (): Promise<void> => {
+    console.log('aqwxcvbn', token);
     const cookiesSession = await getSession();
+    if (token) {
+      await mutateActivateNotification(token);
+    }
     setSession(cookiesSession?.user ?? null);
   };
 

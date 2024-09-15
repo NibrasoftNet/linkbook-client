@@ -10,6 +10,7 @@ export type User = {
   role: RoleEnum;
   status: StatusEnum;
   updatedAt: string;
+  notificationToken?: string;
 };
 
 export type UpdateUser = {
