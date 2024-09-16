@@ -1,5 +1,7 @@
 'use client';
 
+import { BellRing } from 'lucide-react';
+import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
 import { FiAlignJustify } from 'react-icons/fi';
@@ -94,6 +96,12 @@ export default function HeaderLinks() {
       >
         <HiOutlineArrowRightOnRectangle className="size-4 stroke-2 text-zinc-950 dark:text-white" />
       </Button>
+      <Link
+        href={`/${auth.session?.id}/notifications?page=1&limit=5`}
+        className="rounded-full border border-slate-300 p-2"
+      >
+        <BellRing className="size-5 stroke-2 text-zinc-950 dark:text-white" />
+      </Link>
       <LocaleSwitcher />
       <UserProfile />
     </div>
