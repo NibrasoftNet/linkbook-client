@@ -16,7 +16,6 @@ const RedirectPage = () => {
     router.push('/sign-up');
   }
   const { token } = useNotificationTokenStore();
-
   const { isLoading } = useQuery({
     queryKey: ['profile'],
     queryFn: async () => {
@@ -32,6 +31,7 @@ const RedirectPage = () => {
         router.push('/sign-up');
       }
     },
+
     enabled: !!accessToken,
   });
 
