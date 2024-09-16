@@ -58,3 +58,5 @@ package-lock.json
 
 # Sentry Config File
 .sentryclirc
+
+certificates
