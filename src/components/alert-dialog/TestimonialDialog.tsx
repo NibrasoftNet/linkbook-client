@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Star } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { VscFeedback } from 'react-icons/vsc';
 import { toast } from 'sonner';
 import { useTranslations } from 'use-intl';
 
@@ -78,7 +79,13 @@ export function TestimonialDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">{t('testimonial_btn')}</Button>
+        <Button
+          variant="outline"
+          className="flex items-center justify-center gap-2"
+        >
+          <VscFeedback className="size-6" />
+          <span>{t('testimonial_btn')}</span>
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

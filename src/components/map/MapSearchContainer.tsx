@@ -43,7 +43,10 @@ const MapSearchContainer = ({
   searchMarkers: boolean;
   subscriptionStatus: SubscriptionStatusEnum;
 }) => {
-  const position: LatLngLiteral = { lat: 51.505, lng: -0.09 };
+  const position: LatLngLiteral = {
+    lat: 36.80040338608358,
+    lng: 10.186405758149286,
+  };
   const { category, city, type, searchResults, setSearchResults } =
     useSearchStore();
 

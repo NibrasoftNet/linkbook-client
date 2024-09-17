@@ -55,7 +55,7 @@ export const swapApplicantsWithReplyListColumns: ColumnDef<ApplicantToSwapType>[
       header: 'Ref',
       cell: ({ row }) => (
         <div className="max-w-16 truncate capitalize">
-          DON-{String(row.getValue('id'))}
+          SWA-{String(row.getValue('id'))}
         </div>
       ),
     },

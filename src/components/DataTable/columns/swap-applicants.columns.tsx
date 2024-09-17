@@ -40,7 +40,9 @@ export const swapApplicantsListColumns: ColumnDef<ApplicantToSwapType>[] = [
     accessorKey: 'id',
     header: 'Ref',
     cell: ({ row }) => (
-      <div className="capitalize">SWA-{String(row.getValue('id'))}</div>
+      <div className="max-w-16 truncate capitalize">
+        SWA-{String(row.getValue('id'))}
+      </div>
     ),
   },
   {
@@ -53,10 +55,24 @@ export const swapApplicantsListColumns: ColumnDef<ApplicantToSwapType>[] = [
     ),
   },
   {
+    accessorKey: 'applicant.firstName',
+    header: 'Name',
+    cell: ({ row }) => (
+      <div className="lowercase">{row.original.applicant.firstName}</div>
+    ),
+  },
+  {
     accessorKey: 'applicant.email',
     header: 'Email',
     cell: ({ row }) => (
       <div className="lowercase">{row.original.applicant.email}</div>
+    ),
+  },
+  {
+    accessorKey: 'applicant.phone',
+    header: 'Phone',
+    cell: ({ row }) => (
+      <div className="lowercase">{row.original.applicant.phone}</div>
     ),
   },
   {
