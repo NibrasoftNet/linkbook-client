@@ -6,7 +6,6 @@ import { donationApplicantsWithReplyListColumns } from '@/components/DataTable/c
 import DataTable from '@/components/DataTable/DataTable';
 
 const DonationApplicantsTable = (applicants: any) => {
-  console.log('dfs', applicants);
   return (
     <section className="flex size-full flex-col">
       <h1 className="text-3xl font-bold">Donations Applicants</h1>

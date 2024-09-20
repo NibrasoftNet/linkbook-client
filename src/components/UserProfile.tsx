@@ -39,7 +39,7 @@ export function UserProfile() {
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <User className="mr-2 size-4" />
-            <Link href="/profile">{t('my_profile')}</Link>
+            <Link href={`/${session?.id}/profile`}>{t('my_profile')}</Link>
             {/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
           </DropdownMenuItem>
           {/* <DropdownMenuItem>

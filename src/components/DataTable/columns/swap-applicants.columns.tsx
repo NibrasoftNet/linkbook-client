@@ -55,24 +55,24 @@ export const swapApplicantsListColumns: ColumnDef<ApplicantToSwapType>[] = [
     ),
   },
   {
-    accessorKey: 'applicant.firstName',
+    accessorKey: 'donation.description',
+    header: 'Description',
+    cell: ({ row }) => (
+      <div className="lowercase">{row.original.swap.description}</div>
+    ),
+  },
+  {
+    accessorKey: 'swap.creator.firstName',
     header: 'Name',
     cell: ({ row }) => (
-      <div className="lowercase">{row.original.applicant.firstName}</div>
+      <div className="lowercase">{row.original.swap.creator.firstName}</div>
     ),
   },
   {
-    accessorKey: 'applicant.email',
-    header: 'Email',
-    cell: ({ row }) => (
-      <div className="lowercase">{row.original.applicant.email}</div>
-    ),
-  },
-  {
-    accessorKey: 'applicant.phone',
+    accessorKey: 'swap.creator.phone',
     header: 'Phone',
     cell: ({ row }) => (
-      <div className="lowercase">{row.original.applicant.phone}</div>
+      <div className="lowercase">{row.original.swap.creator.phone}</div>
     ),
   },
   {

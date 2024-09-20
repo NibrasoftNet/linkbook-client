@@ -44,7 +44,9 @@ export const donationApplicantsWithReplyListColumns: ColumnDef<ApplicantToDonati
       accessorKey: 'id',
       header: 'Ref',
       cell: ({ row }) => (
-        <div className="capitalize">DON-{String(row.getValue('id'))}</div>
+        <div className="max-w-16 truncate capitalize">
+          DON-{String(row.getValue('id'))}
+        </div>
       ),
     },
     {

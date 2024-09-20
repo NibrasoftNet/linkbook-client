@@ -56,24 +56,26 @@ export const donationApplicantsListColumns: ColumnDef<ApplicantToDonationType>[]
       ),
     },
     {
-      accessorKey: 'applicant.firstName',
+      accessorKey: 'donation.description',
+      header: 'Description',
+      cell: ({ row }) => (
+        <div className="lowercase">{row.original.donation.description}</div>
+      ),
+    },
+    {
+      accessorKey: 'donation.creator.firstName',
       header: 'Name',
       cell: ({ row }) => (
-        <div className="lowercase">{row.original.applicant.firstName}</div>
+        <div className="lowercase">
+          {row.original.donation.creator.firstName}
+        </div>
       ),
     },
     {
-      accessorKey: 'applicant.email',
-      header: 'Email',
-      cell: ({ row }) => (
-        <div className="lowercase">{row.original.applicant.email}</div>
-      ),
-    },
-    {
-      accessorKey: 'applicant.phone',
+      accessorKey: 'donation.creator.phone',
       header: 'Phone',
       cell: ({ row }) => (
-        <div className="lowercase">{row.original.applicant.phone}</div>
+        <div className="lowercase">{row.original.donation.creator.phone}</div>
       ),
     },
     {
