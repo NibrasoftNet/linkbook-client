@@ -4,14 +4,19 @@ import React from 'react';
 
 import { donationApplicantsWithReplyListColumns } from '@/components/DataTable/columns/donation-applicants-with-reply.columns';
 import DataTable from '@/components/DataTable/DataTable';
+import type { ApplicantToDonationValueType } from '@/types/applicant-to-donation.type';
 
-const DonationApplicantsTable = (applicants: any) => {
+const DonationApplicantsTable = ({
+  data,
+}: {
+  data: Array<ApplicantToDonationValueType>;
+}) => {
   return (
     <section className="flex size-full flex-col">
       <h1 className="text-3xl font-bold">Donations Applicants</h1>
       <DataTable
         columns={donationApplicantsWithReplyListColumns}
-        data={applicants.data}
+        data={data}
         filter="email"
       />
     </section>

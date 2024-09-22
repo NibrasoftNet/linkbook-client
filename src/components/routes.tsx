@@ -1,4 +1,3 @@
-// Auth Imports
 import {
   HiOutlineAcademicCap,
   HiOutlineCog8Tooth,
@@ -9,7 +8,7 @@ import {
   HiOutlineUserGroup,
 } from 'react-icons/hi2';
 import { PiBookOpenTextBold, PiSwapBold } from 'react-icons/pi';
-import { TbMapPinSearch } from 'react-icons/tb';
+import { TbBrandFeedly, TbMapPinSearch } from 'react-icons/tb';
 
 import { defaultPaginationLimit } from '@/lib/constants';
 import type { IRoute } from '@/types/types';
@@ -22,6 +21,23 @@ export const routes: IRoute[] = [
     icon: <HiOutlineHome className="-mt-[7px] size-6 stroke-2 text-inherit" />,
     collapse: false,
     disabled: false,
+  },
+  {
+    name: 'feeds',
+    path: `/feeds/details?page=1&limit=${defaultPaginationLimit}`,
+    icon: <TbBrandFeedly className="-mt-[7px] size-6 stroke-2 text-inherit" />,
+    collapse: false,
+    disabled: false,
+  },
+  {
+    name: 'community',
+    path: `/community/details?page=1&limit=${defaultPaginationLimit}`,
+    icon: (
+      <HiOutlineUserGroup className="-mt-[7px] size-6 stroke-2 text-inherit" />
+    ),
+    collapse: false,
+    disabled: false,
+    invisible: false,
   },
   {
     name: 'donations',
@@ -62,16 +78,6 @@ export const routes: IRoute[] = [
     path: `/products?page=1&limit=${defaultPaginationLimit}`,
     icon: (
       <PiBookOpenTextBold className="-mt-[7px] size-6 stroke-2 text-inherit" />
-    ),
-    collapse: false,
-    disabled: false,
-    invisible: false,
-  },
-  {
-    name: 'community',
-    path: '/community?page=1&limit=2',
-    icon: (
-      <HiOutlineUserGroup className="-mt-[7px] size-6 stroke-2 text-inherit" />
     ),
     collapse: false,
     disabled: false,

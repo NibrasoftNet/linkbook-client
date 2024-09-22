@@ -9,13 +9,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { useDonation } from '@/providers/DonationContext';
-import { useSwap } from '@/providers/SwapContext';
-import type { PrivateCommunityOperationEnum } from '@/types/community.type';
-import { DonationOperationEnum } from '@/types/donation.type';
-import { SwapOperationEnum } from '@/types/swap.type';
+import { useCommunity } from '@/providers/CommunityContext';
+import { PrivateCommunityOperationEnum } from '@/types/community.type';
 
-const AlertDialogCustom = ({
+const AlertDialogCommunity = ({
   title,
   description,
   method,
@@ -25,25 +22,18 @@ const AlertDialogCustom = ({
 }: {
   title: string;
   description: string;
-  method:
-    | DonationOperationEnum
-    | SwapOperationEnum
-    | PrivateCommunityOperationEnum;
+  method: PrivateCommunityOperationEnum;
   operation: string;
   param: string;
   color?: string;
 }) => {
-  const donation = useDonation();
-  const swap = useSwap();
+  const community = useCommunity();
   const handleOperation = async () => {
-    if (method === DonationOperationEnum.CANCEL) {
-      await donation.cancel(param);
+    if (method === PrivateCommunityOperationEnum.CANCEL) {
+      await community.cancel(param);
     }
-    if (method === DonationOperationEnum.APPLY) {
-      await donation.apply(param);
-    }
-    if (method === SwapOperationEnum.CANCEL) {
-      await swap.cancel(param);
+    if (method === PrivateCommunityOperationEnum.APPLY) {
+      await community.apply(param);
     }
   };
   return (
@@ -62,4 +52,4 @@ const AlertDialogCustom = ({
   );
 };
 
-export default AlertDialogCustom;
+export default AlertDialogCommunity;

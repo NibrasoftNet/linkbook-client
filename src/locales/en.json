@@ -11,6 +11,7 @@
     "setting_link": "Settings",
     "helpdesk_link": "Helpdesk",
     "landing_community": "Community",
+    "landing_feed": "Feeds",
     "landing_donations": "Donations",
     "landing_swaps": "Swaps",
     "landing_products": "Products",
@@ -33,6 +34,7 @@
     "search": "Search",
     "products": "Products",
     "community": "Community",
+    "feeds": "Feeds",
     "profile_settings": "Profile settings",
     "subscription": "Subscription",
     "pricing_page": "Pricing page",
@@ -166,5 +168,22 @@
     "testimonial_comment": "Comment",
     "testimonial_details": "Your feedback will help us to improve",
     "testimonial_submit": "Submit"
+  },
+  "CommunityTab": {
+    "my_communities": "My Communities",
+    "my_communities_request": "My Join Requests",
+    "private_request_communities": "Private Communities"
+  },
+  "CommunityForm": {
+    "details": "Details",
+    "name": "Name",
+    "bio": "Bio",
+    "private": "Private",
+    "product_name": "Product Name",
+    "quantity": "Quantity",
+    "category": "Select a category",
+    "search_category": "Search Category",
+    "product_description": "Product Description",
+    "submit": "Submit"
   }
 }

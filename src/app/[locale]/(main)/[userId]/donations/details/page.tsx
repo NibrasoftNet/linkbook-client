@@ -6,6 +6,7 @@ import {
 import { getTranslations } from 'next-intl/server';
 import React from 'react';
 
+import { getMyCommunityList } from '@/actions/community.actions';
 import {
   getDonationsList,
   getOthersDonationsList,
@@ -25,6 +26,10 @@ export default async function DonationsPage({
   searchParams: PaginationProps;
 }) {
   const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['communities-private-me-list'],
+    queryFn: () => getMyCommunityList(),
+  });
 
   await queryClient.prefetchQuery({
     queryKey: ['donations-list'],

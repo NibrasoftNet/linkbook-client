@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { AddressValueType } from '@/types/address.type';
+import type { ApplicantToDonationValueType } from '@/types/applicant-to-donation.type';
 import type { ProductProps, ProductValueType } from '@/types/product.type';
 import type { User } from '@/types/users.type';
 
@@ -35,7 +36,7 @@ export type DonationProps = {
   product: ProductProps;
   address: AddressValueType;
   quantity: number;
-  applicants: User[];
+  applicants: ApplicantToDonationValueType[];
   creator: User;
 };
 

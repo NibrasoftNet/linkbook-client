@@ -6,13 +6,17 @@ import { swapApplicantsWithReplyListColumns } from '@/components/DataTable/colum
 import SwapApplicantsDataTable from '@/components/DataTable/SwapApplicantsDataTable';
 import type { ApplicantToSwapType } from '@/types/swap.type';
 
-const SwapApplicantsTable = (applicants: { data: ApplicantToSwapType[] }) => {
+const SwapApplicantsTable = ({
+  data,
+}: {
+  data: Array<ApplicantToSwapType>;
+}) => {
   return (
     <section className="flex size-full flex-col">
       <h1 className="text-3xl font-bold">Swaps Applicants</h1>
       <SwapApplicantsDataTable
         columns={swapApplicantsWithReplyListColumns}
-        data={applicants.data}
+        data={data}
         filter="status"
       />
     </section>
