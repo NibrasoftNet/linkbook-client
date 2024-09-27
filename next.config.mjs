@@ -21,6 +21,7 @@ export default bundleAnalyzer(
       dirs: ['.'],
     },
     output: 'standalone',
+    productionBrowserSourceMaps: false,
     poweredByHeader: false,
     reactStrictMode: true,
     images: {
