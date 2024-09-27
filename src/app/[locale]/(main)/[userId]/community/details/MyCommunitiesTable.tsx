@@ -27,7 +27,7 @@ const MyCommunitiesTable = () => {
       </Link>
       <DataTable
         columns={communityListColumns}
-        data={communities.data}
+        data={communities?.data ?? []}
         filter="name"
       />
     </section>
