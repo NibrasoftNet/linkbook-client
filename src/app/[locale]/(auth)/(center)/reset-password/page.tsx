@@ -50,7 +50,7 @@ export default function ResetPasswordPage() {
           width="1080"
           height="640"
           unoptimized
-          className="object-fit h-screen dark:brightness-[0.2] dark:grayscale"
+          className="h-screen object-contain dark:brightness-[0.2] dark:grayscale"
         />
       </div>
       <Form {...form}>

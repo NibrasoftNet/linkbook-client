@@ -69,10 +69,12 @@
         "consistent-return": "off",
         "tailwindcss/enforces-negative-arbitrary-values": "off",
         "@typescript-eslint/no-shadow": "off",
-        "tailwindcss/no-custom-classnames": "off",
         "react/jsx-no-constructed-context-values": "off",
         "no-plusplus": "off",
-        "react-hooks/exhaustive-deps": "off"
+        "react-hooks/exhaustive-deps": "off",
+        "no-console": "off",
+        "no-alert": "off",
+        "tailwindcss/ no-custom-classnames": "off"
       }
     },
     // Configuration for testing

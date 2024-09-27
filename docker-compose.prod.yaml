@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: prod.Dockerfile
+    ports:
+      - 4000:4000

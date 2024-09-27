@@ -286,7 +286,7 @@ export default function Charts() {
           </CardContent>
         </Card>
       </div>
-      <div className="grid w-full flex-1 gap-6 lg:max-w-[20rem]">
+      <div className="grid w-full flex-1 gap-6 lg:max-w-80">
         <Card className="max-w-xs" x-chunk="charts-01-chunk-2">
           <CardHeader>
             <CardTitle>Progress</CardTitle>

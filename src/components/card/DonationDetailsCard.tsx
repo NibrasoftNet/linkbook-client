@@ -28,6 +28,7 @@ import { imagesUrls } from '@/lib/constants';
 import { useAuth } from '@/providers/AuthContext';
 import type { DonationProps } from '@/types/donation.type';
 import { DonationOperationEnum } from '@/types/donation.type';
+import type { ImagesProps } from '@/types/types';
 
 const DonationDetailsCard = ({ donation }: { donation: DonationProps }) => {
   const auth = useAuth();
@@ -59,22 +60,20 @@ const DonationDetailsCard = ({ donation }: { donation: DonationProps }) => {
           className="mx-auto w-full max-w-xl justify-center"
         >
           <CarouselContent className="min-h-[150px]">
-            {donation.product.image.map((image: any) => (
+            {donation.product.image.map((image: ImagesProps) => (
               <CarouselItem key={image.id}>
-                <div>
-                  <Card>
-                    <CardContent className="flex aspect-square items-center justify-center rounded-md border-2 border-primary">
-                      <Image
-                        src={image.path}
-                        alt="landing-hero-image"
-                        width={220}
-                        height={150}
-                        unoptimized
-                        className="size-full object-cover"
-                      />
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card>
+                  <CardContent className="flex aspect-square items-center justify-center rounded-md border-2 border-primary p-0">
+                    <Image
+                      src={image.path}
+                      alt="landing-hero-image"
+                      width={220}
+                      height={150}
+                      unoptimized
+                      className="size-full object-cover"
+                    />
+                  </CardContent>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>

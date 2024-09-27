@@ -35,6 +35,7 @@ const FormField = <
 
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext);
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   const itemContext = React.useContext(FormItemContext);
   const { getFieldState, formState } = useFormContext();
 

@@ -6,6 +6,7 @@ import { createContext, useContext } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { toast } from 'sonner';
 
+import { defaultPaginationLimit } from '@/lib/constants';
 import {
   useAcceptRequestCommunityMutation,
   useApplyRequestCommunityMutation,
@@ -101,7 +102,7 @@ const CommunityProvider = ({ children }: { children: ReactNode }) => {
         description: 'Creation Success',
         id: toastId,
       });
-      router.push('../details');
+      router.push(`../details?page=1&limit=${defaultPaginationLimit}`);
     } catch (e) {
       toast.error('Error', {
         description: `${e}`,
@@ -143,7 +144,7 @@ const CommunityProvider = ({ children }: { children: ReactNode }) => {
         description: 'Creation Success',
         id: toastId,
       });
-      router.push('../details');
+      router.push(`../details?page=1&limit=${defaultPaginationLimit}`);
     } catch (e) {
       toast.error('Error', {
         description: `${e}`,

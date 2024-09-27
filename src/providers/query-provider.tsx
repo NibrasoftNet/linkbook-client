@@ -73,7 +73,7 @@ export default function TanstackQueryProvider({
                   </p>
                 </div>
                 <Button
-                  className="md my-2 rounded border bg-indigo-600 px-8 py-4 text-center text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50 sm:w-full lg:w-auto"
+                  className="my-2 rounded border bg-indigo-600 px-8 py-4 text-center text-white hover:bg-indigo-700 focus:opacity-50 focus:outline-none focus:ring-2 focus:ring-indigo-700 sm:w-full lg:w-auto"
                   onClick={() => resetErrorBoundary()}
                 >
                   Try again

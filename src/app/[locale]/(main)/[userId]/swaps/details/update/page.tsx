@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import type { SwapProps } from '@/types/swap.type';
 import type { ApiResponse } from '@/types/types';
 import { CrudOperationsEnum } from '@/types/types';
-import type { DonationSchemaFormType } from '@/validations/create-donation-schema.validator';
+import type { SwapSchemaFormType } from '@/validations/create-swap-schema.validator';
 
 import SwapApplicantsTable from '../SwapApplicantsTable';
 
@@ -24,11 +24,14 @@ const UpdateDonationPage = async ({
   const swap: ApiResponse<SwapProps> = await getSingleSwapAction(
     String(swapId),
   );
-  const defaultValues: Partial<DonationSchemaFormType> = {
+  const defaultValues: Partial<SwapSchemaFormType> = {
     files: [] as File[],
     description: swap?.result.description,
     quantity: swap?.result.quantity,
-    product: swap?.result.product,
+    product: {
+      ...swap?.result.product,
+      categoryId: swap?.result.product.category.id,
+    },
     address: swap?.result.address,
   };
   return (

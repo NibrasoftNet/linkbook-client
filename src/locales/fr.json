@@ -191,5 +191,12 @@
     "search_category": "Search Category",
     "product_description": "Product Description",
     "submit": "Submit"
+  },
+  "CommunityFeedForm": {
+    "details": "Detailles",
+    "title": "Title",
+    "description": "Description",
+    "url": "Url",
+    "submit": "Envoyer"
   }
 }

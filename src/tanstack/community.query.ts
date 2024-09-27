@@ -10,6 +10,7 @@ import {
   applyRequestCommunityAction,
   cancelRequestCommunityAction,
   createCommunityDataAction,
+  getAllCommunityList,
   getCommunityList,
   getCommunityListMePrivateUnsubscribed,
   getMyCommunityList,
@@ -163,3 +164,15 @@ export const useCancelRequestCommunityMutation = () => {
     data: mutation.data,
   };
 };
+
+export function useGetAllCommunitiesQuery() {
+  return useSuspenseQuery({
+    queryFn: async () => getAllCommunityList(),
+    queryKey: ['find-all-communities'],
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    refetchInterval: false,
+    retry: false,
+  });
+}

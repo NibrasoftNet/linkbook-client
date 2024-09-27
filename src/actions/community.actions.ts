@@ -15,6 +15,17 @@ export const getCommunityList = async () => {
   }
 };
 
+export const getAllCommunityList = async () => {
+  try {
+    const { data } = await axiosInstance.get(
+      `${Env.NEXT_PUBLIC_API_URL}/communities/find/all-communities`,
+    );
+    return data;
+  } catch (error: any) {
+    return error.response.data ?? error;
+  }
+};
+
 export const getMyCommunityList = async () => {
   try {
     const { data } = await axiosInstance.get(

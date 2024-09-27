@@ -179,11 +179,13 @@
     "name": "Name",
     "bio": "Bio",
     "private": "Private",
-    "product_name": "Product Name",
-    "quantity": "Quantity",
-    "category": "Select a category",
-    "search_category": "Search Category",
-    "product_description": "Product Description",
+    "submit": "Submit"
+  },
+  "CommunityFeedForm": {
+    "details": "Details",
+    "title": "Title",
+    "description": "Description",
+    "url": "Url",
     "submit": "Submit"
   }
 }

@@ -49,7 +49,6 @@ const ProfileDetails = ({ session }: { session: User }) => {
       phone: session.phone || '',
     },
   });
-  console.log('qwerty', auth.session);
   useEffect(() => {
     form.setValue('address', address);
   }, [address]);

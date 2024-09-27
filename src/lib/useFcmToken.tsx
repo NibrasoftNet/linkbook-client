@@ -29,8 +29,6 @@ async function getNotificationPermissionAndToken() {
       return fetchToken();
     }
   }
-
-  console.log('Notification permission not granted.');
   return null;
 }
 

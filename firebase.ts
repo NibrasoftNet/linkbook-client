@@ -3,13 +3,13 @@ import { getMessaging, getToken, isSupported } from 'firebase/messaging';
 
 // Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyA9EkhFBv1xJhx8KmoweGSLU9USKkVGgJI',
-  authDomain: 'linkbook-fcm.firebaseapp.com',
-  projectId: 'linkbook-fcm',
-  storageBucket: 'linkbook-fcm.appspot.com',
-  messagingSenderId: '166528894877',
-  appId: '1:166528894877:web:9e5887189f1f9142755174',
-  measurementId: 'G-KCC1KTM9TJ',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
@@ -23,10 +23,9 @@ export const fetchToken = async () => {
   try {
     const fcmMessaging = await messaging();
     if (fcmMessaging) {
-      const token = await getToken(fcmMessaging, {
+      return await getToken(fcmMessaging, {
         vapidKey: process.env.NEXT_PUBLIC_FIREBASE_FCM_VAPID_KEY,
       });
-      return token;
     }
     return null;
   } catch (err) {

@@ -23,8 +23,14 @@ export type ProductProps = {
   stock: number;
   price: number;
   description: string;
-  categoryId: number;
+  category: ProductCategoryProps;
   image: ImagesProps[];
+};
+
+export type ProductCategoryProps = {
+  id: number;
+  name: string;
+  image: ImagesProps;
 };
 
 export enum ProductTypeEnum {

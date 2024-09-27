@@ -28,7 +28,10 @@ const UpdateDonationPage = async ({
     files: [] as File[],
     description: donation?.result.description,
     quantity: donation?.result.quantity,
-    product: donation?.result.product,
+    product: {
+      ...donation?.result.product,
+      categoryId: donation?.result.product.category.id,
+    },
     address: donation?.result.address,
   };
 

@@ -376,7 +376,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleClientSession = async (): Promise<void> => {
-    console.log('aqwxcvbn', token);
     const cookiesSession = await getSession();
     if (token) {
       await mutateActivateNotification(token);

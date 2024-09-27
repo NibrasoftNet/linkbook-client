@@ -43,7 +43,7 @@ messaging.onBackgroundMessage((payload) => {
 });
 
 // eslint-disable-next-line no-restricted-globals
-self.addEventListener('notificationclick', function (event) {
+self.addEventListener('notificationclick', (event) => {
   console.log('[firebase-messaging-sw.js] Notification click received.');
 
   event.notification.close();
@@ -54,7 +54,7 @@ self.addEventListener('notificationclick', function (event) {
     clients
       // https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll
       .matchAll({ type: 'window', includeUncontrolled: true })
-      .then(function (clientList) {
+      .then((clientList) => {
         const { url } = event.notification.data;
 
         if (!url) return;
