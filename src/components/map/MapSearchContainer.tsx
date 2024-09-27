@@ -90,7 +90,7 @@ const MapSearchContainer = ({
           setSearchResults([]);
           return [];
         }
-        setSearchResults(data.result?.data);
+        setSearchResults(data?.result?.data);
         return data;
       } catch (e) {
         setSearchResults([]);
@@ -148,7 +148,7 @@ const MapSearchContainer = ({
           <FlyMapToLocation zoomLevel={4} search={searchResults[0]} />
         )}
         {search && <SearchLocation />}
-        {searchResultQueryData?.result?.data.length && (
+        {searchResultQueryData?.result?.data?.length && (
           <div
             style={{
               position: 'absolute',

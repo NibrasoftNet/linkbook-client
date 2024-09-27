@@ -13,7 +13,7 @@ const OthersSwaps = ({ searchParams }: { searchParams: PaginationProps }) => {
     page: searchParams.page,
     limit: searchParams.limit,
   });
-  if (!data.result?.data) return <>No Swap Available</>;
+  if (!data?.result?.data) return <>No Swap Available</>;
   return (
     <section className="flex size-full flex-col items-center justify-between gap-4">
       <ul className="flex flex-col items-center gap-4">

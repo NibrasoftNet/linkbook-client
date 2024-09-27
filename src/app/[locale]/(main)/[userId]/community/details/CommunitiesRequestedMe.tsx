@@ -27,7 +27,7 @@ const CommunitiesRequestedMeTable = () => {
       </Link>
       <DataTable
         columns={communityApplicantsListColumns}
-        data={communities.data}
+        data={communities?.data ?? []}
         filter="status"
       />
     </section>

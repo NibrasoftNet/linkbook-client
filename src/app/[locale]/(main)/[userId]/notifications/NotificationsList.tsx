@@ -17,7 +17,7 @@ const NotificationsList = ({
     page: searchParams.page,
     limit: searchParams.limit,
   });
-  if (!data.result?.data) return <>No Notifications Available</>;
+  if (!data?.result?.data) return <>No Notifications Available</>;
   return (
     <section className="flex size-full min-h-[700px] flex-col items-center justify-between gap-4">
       <ul className="grid size-full grid-cols-1 md:grid-cols-3">

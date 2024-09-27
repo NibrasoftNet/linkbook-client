@@ -103,16 +103,16 @@ const useFcmToken = () => {
         if (Notification.permission !== 'granted') return;
 
         console.log('Foreground push notification received:', payload);
-        const link = payload.fcmOptions?.link || payload.data?.link;
+        const link = payload?.fcmOptions?.link || payload?.data?.link;
 
         if (link) {
           toast.info(
-            `${payload.notification?.title}: ${payload.notification?.body}`,
+            `${payload?.notification?.title}: ${payload?.notification?.body}`,
             {
               action: {
                 label: 'Visit',
                 onClick: () => {
-                  const link = payload.fcmOptions?.link || payload.data?.link;
+                  const link = payload?.fcmOptions?.link || payload?.data?.link;
                   if (link) {
                     router.push(link);
                   }
@@ -122,16 +122,16 @@ const useFcmToken = () => {
           );
         } else {
           toast.info(
-            `${payload.notification?.title}: ${payload.notification?.body}`,
+            `${payload?.notification?.title}: ${payload?.notification?.body}`,
           );
         }
 
         // --------------------------------------------
         // Disable this if you only want toast notifications.
         const n = new Notification(
-          payload.notification?.title || 'New message',
+          payload?.notification?.title || 'New message',
           {
-            body: payload.notification?.body || 'This is a new message',
+            body: payload?.notification?.body || 'This is a new message',
             data: link ? { url: link } : undefined,
           },
         );

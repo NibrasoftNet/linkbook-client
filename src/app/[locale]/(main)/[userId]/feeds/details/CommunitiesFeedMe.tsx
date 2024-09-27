@@ -27,7 +27,7 @@ const CommunitiesFeedMe = ({
     page: searchParams.page,
     limit: searchParams.limit,
   });
-  if (!data.result?.data) return <>No Feeds Available</>;
+  if (!data?.result?.data) return <>No Feeds Available</>;
   return (
     <section className="flex size-full flex-col items-center justify-between gap-4">
       <Link
