@@ -13,11 +13,11 @@ const OthersSwaps = ({ searchParams }: { searchParams: PaginationProps }) => {
     page: searchParams.page,
     limit: searchParams.limit,
   });
-  if (!data.result.data) return <>No Swap Available</>;
+  if (!data.result?.data) return <>No Swap Available</>;
   return (
     <section className="flex size-full flex-col items-center justify-between gap-4">
       <ul className="flex flex-col items-center gap-4">
-        {data?.result.data.map((swap: SwapProps) => (
+        {data?.result?.data.map((swap: SwapProps) => (
           <li
             key={swap.id}
             // eslint-disable-next-line tailwindcss/no-custom-classname

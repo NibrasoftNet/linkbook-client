@@ -372,7 +372,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     setAllCities(allCities.result);
     setAllCategories(allCategories.result);
     setAllProducts(allProducts.result);
-    setAllTestimonials(allTestimonials.result.data);
+    setAllTestimonials(allTestimonials.result?.data);
   };
 
   const handleClientSession = async (): Promise<void> => {

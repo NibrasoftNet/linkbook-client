@@ -26,11 +26,11 @@ const PrivateCommunitiesUnsubscribedTable = ({
       limit: searchParams.limit,
     },
   );
-  if (!data.result.data) return <>No Community Available</>;
+  if (!data.result?.data) return <>No Community Available</>;
   return (
     <section className="flex size-full flex-col items-center justify-between gap-4">
       <ul className="flex size-full flex-col items-center gap-4">
-        {data?.result.data.map((community: CommunityValueType) => (
+        {data?.result?.data.map((community: CommunityValueType) => (
           <li
             key={community.id}
             // eslint-disable-next-line tailwindcss/no-custom-classname

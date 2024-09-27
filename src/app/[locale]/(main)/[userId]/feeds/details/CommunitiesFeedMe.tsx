@@ -27,7 +27,7 @@ const CommunitiesFeedMe = ({
     page: searchParams.page,
     limit: searchParams.limit,
   });
-  if (!data.result.data) return <>No Feeds Available</>;
+  if (!data.result?.data) return <>No Feeds Available</>;
   return (
     <section className="flex size-full flex-col items-center justify-between gap-4">
       <Link
@@ -41,7 +41,7 @@ const CommunitiesFeedMe = ({
         </Button>
       </Link>
       <ul className="flex size-full flex-col items-center gap-4">
-        {data?.result.data.map((feed: CommunityFeedValueType) => (
+        {data?.result?.data.map((feed: CommunityFeedValueType) => (
           <li
             key={feed.id}
             // eslint-disable-next-line tailwindcss/no-custom-classname
