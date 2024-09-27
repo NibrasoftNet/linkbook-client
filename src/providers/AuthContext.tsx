@@ -369,10 +369,10 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleSearchParams = async (): Promise<void> => {
-    setAllCities(allCities.result);
-    setAllCategories(allCategories.result);
-    setAllProducts(allProducts.result);
-    setAllTestimonials(allTestimonials.result.data);
+    setAllCities(allCities?.result ?? []);
+    setAllCategories(allCategories?.result ?? []);
+    setAllProducts(allProducts?.result ?? []);
+    setAllTestimonials(allTestimonials?.result?.data ?? []);
   };
 
   const handleClientSession = async (): Promise<void> => {

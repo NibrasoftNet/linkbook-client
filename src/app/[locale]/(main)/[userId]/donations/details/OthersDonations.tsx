@@ -25,11 +25,11 @@ const OthersDonations = ({
     page: searchParams.page,
     limit: searchParams.limit,
   });
-  if (!data.result.data) return <>No Donation Available</>;
+  if (!data.result?.data) return <>No Donation Available</>;
   return (
     <section className="flex size-full flex-col items-center justify-between gap-4">
       <ul className="flex size-full flex-col items-center gap-4">
-        {data?.result.data.map((donation: DonationProps) => (
+        {data?.result?.data.map((donation: DonationProps) => (
           <li
             key={donation.id}
             // eslint-disable-next-line tailwindcss/no-custom-classname

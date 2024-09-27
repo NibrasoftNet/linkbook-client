@@ -27,7 +27,7 @@ const DonationsRequestsTable = () => {
       </Link>
       <DataTable
         columns={donationApplicantsListColumns}
-        data={donations.data}
+        data={donations?.data ?? []}
         filter="status"
       />
     </section>

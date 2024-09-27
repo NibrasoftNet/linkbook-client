@@ -27,7 +27,7 @@ const SwapsTable = () => {
       </Link>
       <DataTable
         columns={swapListColumns}
-        data={swaps.data}
+        data={swaps?.data ?? []}
         filter="description"
       />
     </section>

@@ -151,7 +151,7 @@ const ApplyToSwapForm = ({
                       )}
                     >
                       {field.value
-                        ? categories.data.result.find(
+                        ? categories?.data?.result.find(
                             (cat: any) => cat.value === field.value,
                           )?.label
                         : `${t('category')}`}
@@ -165,7 +165,7 @@ const ApplyToSwapForm = ({
                     <CommandList>
                       <CommandEmpty>No category found.</CommandEmpty>
                       <CommandGroup>
-                        {categories.data.result.map((cat: any) => (
+                        {categories?.data?.result.map((cat: any) => (
                           <CommandItem
                             value={cat.label}
                             key={cat.value}
