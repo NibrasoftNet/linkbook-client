@@ -36,6 +36,11 @@ export default bundleAnalyzer(
           hostname: 'localhost',
           port: '4001',
         },
+        {
+          protocol: 'http',
+          hostname: 'host.docker.internal',
+          port: '4001',
+        },
       ],
     },
   }),
