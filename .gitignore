@@ -52,7 +52,6 @@ yarn-error.log*
 
 # local folder
 local
-package-lock.json
 
 # vercel
 .vercel
