@@ -344,7 +344,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     );
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'OTP verification...',
+      description: 'Profile update...',
       id: toastId,
     });
     try {

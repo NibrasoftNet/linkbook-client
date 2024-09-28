@@ -188,7 +188,7 @@ export const updateProfileAction = async (userWithIdData: {
       'auth/me',
       userWithIdData.formData,
     );
-    revalidatePath('/[locale]/(main)/[userId]/profile');
+    revalidatePath('/[locale]/(main)/[userId]/profile', 'page');
     return data;
   } catch (error: any) {
     return error.response.data ?? error;
@@ -229,7 +229,6 @@ export const userVerifyOtpAction = async (
 };
 
 export const activateNotificationAction = async (token: string) => {
-  console.log('aqwsdc', token);
   try {
     const { data } = await axiosInstance.put('auth/google/activate', {
       notificationToken: token,
