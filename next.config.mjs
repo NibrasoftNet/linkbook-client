@@ -34,6 +34,11 @@ export default bundleAnalyzer(
         },
         {
           protocol: 'http',
+          hostname: '147.79.117.125',
+          port: '4001',
+        },
+        {
+          protocol: 'http',
           hostname: 'localhost',
           port: '4001',
         },
