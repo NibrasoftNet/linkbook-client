@@ -72,7 +72,7 @@ export const createCommunityDataAction = async (formData: FormData) => {
         'Content-Type': 'multipart/form-data',
       },
     });
-    revalidatePath('/[locale]/(main)/[userId]/communities/details', 'page');
+    revalidatePath('/[locale]/(main)/[userId]/community/details', 'page');
     return data;
   } catch (error: any) {
     return error.response.data ?? error;
@@ -93,7 +93,7 @@ export const updateCommunityAction = async (communityWithIdData: {
         },
       },
     );
-    revalidatePath('/[locale]/(main)/[userId]/communities/details', 'page');
+    revalidatePath('/[locale]/(main)/[userId]/community/details', 'page');
     return data;
   } catch (error: any) {
     return error.response.data ?? error;
@@ -120,7 +120,7 @@ export const cancelRequestCommunityAction = async (id: string) => {
         },
       },
     );
-    revalidatePath('/[locale]/(main)/[userId]/communities/details', 'page');
+    revalidatePath('/[locale]/(main)/[userId]/community/details', 'page');
     return data;
   } catch (error: any) {
     return error.response.data ?? error;
@@ -138,7 +138,7 @@ export const applyRequestCommunityAction = async (id: string) => {
         },
       },
     );
-    revalidatePath('/[locale]/(main)/[userId]/communities/details', 'page');
+    revalidatePath('/[locale]/(main)/[userId]/community/details', 'page');
     return data;
   } catch (error: any) {
     return error.response.data ?? error;
@@ -157,7 +157,7 @@ export const acceptRequestCommunityAction = async (id: string) => {
       },
     );
     revalidatePath(
-      '/[locale]/(main)/[userId]/communities/details/update',
+      '/[locale]/(main)/[userId]/community/details/update',
       'page',
     );
     return data;
@@ -178,7 +178,7 @@ export const rejectRequestCommunityAction = async (id: string) => {
       },
     );
     revalidatePath(
-      '/[locale]/(main)/[userId]/communities/details/update',
+      '/[locale]/(main)/[userId]/community/details/update',
       'page',
     );
     return data;

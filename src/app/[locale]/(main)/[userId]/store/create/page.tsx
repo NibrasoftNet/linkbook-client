@@ -4,7 +4,7 @@ import Soon from '@/components/soon/Soon';
 
 const CreateStorePage = () => {
   return (
-    <main className="h-screen">
+    <main className="h-[calc(100vh-8rem)]">
       <Soon />
     </main>
   );
