@@ -63,16 +63,7 @@ export const communityApplicantsListColumns: ColumnDef<ApplicantToCommunityValue
       ),
     },
     {
-      accessorKey: 'community.creator.firstName',
-      header: 'Name',
-      cell: ({ row }) => (
-        <div className="lowercase">
-          {row.original.community.creator.firstName}
-        </div>
-      ),
-    },
-    {
-      accessorKey: 'community.creator.phone',
+      accessorKey: 'community.bio',
       header: 'Phone',
       cell: ({ row }) => (
         <div className="lowercase">{row.original.community.creator.phone}</div>

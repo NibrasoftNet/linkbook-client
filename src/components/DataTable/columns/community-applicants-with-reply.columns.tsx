@@ -59,7 +59,7 @@ export const communityApplicantsWithReplyListColumns: ColumnDef<ApplicantToCommu
       ),
     },
     {
-      accessorKey: 'applicant.firstName',
+      accessorKey: 'subscriber.firstName',
       header: 'Name',
       cell: ({ row }) => (
         <div className="capitalize">
@@ -67,13 +67,6 @@ export const communityApplicantsWithReplyListColumns: ColumnDef<ApplicantToCommu
             row.original.subscriber.lastName
           }`}
         </div>
-      ),
-    },
-    {
-      accessorKey: 'applicant.address.city',
-      header: 'Address',
-      cell: ({ row }) => (
-        <div className="capitalize">{row.original.subscriber.address.city}</div>
       ),
     },
     {
