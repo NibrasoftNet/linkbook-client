@@ -97,7 +97,7 @@ const SwapDetailsCard = ({ swap }: { swap: SwapProps }) => {
         </div>
       </CardContent>
       <CardFooter className="flex w-full justify-center">
-        <Link href={`/swaps/details/apply?id=${swap.id}`}>
+        <Link href={`details/apply?id=${swap.id}`}>
           <Button
             disabled={!swap.active || auth.session?.id === swap.creator.id}
             className="flex items-center justify-center gap-2 rounded-full"
