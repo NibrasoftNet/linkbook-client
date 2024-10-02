@@ -163,6 +163,11 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
     });
 
     const formData = new FormData();
+    if (applyToSwapData.files?.length) {
+      applyToSwapData.files.forEach((file) => {
+        formData.append('files', file);
+      });
+    }
     formData.append(
       'data',
       JSON.stringify({
