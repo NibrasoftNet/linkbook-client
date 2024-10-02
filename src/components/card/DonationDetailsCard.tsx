@@ -85,19 +85,15 @@ const DonationDetailsCard = ({ donation }: { donation: DonationProps }) => {
         <div className="flex w-full flex-col gap-2">
           <div className="flex items-center gap-2">
             <Label>Name:</Label>
-            <span className="grid grid-cols-2 gap-4">
-              {donation.product.name}
-            </span>
+            <span className="flex w-full">{donation.product.name}</span>
           </div>
           <div className="flex items-center gap-2">
             <Label>Quantity:</Label>
-            <span className="grid grid-cols-2 gap-4">{donation.quantity}</span>
+            <span className="flex w-full">{donation.quantity}</span>
           </div>
           <div className="flex items-center gap-2">
             <Label>Description:</Label>
-            <span className="grid grid-cols-2 gap-4">
-              {donation.product.description}
-            </span>
+            <span className="flex w-full">{donation.product.description}</span>
           </div>
         </div>
       </CardContent>
