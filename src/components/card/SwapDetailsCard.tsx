@@ -90,14 +90,14 @@ const SwapDetailsCard = ({ swap }: { swap: SwapProps }) => {
             <Label>Quantity:</Label>
             <span className="flex w-full">{swap.quantity}</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-start gap-2">
             <Label>Description:</Label>
             <span className="flex w-full">{swap.product.description}</span>
           </div>
         </div>
       </CardContent>
       <CardFooter className="flex w-full justify-center">
-        <Link href={`details/apply?id=${swap.id}`}>
+        <Link href={`swaps/details/apply?id=${swap.id}`}>
           <Button
             disabled={!swap.active || auth.session?.id === swap.creator.id}
             className="flex items-center justify-center gap-2 rounded-full"
