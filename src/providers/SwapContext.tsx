@@ -115,7 +115,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
   ) => {
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'Create Swap...',
+      description: 'Update Swap...',
       id: toastId,
     });
 
@@ -140,7 +140,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
         return;
       }
       toast.success('Success', {
-        description: 'Creation Success',
+        description: 'Update Success',
         id: toastId,
       });
       router.push(`../details?page=1&limit=${defaultPaginationLimit}`);
@@ -158,7 +158,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
   ) => {
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'Create Swap...',
+      description: 'Apply Swap...',
       id: toastId,
     });
 
@@ -184,7 +184,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
         return;
       }
       toast.success('Success', {
-        description: 'Creation Success',
+        description: 'Apply Success',
         id: toastId,
       });
       router.back();
@@ -199,7 +199,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
   const handleAcceptRequestSwap = async (id: string) => {
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'Create Swap...',
+      description: 'Accept Swap...',
       id: toastId,
     });
 
@@ -213,7 +213,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
         return;
       }
       toast.success('Success', {
-        description: 'Creation Success',
+        description: 'Accept Success',
         id: toastId,
       });
     } catch (e) {
@@ -227,7 +227,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
   const handleRejectRequestSwap = async (id: string) => {
     const toastId = toast('Begins...');
     toast.loading('Loading...', {
-      description: 'Create Swap...',
+      description: 'Rekect Swap...',
       id: toastId,
     });
 
@@ -241,7 +241,7 @@ const SwapProvider = ({ children }: { children: ReactNode }) => {
         return;
       }
       toast.success('Success', {
-        description: 'Creation Success',
+        description: 'Reject Success',
         id: toastId,
       });
     } catch (e) {

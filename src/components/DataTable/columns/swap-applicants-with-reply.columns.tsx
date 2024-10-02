@@ -4,7 +4,7 @@ import { ImageIcon, MoreHorizontal } from 'lucide-react';
 import Image from 'next/image';
 import * as React from 'react';
 
-import DonationActionButton from '@/components/action-buttons/DonationActionButton';
+import SwapActionButton from '@/components/action-buttons/SwapActionButton';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -22,8 +22,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { imagesUrls } from '@/lib/constants';
-import { DonationOperationEnum } from '@/types/donation.type';
 import type { ApplicantToSwapType } from '@/types/swap.type';
+import { SwapOperationEnum } from '@/types/swap.type';
 import type { ImagesProps } from '@/types/types';
 
 export const swapApplicantsWithReplyListColumns: ColumnDef<ApplicantToSwapType>[] =
@@ -155,15 +155,15 @@ export const swapApplicantsWithReplyListColumns: ColumnDef<ApplicantToSwapType>[
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DonationActionButton
+              <SwapActionButton
                 title="accept"
-                operation={DonationOperationEnum.ACCEPT}
+                operation={SwapOperationEnum.ACCEPT}
                 id={row.original.id}
               />
               <DropdownMenuSeparator />
-              <DonationActionButton
+              <SwapActionButton
                 title="reject"
-                operation={DonationOperationEnum.REJECT}
+                operation={SwapOperationEnum.REJECT}
                 id={row.original.id}
               />
             </DropdownMenuContent>
