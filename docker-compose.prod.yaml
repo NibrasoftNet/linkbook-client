@@ -1,7 +1,21 @@
 services:
-  app:
+  frontend:
     build:
       context: .
       dockerfile: prod.Dockerfile
     ports:
       - 4000:4000
+    labels:
+      traefik.enable: true
+      traefik.http.routers.nextjs-server.rule: Host(`${NEXT_PUBLIC_APP_URL}`)
+      traefik.http.routers.nextjs-server.entrypoints: web
+      #traefik.http.routers.nextjs-server.tls: true
+      #traefik.http.routers.nextjs-server.tls.certresolver: le
+    networks:
+      - traefikNet
+      - linkbookNet
+networks:
+  traefikNet:
+    external: { name: traefikNetwork }
+  linkbookNet:
+    external: { name: linkbookNetwork }
