@@ -16,6 +16,8 @@ services:
       - linkbookNet
 networks:
   traefikNet:
-    external: { name: traefikNetwork }
+    external:
+      name: traefikNetwork
   linkbookNet:
-    external: { name: linkbookNetwork }
+    external:
+      name: linkbookNetwork
