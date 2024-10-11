@@ -7,17 +7,17 @@ services:
       - 4000:4000
     labels:
       traefik.enable: true
-      traefik.http.routers.nextjs-server.rule: Host(`${NEXT_PUBLIC_APP_URL}`)
-      traefik.http.routers.nextjs-server.entrypoints: web
-      #traefik.http.routers.nextjs-server.tls: true
-      #traefik.http.routers.nextjs-server.tls.certresolver: le
+      traefik.http.routers.nextjs-server.rule: Host(`linkbook.store`)
+      traefik.http.routers.nextjs-server.entrypoints: webSecure
+      traefik.http.routers.nextjs-server.tls: true
+      traefik.http.routers.nextjs-server.tls.certresolver: le
+      traefik.http.routers.lms-frontend.tls.domains[0].main: linkbook.store
+      traefik.http.middlewares.lms-frontend-redirect.redirectscheme.scheme: https
+      traefik.http.routers.lms-frontend.middlewares: skaners-frontend-redirect
     networks:
       - traefikNet
-      - linkbookNet
+
 networks:
   traefikNet:
     external:
       name: traefikNetwork
-  linkbookNet:
-    external:
-      name: linkbookNetwork
