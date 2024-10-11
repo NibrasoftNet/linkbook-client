@@ -37,10 +37,13 @@ const SearchResultCard = ({ details }: { details: SearchServiceProps }) => {
         <CardContent>
           <Image
             alt="Product image"
-            className="max-h-[100px] w-full rounded-md object-contain"
-            height="30"
-            src={imagesUrls.logoImage}
-            width="30"
+            className="max-h-[150px] w-full rounded-md object-cover"
+            height={100}
+            src={
+              (details.product.image && details.product.image[0]?.path) ||
+              imagesUrls.logoImage
+            }
+            width={100}
             unoptimized
           />
         </CardContent>
