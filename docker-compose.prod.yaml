@@ -13,7 +13,7 @@ services:
       - "traefik.http.routers.frontend.tls.certresolver=le"
       - "traefik.http.routers.frontend.tls.domains[0].main=staging.linkbook.store"
       - "traefik.http.middlewares.frontend-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.frontend.middlewares=frontend-redirect"
+      - "traefik.http.routers.backend.middlewares=frontend-redirect"
     networks:
       - traefikNetwork
       - linkbookClientNet
