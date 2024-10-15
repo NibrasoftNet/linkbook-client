@@ -7,13 +7,13 @@ services:
       - 4000:4000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`staging.linkbook.store`)"
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls=true"
-      - "traefik.http.routers.frontend.tls.certresolver=le"
-      - "traefik.http.routers.frontend.tls.domains[0].main=staging.linkbook.store"
-      - "traefik.http.middlewares.frontend-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.backend.middlewares=frontend-redirect"
+      - "traefik.http.routers.linkbookfrontend.rule=Host(`staging.linkbook.store`)"
+      - "traefik.http.routers.linkbookfrontend.entrypoints=websecure"
+      - "traefik.http.routers.linkbookfrontend.tls=true"
+      - "traefik.http.routers.linkbookfrontend.tls.certresolver=le"
+      - "traefik.http.routers.linkbookfrontend.tls.domains[0].main=staging.linkbook.store"
+      - "traefik.http.middlewares.linkbookfrontend-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.linkbookfrontend.middlewares=linkbookfrontend-redirect"
     networks:
       - traefikNetwork
       - linkbookClientNet
