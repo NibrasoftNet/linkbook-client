@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: prod.Dockerfile
     ports:
-      - 4000:4000
+      - "4000"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`staging.linkbook.store`)"
