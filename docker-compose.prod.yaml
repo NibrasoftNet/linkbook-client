@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: prod.Dockerfile
     ports:
-      - "4000"
+      - 4000:4000
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`staging.linkbook.store`)"
@@ -14,10 +14,10 @@ services:
       - "traefik.http.routers.frontend.tls.domains[0].main=staging.linkbook.store"
       - "traefik.http.middlewares.frontend-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.frontend.middlewares=frontend-redirect"
-    volumes:
-      - "~/shared_vps/traefik/certs:/letsencrypt"
     networks:
       - traefikNetwork
+    volumes:
+      - "~/shared_vps/traefik/certs:/letsencrypt"
 networks:
   traefikNetwork:
     external: true
