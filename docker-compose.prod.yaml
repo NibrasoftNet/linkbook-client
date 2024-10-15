@@ -6,18 +6,18 @@ services:
     ports:
       - 4000:4000
     labels:
-      traefik.enable: true
-      traefik.http.routers.nextjs-server.rule: Host(`linkbook.store`)
-      traefik.http.routers.nextjs-server.entrypoints: webSecure
-      traefik.http.routers.nextjs-server.tls: true
-      traefik.http.routers.nextjs-server.tls.certresolver: le
-      traefik.http.routers.lms-frontend.tls.domains[0].main: linkbook.store
-      traefik.http.middlewares.lms-frontend-redirect.redirectscheme.scheme: https
-      traefik.http.routers.lms-frontend.middlewares: skaners-frontend-redirect
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`staging.linkbook.store`)"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=le"
+      - "traefik.http.routers.frontend.tls.domains[0].main=staging.linkbook.store"
+      - "traefik.http.middlewares.frontend-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.frontend.middlewares=frontend-redirect"
+    volumes:
+      - "~/shared_vps/traefik/certs:/letsencrypt"
     networks:
-      - traefikNet
-
+      - traefikNetwork
 networks:
-  traefikNet:
-    external:
-      name: traefikNetwork
+  traefikNetwork:
+    external: true
