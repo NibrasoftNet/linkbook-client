@@ -28,7 +28,7 @@ export default bundleAnalyzer(
       remotePatterns: [
         {
           protocol: 'https',
-          hostname: 'trash-back-bucket.s3.eu-west-3.amazonaws.com',
+          hostname: 'backend.linkbook.store',
           port: '',
           pathname: '/',
         },
