@@ -159,7 +159,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         description: 'Login Successful',
         id: toastId,
       });
-      router.push(`${result.user.id}/feeds`);
+      router.push(`${result.user.id}/feeds/details?page=1&limit=5`);
     } catch (e) {
       toast.error('Error', {
         description: `${e}`,

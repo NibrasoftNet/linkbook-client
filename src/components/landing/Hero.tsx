@@ -67,7 +67,7 @@ function Hero() {
   const handleUserLogin = async () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     auth.session
-      ? router.push(`/${auth.session.id}/feeds`)
+      ? router.push(`/${auth.session.id}/feeds/details?page=1&limit=5`)
       : router.push('/sign-in');
   };
   return (
