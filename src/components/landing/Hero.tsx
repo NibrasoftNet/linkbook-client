@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import React, { useRef } from 'react';
@@ -27,9 +26,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { FaceBookIcon, RocketIcon, XIcon } from '@/icons/landing';
+import { RocketIcon } from '@/icons/landing';
 import ChildIcon from '@/icons/landing/Child.icon';
-import InstagramIcon from '@/icons/landing/Instagram.icon';
 import { frederickaTheGreat, imagesUrls } from '@/lib/constants';
 import { useAuth } from '@/providers/AuthContext';
 
@@ -69,7 +67,7 @@ function Hero() {
   const handleUserLogin = async () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     auth.session
-      ? router.push(`/${auth.session.id}/dashboard`)
+      ? router.push(`/${auth.session.id}/feeds`)
       : router.push('/sign-in');
   };
   return (
@@ -90,26 +88,6 @@ function Hero() {
             unoptimized
             className="hidden object-contain md:block"
           />
-          <div className="hidden h-full items-center justify-center gap-4 md:flex">
-            <Link
-              href="/facebook"
-              className={`${styles.socialIcons} hover:border-primary`}
-            >
-              <FaceBookIcon iconClass="w-10 h-10" />
-            </Link>
-            <Link
-              href="/x"
-              className={`${styles.socialIcons} hover:border-black`}
-            >
-              <XIcon iconClass="w-8 h-8" />
-            </Link>
-            <Link
-              href="/instagram"
-              className={`${styles.socialIcons} hover:border-[#ff48aa]`}
-            >
-              <InstagramIcon iconClass="w-10 h-10" />
-            </Link>
-          </div>
           <div className="flex w-full items-center justify-end gap-4 md:w-fit">
             <ThemeSwitcher />
             <LocaleSwitcher />
