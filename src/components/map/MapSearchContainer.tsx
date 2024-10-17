@@ -28,10 +28,8 @@ import { SubscribeCard } from '@/components/card/SunscribeCard';
 import SearchLocation from '@/components/map/SearchLocation';
 import SearchProduct from '@/components/map/SearchProduct';
 import type { SearchServiceProps } from '@/types/search.type';
-import type {
-  ApiResponsePaginated,
-  SubscriptionStatusEnum,
-} from '@/types/types';
+import type { ApiResponsePaginated } from '@/types/types';
+import { SubscriptionStatusEnum } from '@/types/types';
 import useSearchStore from '@/zustand/searchStore';
 
 const MapSearchContainer = ({
@@ -208,7 +206,8 @@ const MapSearchContainer = ({
               }
             >
               <Popup>
-                {result.creator ? (
+                {subscriptionStatus === SubscriptionStatusEnum.SUBSCRIBED &&
+                result.creator ? (
                   <SearchResultCard details={result} />
                 ) : (
                   <SubscribeCard />
