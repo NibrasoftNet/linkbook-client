@@ -52,7 +52,7 @@ const SwapCard = ({ swap }: { swap: SwapProps }) => {
         </p>
         <div className="flex items-center rounded-xl border border-primary">
           <Image
-            src={swap.product.image[0]?.path ?? imagesUrls.logoImage}
+            src={swap.product?.image[0]?.path ?? imagesUrls.logoImage}
             alt="Image"
             width="50"
             height="50"

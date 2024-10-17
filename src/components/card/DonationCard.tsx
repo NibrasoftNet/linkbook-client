@@ -55,7 +55,7 @@ const DonationCard = ({ donation }: { donation: DonationProps }) => {
         </p>
         <div className="flex items-center rounded-xl border border-primary">
           <Image
-            src={donation.creator.photo ?? imagesUrls.logoImage}
+            src={donation.product?.image[0]?.path ?? imagesUrls.logoImage}
             alt="Image"
             width="50"
             height="50"
