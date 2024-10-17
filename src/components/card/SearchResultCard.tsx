@@ -39,7 +39,7 @@ const SearchResultCard = ({ details }: { details: SearchServiceProps }) => {
             alt="Product image"
             className="max-h-[150px] w-full rounded-md object-cover"
             height={100}
-            src={details.product.image[0]?.path ?? imagesUrls.logoImage}
+            src={details.product?.image?.[0]?.path ?? imagesUrls.logoImage}
             width={100}
             unoptimized
           />
