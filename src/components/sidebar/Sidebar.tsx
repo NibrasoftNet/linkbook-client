@@ -20,7 +20,6 @@ import Links from '@/components/sidebar/components/Links';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
 import { imagesUrls } from '@/lib/constants';
-import { Env } from '@/libs/Env';
 import { useAuth } from '@/providers/AuthContext';
 import { useNavigationLayout } from '@/providers/NavigationLayoutProvider';
 import type { IRoute } from '@/types/types';
@@ -68,7 +67,8 @@ function Sidebar(props: SidebarProps) {
                 />
               </Button>
               <Link
-                href={Env.NEXT_PUBLIC_APP_URL}
+                href="/"
+                replace
                 className="mt-8 flex cursor-pointer items-center justify-center gap-4"
               >
                 <Image
