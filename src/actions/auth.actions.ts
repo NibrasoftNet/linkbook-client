@@ -160,7 +160,6 @@ export const getProfileAction = async ({
   token?: string;
 }) => {
   try {
-    console.log('aqw', token);
     let url = `${Env.API_URL}/auth/me`;
     if (token) {
       url += `?token=${token}`;

@@ -18,14 +18,14 @@ const frederickaTheGreat = Fredericka_the_Great({
   style: 'normal',
 });
 const HowItWorks = () => {
-  const t = useTranslations('Landing');
+  const t = useTranslations('HowItWorks');
   return (
     <section className="landing-section p-4">
       <div className="flex size-full max-w-[1400px] flex-col items-center gap-10 text-center">
         <h1
           className={`${frederickaTheGreat.className} pb-6 text-6xl capitalize text-primary`}
         >
-          {t('landing_how_it_works')}
+          {t('title')}
         </h1>
         <div className="flex w-full flex-col-reverse items-center md:flex-row">
           <div className="flex size-full items-center justify-center rounded-lg md:w-1/2">
@@ -47,13 +47,9 @@ const HowItWorks = () => {
                 <h2
                   className={`${frederickaTheGreat.className} text-2xl text-primary`}
                 >
-                  {t('meta_subscribe')}
+                  {t('subscribe_title')}
                 </h2>
-                <p className="text-start">
-                  Empowering readers to exchange, donate, and swap books online,
-                  fostering community engagement and spreading the joy of
-                  reading globally.
-                </p>
+                <p className="text-start">{t('subscribe')}</p>
               </div>
             </div>
             <div className="w-full pr-16">
@@ -69,13 +65,9 @@ const HowItWorks = () => {
                 <h2
                   className={`${frederickaTheGreat.className} text-2xl text-tertiary`}
                 >
-                  Join a community
+                  {t('search_title')}
                 </h2>
-                <p className="text-start">
-                  Empowering readers to exchange, donate, and swap books online,
-                  fostering community engagement and spreading the joy of
-                  reading globally.
-                </p>
+                <p className="text-start">{t('search')}</p>
               </div>
             </div>
             <div className="w-full pl-16">
@@ -91,13 +83,9 @@ const HowItWorks = () => {
                 <h2
                   className={`${frederickaTheGreat.className} text-2xl text-primary`}
                 >
-                  Select your need in a cheapest price
+                  {t('results_title')}
                 </h2>
-                <p className="text-start">
-                  Empowering readers to exchange, donate, and swap books online,
-                  fostering community engagement and spreading the joy of
-                  reading globally.
-                </p>
+                <p className="text-start">{t('results')}</p>
               </div>
             </div>
           </div>

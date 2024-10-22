@@ -12,7 +12,11 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { CircleIcon, CurvedArrowLeftIcon } from '@/icons/general';
-import { frederickaTheGreat, imagesUrls } from '@/lib/constants';
+import {
+  defaultPaginationLimit,
+  frederickaTheGreat,
+  imagesUrls,
+} from '@/lib/constants';
 
 async function CommunityCard({
   title,
@@ -41,12 +45,12 @@ async function CommunityCard({
             #{slug}
           </span>
           <h1 className="text-lg font-semibold">{title}</h1>
-          <p className="text-left">{description}</p>
+          <p className="truncate text-left">{description}</p>
           <div className="flex w-full justify-end">
             <Link
               href={
                 session?.user
-                  ? `/${session.user.id}/community/${slug}`
+                  ? `/${session.user.id}/community/details?page=1&limit=${defaultPaginationLimit}`
                   : `/sign-in`
               }
               aria-label="click"
@@ -62,7 +66,7 @@ async function CommunityCard({
   );
 }
 const CommunityOffers = () => {
-  const t = useTranslations('Landing');
+  const t = useTranslations('Communities');
   return (
     <Carousel
       opts={{
@@ -73,40 +77,35 @@ const CommunityOffers = () => {
     >
       <div className="flex size-full max-w-[1400px] flex-col items-center gap-4 text-center">
         <div className="flex flex-col justify-center gap-2 text-center">
-          <h3 className="text-xl capitalize text-black">{t('here_you_win')}</h3>
           <h1
             className={`${frederickaTheGreat.className} pb-6 text-6xl capitalize text-primary`}
           >
-            {t('community_offers')}
+            {t('title')}
           </h1>
         </div>
         <CarouselContent className="w-full gap-2 p-4">
           <CommunityCard
-            title="Book title 01"
-            description="lorem ep sum take your chance or stay in the bed for the rest of
-            your life"
-            slug="span"
+            title={t('card1-title')}
+            description={t('card1-description')}
+            slug={t('card1-title')}
             imageSrc={imagesUrls.communityOfferImage01}
           />
           <CommunityCard
-            title="Book title 02"
-            description="lorem ep sum take your chance or stay in the bed for the rest of
-            your life"
-            slug="span"
+            title={t('card2-title')}
+            description={t('card2-description')}
+            slug={t('card2-title')}
             imageSrc={imagesUrls.communityOfferImage02}
           />
           <CommunityCard
-            title="Book title 03"
-            description="lorem ep sum take your chance or stay in the bed for the rest of
-            your life"
-            slug="span"
+            title={t('card3-title')}
+            description={t('card3-description')}
+            slug={t('card3-title')}
             imageSrc={imagesUrls.communityOfferImage01}
           />
           <CommunityCard
-            title="Book title 04"
-            description="lorem ep sum take your chance or stay in the bed for the rest of
-            your life"
-            slug="span"
+            title={t('card4-title')}
+            description={t('card4-description')}
+            slug={t('card4-title')}
             imageSrc={imagesUrls.communityOfferImage02}
           />
         </CarouselContent>

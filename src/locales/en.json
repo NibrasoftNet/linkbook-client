@@ -23,8 +23,7 @@
     "here_you_win": "here you win",
     "community_offers": "community offers",
     "our_activities": "our activities",
-    "testimonials": "testimonials",
-    "meta_subscribe": "subscribe"
+    "testimonials": "testimonials"
   },
   "Sidebar": {
     "main_dashboard": "Dashboard",
@@ -65,12 +64,36 @@
     "meta_reset_password_btn": "Reset"
   },
   "OurJob": {
-    "title": "Our Job",
-    "description": "Empowering readers to exchange, donate, and swap books online, fostering community engagement and spreading the joy of reading globally.",
+    "title": "Our Mission",
+    "description": "Our mission is to facilitate access to educational resources by promoting the exchange of books and school materials within an inclusive community.",
     "interest": "interest group of",
     "people": "people",
     "economic": "economic",
     "social": "social"
+  },
+  "HowItWorks": {
+    "title": "How does it work?",
+    "description": "We organize various activities to promote reading, learning, and community engagement. These activities include.",
+    "subscribe_title": "Subscribe",
+    "subscribe": "Users easily register on the platform by creating a profile. This allows them to access all the features offered by Linkbook.",
+    "search_title": "Search",
+    "search": "Once registered, users can browse a wide selection of books, school supplies, and other educational resources available on the platform.",
+    "results_title": "Results",
+    "results": "Users can easily donate items they no longer use or exchange resources with other members of the community. This feature promotes sharing and sustainability."
+  },
+  "OurActivities": {
+    "title": "Our Activities"
+  },
+  "Communities": {
+    "title": "community",
+    "card1-title": "Shop Creation",
+    "card2-title": "News Feeds",
+    "card3-title": "Community of Interest",
+    "card4-title": "Partnerships",
+    "card1-description": "By creating your own online store on Linkbook, you gain visibility and sales opportunities. This allows you to offer your books and school supplies to a wider audience, while customizing your sales space to meet your specific needs. Each sale or exchange contributes to your success as an entrepreneur.",
+    "card2-description": "Create and share your activities and proposals with others! Build and contribute to vibrant communities where you can post updates, interact with others, and participate in common initiatives.",
+    "card3-description": "By joining our community of interests, you gain the opportunity to connect with others who are passionate about reading and education. These interactions enrich your experience, allowing you to exchange ideas, share resources, and participate in collaborative activities. This community dynamic fosters mutual learning and solidarity among members.",
+    "card4-description": "By establishing agreements with associations and private institutions, you gain access to a broader network of resources and support. These partnerships strengthen your credibility and offer you opportunities for collaboration, such as joint events or educational initiatives, allowing you to grow your business and reach new customers."
   },
   "DrawerPage": {
     "verification_otp": "Verification OTP",

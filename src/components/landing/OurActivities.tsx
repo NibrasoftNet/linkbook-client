@@ -14,18 +14,24 @@ import { frederickaTheGreat } from '@/lib/constants';
 const cards = [
   {
     title: 'shopping',
+    description:
+      "Boutique en Ligne Personnalisée : Chaque utilisateur peut créer sa propre boutique en ligne, lui permettant de vendre et d'échanger des livres et des fournitures scolaires selon ses besoins.",
     icon: <CartIcon iconClass="size-20 text-white" />,
     colorClass: 'border-tertiary text-tertiary bg-tertiary',
     textColor: 'text-tertiary',
   },
   {
     title: 'education/training',
+    description:
+      "Communauté d'Intérêts : Les membres peuvent se connecter avec d'autres personnes partageant les mêmes intérêts, favorisant ainsiles échanges d'idées et de ressources au sein de la communauté.",
     icon: <AcademyHelmetIcon iconClass="size-20 text-white" />,
     colorClass: 'border-primary text-primary bg-primary',
     textColor: 'text-primary',
   },
   {
     title: 'entertainment',
+    description:
+      "Conventions avec des Associations et Établissements Privés : Nous établissons des partenariats avec des associations et des établissements éducatifs pour renforcer l'accès aux ressources et enrichir l'expérience des utilisateurs.",
     icon: <StickIcon iconClass="size-20 text-white" />,
     colorClass: 'border-tertiary text-tertiary bg-tertiary',
     textColor: 'text-tertiary',
@@ -33,7 +39,7 @@ const cards = [
 ];
 
 const OurActivities = () => {
-  const t = useTranslations('Landing');
+  const t = useTranslations('OurActivities');
 
   return (
     <section className="landing-section relative w-screen overflow-hidden bg-blue-100 p-4">
@@ -47,7 +53,7 @@ const OurActivities = () => {
         <h1
           className={`${frederickaTheGreat.className} mb-16 pb-6 text-6xl capitalize text-primary`}
         >
-          {t('our_activities')}
+          {t('title')}
         </h1>
         <div className="relative flex justify-center overflow-visible">
           <div className="grid w-full grid-cols-1 md:grid-cols-3">
@@ -75,7 +81,7 @@ const OurActivities = () => {
                           {card?.title}
                         </h2>
                         <h4 className="text-xl capitalize">
-                          interest group of
+                          {card?.description}
                         </h4>
                       </div>
                     </div>
