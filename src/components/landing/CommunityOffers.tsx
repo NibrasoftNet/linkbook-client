@@ -12,11 +12,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { CircleIcon, CurvedArrowLeftIcon } from '@/icons/general';
-import {
-  defaultPaginationLimit,
-  frederickaTheGreat,
-  imagesUrls,
-} from '@/lib/constants';
+import { frederickaTheGreat, imagesUrls } from '@/lib/constants';
 
 async function CommunityCard({
   title,
@@ -45,12 +41,12 @@ async function CommunityCard({
             #{slug}
           </span>
           <h1 className="text-lg font-semibold">{title}</h1>
-          <p className="truncate text-left">{description}</p>
+          <p className="text-left">{description}</p>
           <div className="flex w-full justify-end">
             <Link
               href={
                 session?.user
-                  ? `/${session.user.id}/community/details?page=1&limit=${defaultPaginationLimit}`
+                  ? `/${session.user.id}/community/${slug}`
                   : `/sign-in`
               }
               aria-label="click"

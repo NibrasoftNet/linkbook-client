@@ -14,8 +14,7 @@ import { frederickaTheGreat } from '@/lib/constants';
 const cards = [
   {
     title: 'shopping',
-    description:
-      "Boutique en Ligne Personnalisée : Chaque utilisateur peut créer sa propre boutique en ligne, lui permettant de vendre et d'échanger des livres et des fournitures scolaires selon ses besoins.",
+    description: 'Chaque utilisateur peut créer sa propre boutique en ligne',
     icon: <CartIcon iconClass="size-20 text-white" />,
     colorClass: 'border-tertiary text-tertiary bg-tertiary',
     textColor: 'text-tertiary',
@@ -23,7 +22,7 @@ const cards = [
   {
     title: 'education/training',
     description:
-      "Communauté d'Intérêts : Les membres peuvent se connecter avec d'autres personnes partageant les mêmes intérêts, favorisant ainsiles échanges d'idées et de ressources au sein de la communauté.",
+      "Connecter avec d'autres personnes partageant les mêmes intérêts.",
     icon: <AcademyHelmetIcon iconClass="size-20 text-white" />,
     colorClass: 'border-primary text-primary bg-primary',
     textColor: 'text-primary',
@@ -31,7 +30,7 @@ const cards = [
   {
     title: 'entertainment',
     description:
-      "Conventions avec des Associations et Établissements Privés : Nous établissons des partenariats avec des associations et des établissements éducatifs pour renforcer l'accès aux ressources et enrichir l'expérience des utilisateurs.",
+      'Partenariats avec des associations et des établissements éducatifs.',
     icon: <StickIcon iconClass="size-20 text-white" />,
     colorClass: 'border-tertiary text-tertiary bg-tertiary',
     textColor: 'text-tertiary',

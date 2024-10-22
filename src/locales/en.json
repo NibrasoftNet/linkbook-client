@@ -87,13 +87,13 @@
   "Communities": {
     "title": "community",
     "card1-title": "Shop Creation",
-    "card2-title": "News Feeds",
-    "card3-title": "Community of Interest",
+    "card2-title": "News Files",
+    "card3-title": "Community of Interests",
     "card4-title": "Partnerships",
-    "card1-description": "By creating your own online store on Linkbook, you gain visibility and sales opportunities. This allows you to offer your books and school supplies to a wider audience, while customizing your sales space to meet your specific needs. Each sale or exchange contributes to your success as an entrepreneur.",
-    "card2-description": "Create and share your activities and proposals with others! Build and contribute to vibrant communities where you can post updates, interact with others, and participate in common initiatives.",
-    "card3-description": "By joining our community of interests, you gain the opportunity to connect with others who are passionate about reading and education. These interactions enrich your experience, allowing you to exchange ideas, share resources, and participate in collaborative activities. This community dynamic fosters mutual learning and solidarity among members.",
-    "card4-description": "By establishing agreements with associations and private institutions, you gain access to a broader network of resources and support. These partnerships strengthen your credibility and offer you opportunities for collaboration, such as joint events or educational initiatives, allowing you to grow your business and reach new customers."
+    "card1-description": "Gain visibility and sales opportunities. This allows you to offer your books and school supplies",
+    "card2-description": "Create and share your activities and proposals with others! Build and contribute to dynamic communities.",
+    "card3-description": "By joining our community of interests, you gain the opportunity to connect with other reading and education enthusiasts.",
+    "card4-description": "By establishing agreements with associations and private institutions, you access a broader network of resources and support."
   },
   "DrawerPage": {
     "verification_otp": "Verification OTP",

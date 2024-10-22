@@ -87,10 +87,10 @@
     "card2-title": "Files d'actualité",
     "card3-title": "Communauté d'Intérêts",
     "card4-title": "Partenariats",
-    "card1-description": "En créant votre propre boutique en ligne sur Linkbook, vous gagnez en visibilité et\nen opportunités de vente. Cela vous permet de proposer vos livres et fournitures\nscolaires à un public plus large, tout en personnalisant votre espace de vente pour\nrépondre à vos besoins spécifiques. Chaque vente ou échange contribue à votre\nsuccès en tant qu'entrepreneur.",
-    "card2-description": "Créez et partagez vos activités et propositions avec d'autres ! Construisez et contribuez à des communautés dynamiques où vous pouvez publier des mises à jour, interagir avec d'autres et participer à des initiatives communes.",
-    "card3-description": "En rejoignant notre communauté d'intérêts, vous gagnez l'opportunité de vous\nconnecter avec d'autres passionnés de lecture et d'éducation. Ces interactions\nenrichissent votre expérience, vous permettant d'échanger des idées, de partager\ndes ressources et de participer à des activités collaboratives. Cette dynamique\ncommunautaire favorise un apprentissage mutuel et une solidarité entre les\nmembres.",
-    "card4-description": "n nouant des conventions avec des associations et des établissements privés, vous\naccédez à un réseau élargi de ressources et de soutien. Ces partenariats renforcent\nvotre crédibilité et vous offrent des opportunités de collaboration, telles que des\névénements communs ou des initiatives éducatives, vous permettant de\ndévelopper vos activités et d'atteindre de nouveaux clients."
+    "card1-description": "Gagnez en visibilité et en opportunités de vente. Cela vous permet de proposer vos livres et fournitures scolaires",
+    "card2-description": "Créez et partagez vos activités et propositions avec d'autres ! Construisez et contribuez à des communautés dynamiques.",
+    "card3-description": "En rejoignant notre communauté d'intérêts, vous gagnez l'opportunité de vous connecter avec d'autres passionnés de lecture et d'éducation.",
+    "card4-description": "n nouant des conventions avec des associations et des établissements privés, vous accédez à un réseau élargi de ressources et de soutien."
   },
   "RootLayout": {
     "home_link": "Accueil",
