@@ -42,7 +42,7 @@ export const communityListColumns: ColumnDef<CommunityValueType>[] = [
     accessorKey: 'id',
     header: 'Ref',
     cell: ({ row }) => (
-      <Link type="button" href={`../donations?id=${row.original.id}`}>
+      <Link type="button" href={`../community?id=${row.original.id}`}>
         COM-{String(row.getValue('id'))}
       </Link>
     ),

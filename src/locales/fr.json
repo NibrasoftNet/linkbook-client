@@ -127,6 +127,10 @@
     "my_swaps_request": "Mes echanges demandees",
     "latest_swaps": "Dernières"
   },
+  "FeedsTab": {
+    "my_feeds": "Mes feeds",
+    "latest_feeds": "Dernières"
+  },
   "Forbidden": {
     "title": "Interdit",
     "description": "Vous n'avez pas la permission d'accéder à cette page"
