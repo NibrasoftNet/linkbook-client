@@ -35,7 +35,7 @@ const SwapCard = ({ swap }: { swap: SwapProps }) => {
           </Avatar>
           <div className="ml-1.5 text-sm leading-tight">
             <span className="block font-bold">{swap.creator.email}</span>
-            <span className="block font-normal">@visualizevalue</span>
+            <span className="block font-normal">@{swap.creator.firstName}</span>
           </div>
         </div>
         <Link href={`../swaps?id=${swap.id}`}>

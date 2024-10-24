@@ -38,7 +38,9 @@ const DonationCard = ({ donation }: { donation: DonationProps }) => {
           </Avatar>
           <div className="ml-1.5 text-sm leading-tight">
             <span className="block font-bold">{donation.creator.email}</span>
-            <span className="block font-normal">@visualizevalue</span>
+            <span className="block font-normal">
+              @{donation.creator.firstName}
+            </span>
           </div>
         </div>
         <Link href={`../donations?id=${donation.id}`}>
