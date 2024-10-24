@@ -15,7 +15,7 @@ interface Item {
 
 const items: Item[] = [
   { title: 'Home', link: '#linkbook-landing-hero', scroolTo: true },
-  { title: 'About', link: '#linkbook-landing-ourJobs', scroolTo: false },
+  { title: 'About', link: '#linkbook-landing-ourJobs', scroolTo: true },
   { title: 'Contact', link: '/contact', scroolTo: false },
 ];
 
