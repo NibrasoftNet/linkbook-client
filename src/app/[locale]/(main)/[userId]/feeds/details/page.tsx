@@ -34,7 +34,7 @@ export default async function CommunityFeedPage({
     queryFn: () => getCommunityFeedListMeAction(searchParams),
   });
 
-  const t = await getTranslations('CommunityTab');
+  const t = await getTranslations('FeedsTab');
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <React.Suspense fallback={<TableSkeleton />}>
@@ -42,10 +42,10 @@ export default async function CommunityFeedPage({
           <Tabs defaultValue="feed_related_me">
             <TabsList className="flex">
               <TabsTrigger value="feed_related_me" className="w-1/2">
-                {t('private_request_communities')}
+                {t('latest_feeds')}
               </TabsTrigger>
               <TabsTrigger value="feed_mine" className="w-1/2">
-                {t('my_communities')}
+                {t('my_feeds')}
               </TabsTrigger>
             </TabsList>
             <TabsContent id="#feed_related_me" value="feed_related_me">

@@ -72,6 +72,7 @@ function Hero() {
   };
   return (
     <section
+      id="linkbook-landing-hero"
       ref={targetRef}
       className="landing-section relative z-20 min-h-screen w-screen"
     >

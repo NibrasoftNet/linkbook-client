@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
+import { defaultPaginationLimit } from '@/lib/constants';
 import { useAuth } from '@/providers/AuthContext';
 
 const NavbarItemsLanding = () => {
@@ -12,9 +13,18 @@ const NavbarItemsLanding = () => {
 
   // Define your links and their translations dynamically
   const navItems = [
-    { key: t('landing_community'), path: 'community' },
-    { key: t('landing_donations'), path: 'donations' },
-    { key: t('landing_swaps'), path: 'swaps' },
+    {
+      key: t('landing_community'),
+      path: `community/details?page=1&limit=${defaultPaginationLimit}`,
+    },
+    {
+      key: t('landing_donations'),
+      path: `donations/details?page=1&limit=${defaultPaginationLimit}`,
+    },
+    {
+      key: t('landing_swaps'),
+      path: `swaps/details?page=1&limit=${defaultPaginationLimit}`,
+    },
     { key: t('landing_products'), path: 'products' },
     { key: t('landing_profile'), path: 'profile' },
   ];

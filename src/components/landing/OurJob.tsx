@@ -25,7 +25,7 @@ const OurJob = async () => {
   const t = useTranslations('OurJob');
   const session = await getSession();
   return (
-    <section className="landing-section p-4">
+    <section id="linkbook-landing-ourJobs" className="landing-section p-4">
       <div className={styles.jobMain}>
         <div className="flex flex-col items-center gap-4 text-center">
           <h1
