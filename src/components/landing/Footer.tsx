@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import { FaceBookIcon, XIcon } from '@/icons/landing';
@@ -13,13 +14,21 @@ interface Item {
   scroolTo: boolean;
 }
 
-const items: Item[] = [
-  { title: 'Home', link: '#linkbook-landing-hero', scroolTo: true },
-  { title: 'About', link: '#linkbook-landing-ourJobs', scroolTo: true },
-  { title: 'Contact', link: '/contact', scroolTo: false },
-];
-
 const Footer = () => {
+  const translationMenu = useTranslations('FooterMenu');
+  const items: Item[] = [
+    {
+      title: translationMenu('home'),
+      link: '#linkbook-landing-hero',
+      scroolTo: true,
+    },
+    {
+      title: translationMenu('about'),
+      link: '#linkbook-landing-ourJobs',
+      scroolTo: true,
+    },
+    { title: translationMenu('contact'), link: '/contact', scroolTo: false },
+  ];
   return (
     <footer className="flex w-full flex-col items-center gap-4 p-2">
       <Image

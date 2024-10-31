@@ -10,7 +10,7 @@
     "setting_link": "Settings",
     "helpdesk_link": "Helpdesk",
     "landing_community": "Communauté",
-    "landing_feed": "Fils d'actualites",
+    "landing_feed": "Fils d'actualités",
     "landing_donations": "Donations",
     "landing_swaps": "Swaps",
     "landing_products": "Produits",
@@ -30,7 +30,7 @@
     "search": "Recherche",
     "products": "Produits",
     "community": "Communauté",
-    "feeds": "Fils d'actualites",
+    "feeds": "Fils d'actualités",
     "profile_settings": "Paramètres du profil",
     "subscription": "Abonnement",
     "pricing_page": "Page de tarification",
@@ -63,7 +63,9 @@
   "OurJob": {
     "title": "Notre Mission",
     "description": "Notre mission est de faciliter l'accès aux ressources éducatives en favorisant l'échange de livres et de matériels scolaires au sein d'une communauté inclusive.",
-    "interest": "groupe d'interet",
+    "interestOne": "Nous construisons une plateforme durable qui favorise l'échange continu de connaissances et de ressources entre les utilisateurs.",
+    "interestTwo": "Linkbook contribue à l'économie locale en soutenant les librairies partenaires et en offrant des opportunités de vente aux étudiants et aux passionnés de lecture.",
+    "interestThree": "Nous favorisons des liens sociaux solides en créant un environnement où les utilisateurs peuvent partager, collaborer et apprendre les uns des autres.",
     "people": "personnes",
     "economic": "economique",
     "social": "sociaux"
@@ -71,26 +73,34 @@
   "HowItWorks": {
     "title": "Comment ça marche ?",
     "description": "Nous organisons diverses activités visant à promouvoir la lecture, l'apprentissage et l'engagement communautaire. Ces activités incluent.",
-    "subscribe_title": "S'inscrire",
+    "subscribe_title": "Inscription",
     "subscribe": "Les utilisateurs s'inscrivent facilement sur la plateforme en créant un profil. Cela leur permet d'accéder à toutes les fonctionnalités offertes par Linkbook.",
-    "search_title": "Recherche",
+    "search_title": "Recherche et Découverte",
     "search": "Une fois inscrits, les utilisateurs peuvent parcourir une vaste sélection de livres, de fournitures scolaires et d'autres ressources éducatives disponibles sur la plateforme.",
-    "results_title": "Résultats",
-    "results": "Les utilisateurs peuvent facilement donner des articles qu'ils n'utilisent plus ou échanger des ressources avec d'autres membres de la communauté. Cette fonctionnalité favorise le partage et la durabilité."
+    "storeCreation_title": "Création de Boutique",
+    "storeCreation": "Chaque membre a la possibilité de créer sa propre boutique en ligne, où il peut vendre ou échanger des livres et des fournitures. Cela leur permet de personnaliser leur espace en fonction de leurs besoins et de leurs préférences.",
+    "donationAndExchange_title": "Don et Échange",
+    "donationAndExchange": "Les utilisateurs peuvent facilement donner des articles qu'ils n'utilisent plus ou échanger des ressources avec d'autres membres de la communauté. Cette fonctionnalité favorise le partage et la durabilité."
   },
   "OurActivities": {
-    "title": "Nos activités"
+    "title": "Notre activité",
+    "shopping_title": "Shopping",
+    "shopping_description": "Boutique en Ligne Personnalisée : Chaque utilisateur peut créer sa propre boutique en ligne, lui permettant de vendre et d'échanger des livres et des fournitures scolaires selon ses besoins.",
+    "education_title": "Éducation/Formation",
+    "education_description": "Communauté d'Intérêts : Les membres peuvent se connecter avec d'autres personnes partageant les mêmes intérêts, favorisant ainsi les échanges d'idées et de ressources au sein de la communauté",
+    "entertainment_title": "Divertissement",
+    "entertainment_description": "Conventions avec des Associations et Établissements Privés : Nous établissons des partenariats avec des associations et des établissements éducatifs pour renforcer l'accès aux ressources et enrichir l'expérience des utilisateurs"
   },
   "Communities": {
     "title": "communautaires",
     "card1-title": "Création de Boutique",
-    "card2-title": "Files d'actualité",
-    "card3-title": "Communauté d'Intérêts",
-    "card4-title": "Partenariats",
-    "card1-description": "Gagnez en visibilité et en opportunités de vente. Cela vous permet de proposer vos livres et fournitures scolaires",
-    "card2-description": "Créez et partagez vos activités et propositions avec d'autres ! Construisez et contribuez à des communautés dynamiques.",
-    "card3-description": "En rejoignant notre communauté d'intérêts, vous gagnez l'opportunité de vous connecter avec d'autres passionnés de lecture et d'éducation.",
-    "card4-description": "n nouant des conventions avec des associations et des établissements privés, vous accédez à un réseau élargi de ressources et de soutien."
+    "card2-title": "Communauté d'Intérêts",
+    "card3-title": "Partenariats",
+    "card4-title": "Files d'actualité",
+    "card1-description": "En créant votre propre boutique en ligne sur Linkbook, vous gagnez en visibilité et en opportunités de vente. Cela vous permet de proposer vos livres et fournitures scolaires à un public plus large, tout en personnalisant votre espace de vente pour répondre à vos besoins spécifiques. Chaque vente ou échange contribue à votre succès en tant qu'entrepreneur.",
+    "card2-description": "En rejoignant notre communauté d'intérêts, vous gagnez l'opportunité de vous connecter avec d'autres passionnés de lecture et d'éducation. Ces interactions enrichissent votre expérience, vous permettant d'échanger des idées, de partager des ressources et de participer à des activités collaboratives. Cette dynamique communautaire favorise un apprentissage mutuel et une solidarité entre les membres.",
+    "card3-description": "En nouant des conventions avec des associations et des établissements privés, vous accédez à un réseau élargi de ressources et de soutien. Ces partenariats renforcent votre crédibilité et vous offrent des opportunités de collaboration, telles que des événements communs ou des initiatives éducatives, vous permettant de développer vos activités et d'atteindre de nouveaux clients.",
+    "card4-description": "Créez et partagez vos activités et propositions avec d'autres ! Construisez et contribuez à des communautés dynamiques."
   },
   "RootLayout": {
     "home_link": "Accueil",
@@ -224,5 +234,14 @@
     "description": "Description",
     "url": "Url",
     "submit": "Envoyer"
+  },
+  "FooterMenu": {
+    "home": "Accueil",
+    "about": "A propos",
+    "contact": "Contact"
+  },
+  "SearchForm": {
+    "typeSelect": "Choisir un type",
+    "categorySelect": "Choisir une catégorie"
   }
 }

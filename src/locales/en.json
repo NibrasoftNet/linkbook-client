@@ -66,7 +66,9 @@
   "OurJob": {
     "title": "Our Mission",
     "description": "Our mission is to facilitate access to educational resources by promoting the exchange of books and school materials within an inclusive community.",
-    "interest": "interest group of",
+    "interestOne": "We are building a sustainable platform that promotes the continuous exchange of knowledge and resources between users.",
+    "interestTwo": "Linkbook contributes to the local economy by supporting partner bookstores and offering sales opportunities for students and reading enthusiasts.",
+    "interestThree": "We foster strong social connections by creating an environment where users can share, collaborate and learn from each other.",
     "people": "people",
     "economic": "economic",
     "social": "social"
@@ -78,22 +80,30 @@
     "subscribe": "Users easily register on the platform by creating a profile. This allows them to access all the features offered by Linkbook.",
     "search_title": "Search",
     "search": "Once registered, users can browse a wide selection of books, school supplies, and other educational resources available on the platform.",
-    "results_title": "Results",
-    "results": "Users can easily donate items they no longer use or exchange resources with other members of the community. This feature promotes sharing and sustainability."
+    "storeCreation_title": "Store Creation",
+    "storeCreation": "Each member has the option to create their own online store, where they can sell or trade books and supplies. This allows them to customize their space based on their needs and preferences.",
+    "donationAndExchange_title": "Donation and Exchange",
+    "donationAndExchange": "Users can easily donate items they no longer use or exchange resources with other members of the community. This feature promotes sharing and sustainability."
   },
   "OurActivities": {
-    "title": "Our Activities"
+    "title": "Our Activity",
+    "shopping_title": "Shopping",
+    "shopping_description": "Personalized Online Shop: Each user can create their own online store, allowing them to sell and exchange books and school supplies according to their needs.",
+    "education_title": "Education/Training",
+    "education_description": "Community of Interest: Members can connect with other like-minded people, fostering exchanges of ideas and resources within the community.",
+    "entertainment_title": "Entertainment",
+    "entertainment_description": "Agreements with Associations and Private Institutions: We partner with associations and educational institutions to strengthen access to resources and enrich the user experience."
   },
   "Communities": {
     "title": "community",
     "card1-title": "Shop Creation",
-    "card2-title": "News Files",
-    "card3-title": "Community of Interests",
-    "card4-title": "Partnerships",
-    "card1-description": "Gain visibility and sales opportunities. This allows you to offer your books and school supplies",
-    "card2-description": "Create and share your activities and proposals with others! Build and contribute to dynamic communities.",
-    "card3-description": "By joining our community of interests, you gain the opportunity to connect with other reading and education enthusiasts.",
-    "card4-description": "By establishing agreements with associations and private institutions, you access a broader network of resources and support."
+    "card2-title": "Community of Interests",
+    "card3-title": "Partnerships",
+    "card4-title": "News Files",
+    "card1-description": "By creating your own online store on Linkbook, you gain visibility and sales opportunities. This allows you to offer your books and school supplies to a wider audience, while customizing your sales space to meet your specific needs. Every sale or trade contributes to your success as an entrepreneur.",
+    "card2-description": "By joining our community of interest, you gain the opportunity to connect with other reading and education enthusiasts. These interactions enrich your experience, allowing you to exchange ideas, share resources and participate in collaborative activities. This community dynamic promotes mutual learning and solidarity among members.",
+    "card3-description": "By entering into agreements with associations and private institutions, you gain access to a wider network of resources and support. These partnerships build your credibility and provide you with opportunities for collaboration, such as joint events or educational initiatives, to grow your business and reach new customers.",
+    "card4-description": "Create and share your activities and proposals with others! Build and contribute to vibrant communities."
   },
   "DrawerPage": {
     "verification_otp": "Verification OTP",
@@ -214,5 +224,14 @@
     "description": "Description",
     "url": "Url",
     "submit": "Submit"
+  },
+  "FooterMenu": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "SearchForm": {
+    "typeSelect": "Select a type",
+    "categorySelect": "Select a category"
   }
 }

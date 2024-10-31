@@ -11,34 +11,31 @@ import {
 } from '@/icons/general';
 import { frederickaTheGreat } from '@/lib/constants';
 
-const cards = [
-  {
-    title: 'shopping',
-    description: 'Chaque utilisateur peut créer sa propre boutique en ligne',
-    icon: <CartIcon iconClass="size-20 text-white" />,
-    colorClass: 'border-tertiary text-tertiary bg-tertiary',
-    textColor: 'text-tertiary',
-  },
-  {
-    title: 'education/training',
-    description:
-      "Connecter avec d'autres personnes partageant les mêmes intérêts.",
-    icon: <AcademyHelmetIcon iconClass="size-20 text-white" />,
-    colorClass: 'border-primary text-primary bg-primary',
-    textColor: 'text-primary',
-  },
-  {
-    title: 'entertainment',
-    description:
-      'Partenariats avec des associations et des établissements éducatifs.',
-    icon: <StickIcon iconClass="size-20 text-white" />,
-    colorClass: 'border-tertiary text-tertiary bg-tertiary',
-    textColor: 'text-tertiary',
-  },
-];
-
 const OurActivities = () => {
   const t = useTranslations('OurActivities');
+  const cards = [
+    {
+      title: t('shopping_title'),
+      description: t('shopping_description'),
+      icon: <CartIcon iconClass="size-20 text-white" />,
+      colorClass: 'border-tertiary text-tertiary bg-tertiary',
+      textColor: 'text-tertiary',
+    },
+    {
+      title: t('education_title'),
+      description: t('education_description'),
+      icon: <AcademyHelmetIcon iconClass="size-20 text-white" />,
+      colorClass: 'border-primary text-primary bg-primary',
+      textColor: 'text-primary',
+    },
+    {
+      title: t('entertainment_title'),
+      description: t('entertainment_description'),
+      icon: <StickIcon iconClass="size-20 text-white" />,
+      colorClass: 'border-tertiary text-tertiary bg-tertiary',
+      textColor: 'text-tertiary',
+    },
+  ];
 
   return (
     <section className="landing-section relative w-screen overflow-hidden bg-blue-100 p-4">
@@ -76,10 +73,10 @@ const OurActivities = () => {
                       <div
                         className={`${card?.textColor} relative flex size-full flex-col items-center justify-center gap-2 pt-6`}
                       >
-                        <h2 className="text-4xl font-bold capitalize">
+                        <h2 className="mt-6 text-4xl font-bold capitalize">
                           {card?.title}
                         </h2>
-                        <h4 className="text-xl capitalize">
+                        <h4 className=" text-sm capitalize">
                           {card?.description}
                         </h4>
                       </div>
