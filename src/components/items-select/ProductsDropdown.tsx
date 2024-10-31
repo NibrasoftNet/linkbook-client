@@ -2,6 +2,7 @@
 
 import { Check, ChevronsUpDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -26,6 +27,8 @@ import { ProductTypeEnum } from '@/types/product.type';
 import useSearchStore from '@/zustand/searchStore';
 
 const ProductsDropdown = () => {
+  const translateDropdown = useTranslations('SearchForm');
+  const searchTranslate = useTranslations('SearchForm');
   const { allProducts } = useSearchStore();
   const auth = useAuth();
   const router = useRouter();
@@ -64,13 +67,13 @@ const ProductsDropdown = () => {
                   (prod: SearchProductsTypeValue) =>
                     prod.value === product.value,
                 )?.label
-              : 'Select a category'}
+              : translateDropdown('categorySelect')}
             <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] p-0">
           <Command>
-            <CommandInput placeholder="Search city..." />
+            <CommandInput placeholder={`${searchTranslate('searchCity')}...`} />
             <CommandList>
               <CommandEmpty>No products found.</CommandEmpty>
               <CommandGroup>

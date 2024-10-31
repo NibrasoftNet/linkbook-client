@@ -58,6 +58,7 @@ const CommunityFeedForm = ({
   communityFeedId?: number;
 }) => {
   const t = useTranslations('CommunityFeedForm');
+  const searchTranslate = useTranslations('SearchForm');
   const [files, setFiles] = useState<File[] | null>(null);
   const communityFeed = useCommunityFeed();
   const form = useForm<CommunityFeedSchemaFormType>({
@@ -184,7 +185,9 @@ const CommunityFeedForm = ({
                 </PopoverTrigger>
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search city..." />
+                    <CommandInput
+                      placeholder={`${searchTranslate('searchCity')}...`}
+                    />
                     <CommandList>
                       <CommandEmpty>No category found.</CommandEmpty>
                       <CommandGroup>

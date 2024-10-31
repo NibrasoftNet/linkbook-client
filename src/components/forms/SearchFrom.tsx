@@ -54,6 +54,7 @@ const SearchFrom = ({
   allCities: CityTypeValue[];
 }) => {
   const translationSearchForm = useTranslations('SearchForm');
+  const searchTranslate = useTranslations('SearchForm');
   const router = useRouter();
   const auth = useAuth();
   const { category, setCity, setCategory, setType } = useSearchStore();
@@ -160,7 +161,9 @@ const SearchFrom = ({
                       </PopoverTrigger>
                       <PopoverContent className="w-[200px] p-0">
                         <Command>
-                          <CommandInput placeholder="Search city..." />
+                          <CommandInput
+                            placeholder={`${searchTranslate('searchCity')}...`}
+                          />
                           <CommandList>
                             <CommandEmpty>No category found.</CommandEmpty>
                             <CommandGroup>
@@ -244,7 +247,9 @@ const SearchFrom = ({
                         </PopoverTrigger>
                         <PopoverContent className="w-[200px] p-0">
                           <Command>
-                            <CommandInput placeholder="Search city..." />
+                            <CommandInput
+                              placeholder={`${searchTranslate('searchCity')}...`}
+                            />
                             <CommandList>
                               <CommandEmpty>No city found.</CommandEmpty>
                               <CommandGroup>

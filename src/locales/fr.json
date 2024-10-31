@@ -242,6 +242,7 @@
   },
   "SearchForm": {
     "typeSelect": "Choisir un type",
-    "categorySelect": "Choisir une catégorie"
+    "categorySelect": "Choisir une catégorie",
+    "searchCity": "Recherche ville"
   }
 }
