@@ -232,6 +232,7 @@
   },
   "SearchForm": {
     "typeSelect": "Select a type",
-    "categorySelect": "Select a category"
+    "categorySelect": "Select a category",
+    "searchCity": "Search city"
   }
 }
