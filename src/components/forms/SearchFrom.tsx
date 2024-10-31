@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Check, ChevronsUpDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
@@ -52,6 +53,7 @@ const SearchFrom = ({
   allCategories: CategoryTypeValue[];
   allCities: CityTypeValue[];
 }) => {
+  const translationSearchForm = useTranslations('SearchForm');
   const router = useRouter();
   const auth = useAuth();
   const { category, setCity, setCategory, setType } = useSearchStore();
@@ -99,7 +101,9 @@ const SearchFrom = ({
                     <FormControl>
                       <Select onValueChange={field.onChange}>
                         <SelectTrigger className="w-full rounded-full">
-                          <SelectValue placeholder="Select a type" />
+                          <SelectValue
+                            placeholder={translationSearchForm('typeSelect')}
+                          />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectGroup>
@@ -149,7 +153,7 @@ const SearchFrom = ({
                               ? allCategories.find(
                                   (cat: any) => cat.value === field.value,
                                 )?.label
-                              : 'Select a category'}
+                              : translationSearchForm('categorySelect')}
                             <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
                           </Button>
                         </FormControl>
