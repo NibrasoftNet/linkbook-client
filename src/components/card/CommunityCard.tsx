@@ -26,6 +26,7 @@ import { PrivateCommunityOperationEnum } from '@/types/community.type';
 dayjs.extend(relativeTime);
 const CommunityCard = ({ community }: { community: CommunityValueType }) => {
   const auth = useAuth();
+  console.log('creator: ', community.creator);
   return (
     <Card className="w-[550px] rounded-xl border p-4">
       <CardHeader className="flex w-full flex-row justify-between">
@@ -40,7 +41,9 @@ const CommunityCard = ({ community }: { community: CommunityValueType }) => {
             <span className="block font-bold">
               {community.creator.firstName}
             </span>
-            <span className="block font-normal">{community.creator.email}</span>
+            <span className="block font-normal">
+              {community.creator.lastName}
+            </span>
           </div>
         </div>
       </CardHeader>
