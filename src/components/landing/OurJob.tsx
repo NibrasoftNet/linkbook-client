@@ -44,7 +44,9 @@ const OurJob = async () => {
                 <CircleIcon iconClass="size-[90%] absolute m-1 text-primary" />
                 <ChildWhiteBgIcon iconClass="size-20 text-primary text-white relative" />
               </div>
-              <h4 className="text-lg">{t('interestOne')}</h4>
+              <h4 className="line-clamp-2 w-full text-lg hover:line-clamp-none">
+                {t('interestOne')}
+              </h4>
               <h2 className="text-4xl font-bold capitalize">{t('people')}</h2>
               <Link
                 href={
@@ -63,7 +65,9 @@ const OurJob = async () => {
                 <CircleIcon iconClass="size-[90%] absolute m-1 text-tertiary" />
                 <DonationWhiteBgIcon iconClass="size-16 text-primary text-white" />
               </div>
-              <h4 className="text-lg">{t('interestTwo')}</h4>
+              <h4 className="line-clamp-2 w-full text-lg hover:line-clamp-none">
+                {t('interestTwo')}
+              </h4>
               <h2 className="text-4xl font-bold capitalize">{t('economic')}</h2>
               <Link
                 href={
@@ -82,7 +86,9 @@ const OurJob = async () => {
                 <CircleIcon iconClass="size-[90%] absolute m-1 text-primary" />
                 <GroupWhiteBgIcon iconClass="size-20 text-white" />
               </div>
-              <h4 className="text-lg">{t('interestThree')}</h4>
+              <h4 className="line-clamp-2 w-full text-lg hover:line-clamp-none">
+                {t('interestThree')}
+              </h4>
               <h2 className="text-4xl font-bold capitalize">{t('social')}</h2>
               <Link
                 href={
