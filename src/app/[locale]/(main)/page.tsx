@@ -25,7 +25,8 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 
 export default async function Index() {
   return (
-    <main className="flex w-screen flex-col items-center gap-10 text-clip">
+    // <main className="flex w-screen flex-col items-center gap-10 text-clip">
+    <main className="flex w-full flex-col items-center gap-4 overflow-x-hidden md:gap-6 lg:gap-10">
       <Hero />
       <OurJob />
       <HowItWorks />

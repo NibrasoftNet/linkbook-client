@@ -27,8 +27,9 @@ async function CommunityCard({
 }) {
   const session = await getSession();
   return (
-    <CarouselItem className="relative h-fit basis-1/2 rounded-[30px] border border-primary md:basis-1/3">
-      <div className="flex w-full -translate-x-2 -translate-y-2 flex-col items-center rounded-[30px] border-[3px] border-primary bg-white p-2">
+    <CarouselItem className="w-4/5 rounded-[30px] border border-primary md:basis-1/2 lg:basis-1/3">
+      {/*  <CarouselItem className="relative h-full basis-1/2 rounded-[30px] border border-primary md:basis-1/3"> */}
+      <div className="flex size-full -translate-x-2 -translate-y-2 flex-col items-center rounded-[30px] border-[3px] border-primary bg-white p-2">
         <Image
           src={imageSrc}
           alt="HowItWorks"
@@ -36,12 +37,14 @@ async function CommunityCard({
           height={500}
           className="w-full rounded-[30px] object-cover"
         />
-        <div className="mt-2 flex w-full flex-col items-start gap-2 px-2 text-primary">
-          <span className="rounded-full bg-tertiary/50 px-3 capitalize text-white">
-            #{slug}
-          </span>
-          <h1 className="text-lg font-semibold">{title}</h1>
-          <p className="text-left">{description}</p>
+        <div className="mt-2 flex size-full flex-col items-start justify-between gap-2 px-2 text-primary">
+          <div className="flex w-full flex-col items-start gap-2">
+            <span className="rounded-full bg-tertiary/50 px-3 capitalize text-white">
+              #{slug}
+            </span>
+            <h1 className="text-lg font-semibold">{title}</h1>
+            <p className="text-left">{description}</p>
+          </div>
           <div className="flex w-full justify-end">
             <Link
               href={
