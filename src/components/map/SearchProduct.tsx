@@ -36,9 +36,9 @@ const SearchProduct = ({ page }: { page: string }) => {
         style={{
           position: 'absolute',
           top: page === 'home' ? '70vh' : '10px',
-          zIndex: '1000',
+          // zIndex: '1000',
         }}
-        className={`hidden justify-center gap-2 md:right-1/4 md:flex md:w-[90%] ${page === 'home' ? 'md:w-1/2' : 'md:w-2/3'}`}
+        className={`hidden justify-center gap-2 md:right-[20%] md:flex md:w-[90%] lg:right-[24%] ${page === 'home' ? 'md:w-1/2' : 'md:w-2/3'}`}
       >
         <SearchFrom
           page={page}
