@@ -24,7 +24,7 @@ import { useAuth } from '@/providers/AuthContext';
 import { useNavigationLayout } from '@/providers/NavigationLayoutProvider';
 import type { IRoute } from '@/types/types';
 
-import { Badge } from '../ui/badge';
+// import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 
 export interface SidebarProps extends PropsWithChildren {
@@ -41,7 +41,7 @@ function Sidebar(props: SidebarProps) {
   return (
     <aside
       /* eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values */
-      className={`fixed  min-h-full w-[300px] transition-all ${
+      className={`fixed z-[1000] min-h-full w-[300px] transition-all ${
         props.variant === 'auth' ? 'xl:hidden' : 'xl:block'
       } ${open ? '' : '-translate-x-[120%] xl:translate-x-[unset]'}`}
     >
@@ -55,7 +55,7 @@ function Sidebar(props: SidebarProps) {
           <div className="flex h-full flex-col justify-between">
             <div>
               <Button
-                className="absolute top-4 block cursor-pointer text-zinc-200 dark:text-white/40 xl:hidden"
+                className="absolute top-4 block cursor-pointer bg-white text-zinc-200 dark:text-white/40 xl:hidden"
                 onClick={() => setOpen(false)}
               >
                 <Image
@@ -66,7 +66,7 @@ function Sidebar(props: SidebarProps) {
                   className="size-full object-cover dark:brightness-[0.2] dark:grayscale"
                 />
               </Button>
-              <Link
+              {/* <Link
                 href="/"
                 replace
                 className="mt-8 flex cursor-pointer items-center justify-center gap-4"
@@ -88,8 +88,9 @@ function Sidebar(props: SidebarProps) {
                 >
                   User
                 </Badge>
-              </Link>
-              <div className="my-8 h-px bg-zinc-200 dark:bg-white/10" />
+              </Link> */}
+              {/* <div className="my-8 h-px bg-zinc-200 dark:bg-white/10" /> */}
+              <div className="my-8 h-px" />
               {/* Nav item */}
               <ul>
                 <Links routes={routes} />
