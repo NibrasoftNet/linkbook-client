@@ -39,9 +39,9 @@ const styles = {
   navBarItems:
     'z-10 flex h-[70px] w-full items-center justify-between rounded-2xl border border-primary px-6 bg-white dark:bg-black',
   childIconBtn:
-    'flex size-20 rotate-45 items-center justify-center rounded-[30px] bg-white shadow-xl shadow-blue-400 hover:scale-105 transition-all ease-in-out cursor-pointer',
+    'flex size-12 rotate-45 items-center justify-center rounded-[10px] bg-white shadow-xl shadow-blue-400 hover:scale-105 transition-all ease-in-out cursor-pointer',
   rocketIcon:
-    'flex size-20 rotate-45 items-center justify-center rounded-[30px] bg-white shadow-xl shadow-blue-400 hover:scale-105 transition-all ease-in-out cursor-pointer',
+    'flex size-12 rotate-45 items-center justify-center rounded-[10px] bg-white shadow-xl shadow-blue-400 hover:scale-105 transition-all ease-in-out cursor-pointer',
 };
 
 function Hero() {
@@ -89,7 +89,7 @@ function Hero() {
             unoptimized
             className="hidden object-contain md:block"
           />
-          <div className="flex w-full items-center justify-end gap-4 md:w-fit">
+          <div className="mr-5 mt-3 flex w-full items-center justify-end gap-5 md:w-fit">
             <ThemeSwitcher />
             <LocaleSwitcher />
             <button
@@ -109,7 +109,7 @@ function Hero() {
                   </AvatarFallback>
                 </Avatar>
               ) : (
-                <ChildIcon iconClass="w-12 h-12 text-primary -rotate-45" />
+                <ChildIcon iconClass="w-10 h-10 text-primary -rotate-45" />
               )}
             </button>
             <div className={`${styles.rocketIcon}`}>
@@ -142,11 +142,11 @@ function Hero() {
         />
       </motion.section>
       <Sheet>
-        <SheetTrigger asChild className="fixed -left-2 top-0 z-10 md:hidden">
+        <SheetTrigger asChild className="fixed -top-1 left-2 z-10 md:hidden">
           <button
             type="button"
             aria-label="open menu"
-            className="flex size-28 items-center justify-center p-1"
+            className="flex size-28 items-center justify-center"
           >
             {/* <LiaHamburgerSolid className="size-10" /> */}
             <MobileMenuIcon iconClass="size-50" />
