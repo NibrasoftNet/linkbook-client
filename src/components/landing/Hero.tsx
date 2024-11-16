@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import React, { useRef } from 'react';
-import { LiaHamburgerSolid } from 'react-icons/lia';
 
 import ProductsDropdown from '@/components/items-select/ProductsDropdown';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -26,6 +25,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import MobileMenuIcon from '@/icons/general/MobileMenu.icon';
 import { RocketIcon } from '@/icons/landing';
 import ChildIcon from '@/icons/landing/Child.icon';
 import { frederickaTheGreat, imagesUrls } from '@/lib/constants';
@@ -142,13 +142,14 @@ function Hero() {
         />
       </motion.section>
       <Sheet>
-        <SheetTrigger asChild className="fixed left-2 top-2 z-10 md:hidden">
+        <SheetTrigger asChild className="fixed -left-2 top-0 z-10 md:hidden">
           <button
             type="button"
             aria-label="open menu"
-            className="flex size-14 items-center justify-center rounded-full border p-1"
+            className="flex size-28 items-center justify-center p-1"
           >
-            <LiaHamburgerSolid className="size-10" />
+            {/* <LiaHamburgerSolid className="size-10" /> */}
+            <MobileMenuIcon iconClass="size-50" />
           </button>
         </SheetTrigger>
         <SheetContent side="left" className="w-[300px]">
