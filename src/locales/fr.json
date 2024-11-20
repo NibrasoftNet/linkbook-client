@@ -243,6 +243,10 @@
   "SearchForm": {
     "typeSelect": "Choisir un type",
     "categorySelect": "Choisir une catégorie",
-    "searchCity": "Recherche ville"
+    "searchCity": "Recherche ville",
+    "passionateReading": "Passionné De Lecture",
+    "univStudent": "Étudiant Universitaire",
+    "highSchoolStudent": "Lycéen",
+    "PrimarySchoolStudent": "Élève Du Primaire"
   }
 }

@@ -233,6 +233,10 @@
   "SearchForm": {
     "typeSelect": "Select a type",
     "categorySelect": "Select a category",
-    "searchCity": "Search city"
+    "searchCity": "Search city",
+    "passionateReading": "Passionate About Reading",
+    "univStudent": "University Student",
+    "highSchoolStudent": "High School Student",
+    "PrimarySchoolStudent": "Primary School Student"
   }
 }

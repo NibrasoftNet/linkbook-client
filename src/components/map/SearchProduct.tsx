@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import SearchFrom from '@/components/forms/SearchFrom';
@@ -15,14 +16,30 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer';
 import { CircleIcon } from '@/icons/general';
+import type { CategoryTypeValue } from '@/types/category.type';
 import useSearchStore from '@/zustand/searchStore';
 
 import SearchIcon from '../../icons/general/Search.icon';
 
 const SearchProduct = ({ page }: { page: string }) => {
   const { allCategories, allCities } = useSearchStore();
-
-  if (!allCategories.length || !allCities.length) {
+  const categorytranslate = useTranslations('SearchForm');
+  const allTranslatedCategories: CategoryTypeValue[] = [
+    {
+      label: categorytranslate('passionateReading'),
+      value: 1,
+    },
+    { label: categorytranslate('univStudent'), value: 2 },
+    {
+      label: categorytranslate('highSchoolStudent'),
+      value: 3,
+    },
+    {
+      label: categorytranslate('PrimarySchoolStudent'),
+      value: 4,
+    },
+  ];
+  if (!allTranslatedCategories.length || !allCities.length) {
     return (
       <div className="flex size-full items-center justify-center">
         <h1 className="text-3xl font-bold">Service Temporary Unavailable</h1>
@@ -36,13 +53,13 @@ const SearchProduct = ({ page }: { page: string }) => {
         style={{
           position: 'absolute',
           top: page === 'home' ? '70vh' : '10px',
-          // zIndex: '1000',
+          zIndex: '500',
         }}
         className={`hidden justify-center gap-2 md:right-[20%] md:flex md:w-[90%] lg:right-[24%] ${page === 'home' ? 'md:w-1/2' : 'md:w-2/3'}`}
       >
         <SearchFrom
           page={page}
-          allCategories={allCategories}
+          allCategories={allTranslatedCategories}
           allCities={allCities}
         />
       </section>
