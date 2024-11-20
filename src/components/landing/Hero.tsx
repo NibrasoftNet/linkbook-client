@@ -35,9 +35,9 @@ const styles = {
   socialIcons:
     'flex size-16 cursor-pointer items-center justify-center border-b-2 border-transparent',
   navBar:
-    'fixed top-0 z-10 flex w-full max-w-[1300px] flex-col items-center pt-2',
+    'fixed top-0 z-[60] flex w-full max-w-[1300px] flex-col items-center pt-2',
   navBarItems:
-    'z-10 flex h-[70px] w-full items-center justify-between rounded-2xl border border-primary px-6 bg-white dark:bg-black',
+    'z-[60] flex h-[70px] w-full items-center justify-between rounded-2xl border border-primary px-6 bg-white dark:bg-black',
   childIconBtn:
     'flex size-12 rotate-45 items-center justify-center rounded-[10px] bg-white shadow-xl shadow-blue-400 hover:scale-105 transition-all ease-in-out cursor-pointer',
   rocketIcon:
