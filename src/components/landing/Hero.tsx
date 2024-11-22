@@ -142,7 +142,7 @@ function Hero() {
         />
       </motion.section>
       <Sheet>
-        <SheetTrigger asChild className="fixed -top-1 left-2 z-10 md:hidden">
+        <SheetTrigger asChild className="fixed -top-1 left-2 z-[100] md:hidden">
           <button
             type="button"
             aria-label="open menu"
