@@ -51,7 +51,7 @@ export default function SignIn() {
   return (
     <>
       {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-      <section className="relative h-screen w-full">
+      <section className="relative h-screen w-full overflow-x-hidden">
         <div className="absolute h-screen w-screen">
           <Image
             src={imagesUrls.heroImage}
