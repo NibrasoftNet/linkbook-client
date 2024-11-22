@@ -73,10 +73,10 @@ const OurActivities = () => {
                       <div
                         className={`${card?.textColor} relative flex size-full flex-col items-center justify-center gap-2 pt-6`}
                       >
-                        <h2 className="mt-6 text-4xl font-bold capitalize">
+                        <h2 className="mt-6 text-2xl font-bold capitalize lg:text-4xl">
                           {card?.title}
                         </h2>
-                        <h4 className=" text-sm capitalize">
+                        <h4 className=" line-clamp-2 text-sm capitalize hover:line-clamp-none">
                           {card?.description}
                         </h4>
                       </div>
