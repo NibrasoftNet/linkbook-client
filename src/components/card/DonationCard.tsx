@@ -37,9 +37,9 @@ const DonationCard = ({ donation }: { donation: DonationProps }) => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="ml-1.5 text-sm leading-tight">
-            <span className="block font-bold">{donation.creator.email}</span>
+            <span className="block font-bold">{donation.creator.lastName}</span>
             <span className="block font-normal">
-              @{donation.creator.firstName}
+              {donation.creator.firstName}
             </span>
           </div>
         </div>
