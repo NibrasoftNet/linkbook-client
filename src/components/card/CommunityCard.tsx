@@ -28,7 +28,7 @@ const CommunityCard = ({ community }: { community: CommunityValueType }) => {
   const auth = useAuth();
   console.log('creator: ', community.creator);
   return (
-    <Card className="w-[550px] rounded-xl border p-4">
+    <Card className="w-auto rounded-xl border p-4 min-[414px]:w-[400px] md:w-[500px]">
       <CardHeader className="flex w-full flex-row justify-between">
         <div className="flex w-fit items-center">
           <Avatar className="size-16 rounded-md border-2">
