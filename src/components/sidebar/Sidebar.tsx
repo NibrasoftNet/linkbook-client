@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { PropsWithChildren } from 'react';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { HiOutlineArrowRightOnRectangle } from 'react-icons/hi2';
@@ -37,9 +37,32 @@ function Sidebar(props: SidebarProps) {
   const { session } = useAuth();
   const { open, setOpen } = useNavigationLayout();
   const { routes } = props;
+
+  // Ref for sidebar
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  // Close sidebar on outside click for mobile screens only
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node) &&
+        window.innerWidth < 1024 // Adjust breakpoint for mobile as needed
+      ) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [setOpen]);
+
   // SIDEBAR
   return (
     <aside
+      ref={sidebarRef}
       /* eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values */
       className={`fixed z-[1000] min-h-full w-[300px] transition-all ${
         props.variant === 'auth' ? 'xl:hidden' : 'xl:block'
