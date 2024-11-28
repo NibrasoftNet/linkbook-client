@@ -29,7 +29,7 @@ dayjs.extend(relativeTime);
 const DonationCard = ({ donation }: { donation: DonationProps }) => {
   const auth = useAuth();
   return (
-    <Card className="w-[550px] rounded-xl border p-4">
+    <Card className="w-auto min-[414px]:w-[400px] md:w-[500px] rounded-xl border p-4">
       <CardHeader className="flex w-full flex-row justify-between">
         <div className="flex w-fit items-center">
           <Avatar className="size-16 rounded-md border-2">

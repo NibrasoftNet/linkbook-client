@@ -7,7 +7,7 @@ import Sidebar from '@/components/sidebar/Sidebar';
 export default function DashboardLayout(props: { children: ReactNode }) {
   return (
     // eslint-disable-next-line tailwindcss/no-custom-classname
-    <div className="dark:bg-background-900 flex size-full">
+    <div className="dark:bg-background-900 flex size-full overflow-x-hidden">
       <Sidebar routes={routes} />
       <div className="size-full dark:bg-zinc-950">
         <main className="flex-none transition-all dark:bg-zinc-950 xl:ml-[328px]">

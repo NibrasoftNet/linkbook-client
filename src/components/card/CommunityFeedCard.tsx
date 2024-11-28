@@ -34,7 +34,7 @@ dayjs.extend(relativeTime);
 const CommunityFeedCard = ({ feed }: { feed: CommunityFeedValueType }) => {
   const auth = useAuth();
   return (
-    <Card className="h-fit w-[550px] rounded-xl border">
+    <Card className="h-fit w-auto rounded-xl border min-[414px]:w-[400px] md:w-[500px]">
       <CardHeader className="flex w-full flex-row justify-between">
         <div className="flex w-fit items-center">
           <Avatar className="size-16 rounded-md border-2">
