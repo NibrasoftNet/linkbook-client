@@ -11,13 +11,13 @@ import { SubscriptionStatusEnum } from '@/types/types';
 
 const SearchPage = () => {
   return (
-    <section className="size-full md:h-[calc(100vh-7rem)]">
+    <section className="size-full h-screen w-screen">
       <ResizablePanelGroup direction="horizontal" className="size-full">
-        <ResizablePanel defaultSize={25}>
+        <ResizablePanel defaultSize={100}>
           <SearchResultsList />
         </ResizablePanel>
         <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={75}>
+        <ResizablePanel defaultSize={250}>
           <MapSearchContainerDynamic
             search={false}
             searchMarkers

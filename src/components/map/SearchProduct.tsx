@@ -55,7 +55,8 @@ const SearchProduct = ({ page }: { page: string }) => {
           top: page === 'home' ? '70vh' : '10px',
           zIndex: '500',
         }}
-        className={`hidden justify-center gap-2 md:right-[20%] md:flex md:w-[90%] lg:right-[24%] ${page === 'home' ? 'md:w-1/2' : 'md:w-2/3'}`}
+        // className={`hidden justify-center gap-2 md:right-[20%] md:flex md:w-[90%] lg:right-[24%] ${page === 'home' ? 'md:w-1/2' : 'md:w-2/3'}`}
+        className={`hidden justify-start gap-2 pl-2 md:flex md:w-[90%] ${page === 'home' ? 'md:w-1/2' : 'md:w-2/3'}`}
       >
         <SearchFrom
           page={page}
@@ -63,13 +64,15 @@ const SearchProduct = ({ page }: { page: string }) => {
           allCities={allCities}
         />
       </section>
-      <section className="block md:hidden">
+      <section
+        className={`${page === 'search' ? 'fixed' : ''} block md:hidden`}
+      >
         <Drawer>
           <DrawerTrigger asChild>
             <button
               type="button"
               aria-label="open-search-btn"
-              className="absolute top-2/3 flex size-16 animate-bounce items-center justify-center rounded-full bg-tertiary text-white hover:bg-tertiary-foreground"
+              className={`absolute ${page === 'search' ? '-left-20 z-[5000]' : ''} top-2/3 flex size-16 animate-bounce items-center justify-center rounded-full bg-tertiary text-white hover:bg-tertiary-foreground`}
             >
               <div className="absolute flex size-16 items-center justify-center p-1">
                 <SearchIcon iconClass="size-16 hover:text-white" />
