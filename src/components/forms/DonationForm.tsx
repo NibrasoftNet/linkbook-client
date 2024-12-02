@@ -106,26 +106,6 @@ const DonationForm = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="grid size-full grid-cols-2 items-center gap-4 p-2"
       >
-        <h1 className="text-2xl font-bold">{t('details')}</h1>
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => {
-            return (
-              <FormItem className="col-span-2">
-                <FormLabel>{t('description')}</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder={t('description')}
-                    className="resize-none"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
         <h1 className="text-2xl font-bold">{t('product_details')}</h1>
         <div className="col-span-2 grid w-full grid-cols-1 gap-4 md:grid-cols-2">
           <FormField
