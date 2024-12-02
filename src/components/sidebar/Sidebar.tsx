@@ -78,16 +78,16 @@ function Sidebar(props: SidebarProps) {
           <div className="flex h-full flex-col justify-between">
             <div>
               <Button
-                className="absolute top-4 block cursor-pointer bg-white text-zinc-200 dark:text-white/40 xl:hidden"
+                className="flex flex-row absolute h-12 p-0 top-4 cursor-pointer bg-white text-zinc-200 dark:text-white/40"
                 onClick={() => setOpen(false)}
               >
                 <Image
-                  src={imagesUrls.logoImage}
+                  src={imagesUrls.logoImageWithoutText}
                   alt="Image"
                   width="1920"
                   height="1080"
                   className="size-full object-cover dark:brightness-[0.2] dark:grayscale"
-                />
+                /><h1 className='text-black pr-8'>LinkBook</h1>
               </Button>
               {/* <Link
                 href="/"
