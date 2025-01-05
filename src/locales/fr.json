@@ -169,24 +169,30 @@
   },
   "DonationForm": {
     "details": "Description",
-    "product_details": "Details du produit",
+    "product_details": "Détails du produit",
     "description": "Description",
     "product_name": "Nom du produit",
     "quantity": "Quantité",
-    "category": "Choisir une catégorie",
+    "category": "Catégorie",
+    "no_category": "Aucune catégorie trouvée.",
+    "choose_category": "Choisir une catégorie",
     "search_category": "Rechercher une catégorie",
+    "description_placeholder": "Parlez-nous un peu de vous",
     "product_description": "Description du produit",
     "submit": "Envoyer"
   },
   "SwapForm": {
     "details": "Description",
-    "product_details": "Product Details",
+    "product_details": "Détails du produit",
     "description": "Description",
-    "product_name": "Product Name",
-    "quantity": "Quantity",
-    "category": "Select a category",
-    "search_category": "Search Category",
-    "product_description": "Product Description",
+    "product_name": "Nom du produit",
+    "quantity": "Quantité",
+    "category": "Catégorie",
+    "no_category": "Aucune catégorie trouvée.",
+    "choose_category": "Choisir une catégorie",
+    "search_category": "Chercher une catégorie",
+    "description_placeholder": "Parlez-nous un peu de vous",
+    "product_description": "Description du produit",
     "submit": "Envoyer"
   },
   "SoonPage": {
@@ -195,9 +201,9 @@
     "later": "Plus tard"
   },
   "Upgrade": {
-    "upgrade_pro": "Upgrade to Pro",
-    "upgrade_description": "Get access to exclusive features and benefits.",
-    "upgrade_btn": "Upgrade"
+    "upgrade_pro": "Passer à Pro",
+    "upgrade_description": "Accédez à des fonctionnalités et avantages exclusifs.",
+    "upgrade_btn": "mettre à niveau"
   },
   "Hero": {
     "hero_title": "Mobilisons",
@@ -221,16 +227,16 @@
     "name": "Nom",
     "bio": "Bio",
     "private": "Privée",
-    "product_name": "Product Name",
-    "quantity": "Quantity",
-    "category": "Select a category",
-    "search_category": "Search Category",
-    "product_description": "Product Description",
-    "submit": "Submit"
+    "product_name": "Nom du produit",
+    "quantity": "Quantité",
+    "category": "Choisir une catégorie",
+    "search_category": "Chercher une catégorie",
+    "product_description": "Description du produit",
+    "submit": "Envoyer"
   },
   "CommunityFeedForm": {
-    "details": "Detailles",
-    "title": "Title",
+    "details": "Détails",
+    "title": "Titre",
     "description": "Description",
     "url": "Url",
     "submit": "Envoyer"

@@ -104,19 +104,20 @@ const DonationForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="grid size-full grid-cols-2 items-center gap-4 p-2"
+        className="w-[340px] md:w-[600px] lg:w-[700px] xl:w-[850px] mb-5 mx-auto items-center gap-3 py-4 md:py-5 px-5 md:px-10 border border-[#2777DF] shadow-[0px_3px_10px_rgba(39,119,223,0.188235)] rounded-[63px]"
       >
-        <h1 className="text-2xl font-bold">{t('product_details')}</h1>
-        <div className="col-span-2 grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+        <h1 className="mb-5 text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-normal opacity-100">{t('product_details')}</h1>
+        <div className='space-y-4'>
           <FormField
             control={form.control}
             name="product.name"
             render={({ field }) => {
               return (
-                <FormItem className="w-full">
-                  <FormLabel>{t('product_name')}</FormLabel>
+                <FormItem className="flex justify-center gap-3 md:gap-0 md:items-center md:flex-row flex-col items-start">
+                  <FormLabel className='self-start w-full md:w-1/4 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-normal text-[#2777DF] opacity-55'>{t('product_name')}</FormLabel>
                   <FormControl>
                     <Input
+                      className='w-full md:w-3/4 !mt-0 border h-8 border-[#2777DF] rounded-[63px] opacity-45'
                       placeholder={t('product_name')}
                       type="text"
                       {...field}
@@ -132,10 +133,11 @@ const DonationForm = ({
             name="quantity"
             render={() => {
               return (
-                <FormItem className="w-full">
-                  <FormLabel>{t('quantity')}</FormLabel>
+                <FormItem className="flex justify-center gap-3 md:gap-0 md:items-center md:flex-row flex-col items-start">
+                  <FormLabel className='self-start w-full md:w-1/4 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-normal text-[#2777DF] opacity-55'>{t('quantity')}</FormLabel>
                   <FormControl>
                     <Input
+                      className='w-full md:w-3/4 !mt-0 border h-8 border-[#2777DF] rounded-[63px] opacity-45'
                       placeholder={t('quantity')}
                       type="number"
                       {...form.register('quantity', {
@@ -148,141 +150,142 @@ const DonationForm = ({
               );
             }}
           />
-        </div>
-        <FormField
-          control={form.control}
-          name="product.categoryId"
-          render={({ field }) => (
-            <FormItem className="col-span-2">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      className={cn(
-                        'w-full justify-between rounded-full',
-                        !field.value && 'text-muted-foreground',
-                      )}
-                    >
-                      {field.value
-                        ? categories?.data?.result.find(
-                            (cat: any) => cat.value === field.value,
-                          )?.label
-                        : `${t('category')}`}
-                      <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-[200px] p-0">
-                  <Command>
-                    <CommandInput placeholder={t('category')} />
-                    <CommandList>
-                      <CommandEmpty>No category found.</CommandEmpty>
-                      <CommandGroup>
-                        {categories?.data?.result.map((cat: any) => (
-                          <CommandItem
-                            value={cat.label}
-                            key={cat.value}
-                            onSelect={() => {
-                              form.setValue('product.categoryId', cat.value);
-                            }}
-                          >
-                            <Check
-                              className={cn(
-                                'mr-2 h-4 w-4',
-                                cat.value === field.value
-                                  ? 'opacity-100'
-                                  : 'opacity-0',
-                              )}
-                            />
-                            {cat.label}
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </CommandList>
-                  </Command>
-                </PopoverContent>
-              </Popover>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="product.description"
-          render={({ field }) => {
-            return (
-              <FormItem className="col-span-2">
-                <FormLabel>{t('product_description')}</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Tell us a little bit about yourself"
-                    className="resize-none"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
-        />
-        <div
-          className={`col-span-2 flex w-full items-center justify-center rounded-md ${
-            form.watch('files') !== null ? 'pt-4' : 'pt-2'
-          }`}
-        >
           <FormField
             control={form.control}
-            name="files"
-            render={() => (
-              <FormItem className="flex w-full flex-col rounded-lg bg-background p-2">
-                <FileUploader
-                  value={files}
-                  onValueChange={setFiles}
-                  dropzoneOptions={dropZoneConfig}
-                >
-                  <FileInput
-                    className={`border-2 border-dashed ${operation === CrudOperationsEnum.UPDATE && 'hidden'}`}
-                  >
-                    <div className="flex w-full flex-col items-center justify-center pb-4 pt-3 ">
-                      <FileSvgDraw />
-                    </div>
-                  </FileInput>
-                  <FileUploaderContent className="grid w-full grid-cols-1 md:grid-cols-2">
-                    {files &&
-                      files.length > 0 &&
-                      files.map((file, i) => (
-                        <FileUploaderItem
-                          /* eslint-disable-next-line react/no-array-index-key */
-                          key={i}
-                          index={i}
-                          className="border border-primary py-2"
-                        >
-                          <Paperclip className="size-4 stroke-current" />
-                          <span>{file.name}</span>
-                        </FileUploaderItem>
-                      ))}
-                  </FileUploaderContent>
-                </FileUploader>
-                <FormMessage />
+            name="product.categoryId"
+            render={({ field }) => (
+              <FormItem className="flex justify-center gap-3 md:gap-0 md:items-center md:flex-row flex-col items-start">
+                <FormLabel className='self-start w-full md:w-1/4 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-normal text-[#2777DF] opacity-55'>{t("category")}</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant="outline"
+                        role="combobox"
+                        className={cn(
+                          'justify-between px-3 w-full md:w-3/4 !mt-0 border h-8 border-[#2777DF] rounded-[63px] opacity-45',
+                          !field.value && 'text-muted-foreground',
+                        )}
+                      >
+                        {field.value
+                          ? categories?.data?.result.find(
+                            (cat: any) => cat.value === field.value,
+                          )?.label
+                          : `${t('choose_category')}`}
+                        <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[200px] p-0">
+                    <Command>
+                      <CommandInput placeholder={t('choose_category')} />
+                      <CommandList>
+                        <CommandEmpty>{t('no_category')}</CommandEmpty>
+                        <CommandGroup>
+                          {categories?.data?.result.map((cat: any) => (
+                            <CommandItem
+                              value={cat.label}
+                              key={cat.value}
+                              onSelect={() => {
+                                form.setValue('product.categoryId', cat.value);
+                              }}
+                            >
+                              <Check
+                                className={cn(
+                                  'mr-2 h-4 w-4',
+                                  cat.value === field.value
+                                    ? 'opacity-100'
+                                    : 'opacity-0',
+                                )}
+                              />
+                              {cat.label}
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
               </FormItem>
             )}
           />
-        </div>
-        {form.formState.errors && (
-          <div className="text-sm text-destructive">
-            {Object.values(form.formState.errors).map((error) => (
-              <p key={error.message}>{error.message}</p>
-            ))}
+          <FormField
+            control={form.control}
+            name="product.description"
+            render={({ field }) => {
+              return (
+                <FormItem className="flex justify-center gap-3 md:gap-0 md:items-center md:flex-row flex-col items-start">
+                  <FormLabel className='self-start w-full md:w-1/4 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-normal text-[#2777DF] opacity-55'>{t('product_description')}</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      rows={1}
+                      placeholder={t('description_placeholder')}
+                      className="resize-y overflow-hidden min-h-8 w-full md:w-3/4 !mt-0 border border-[#2777DF] rounded-[63px] opacity-45"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <div
+            className={`col-span-2 flex w-full items-center justify-center rounded-md ${form.watch('files') !== null ? 'pt-4' : 'pt-2'
+              }`}
+          >
+            <FormField
+              control={form.control}
+              name="files"
+              render={() => (
+                <FormItem className="flex w-full flex-col rounded-lg bg-background p-2">
+                  <FileUploader
+                    value={files}
+                    onValueChange={setFiles}
+                    dropzoneOptions={dropZoneConfig}
+                  >
+                    <FileInput
+                      className={`border-2 border-dashed ${operation === CrudOperationsEnum.UPDATE && 'hidden'}`}
+                    >
+                      <div className="flex w-full flex-col items-center justify-center pb-4 pt-3 ">
+                        <FileSvgDraw />
+                      </div>
+                    </FileInput>
+                    <FileUploaderContent className="grid w-full grid-cols-1 md:grid-cols-2">
+                      {files &&
+                        files.length > 0 &&
+                        files.map((file, i) => (
+                          <FileUploaderItem
+                            /* eslint-disable-next-line react/no-array-index-key */
+                            key={i}
+                            index={i}
+                            className="border border-primary py-2"
+                          >
+                            <Paperclip className="size-4 stroke-current" />
+                            <span>{file.name}</span>
+                          </FileUploaderItem>
+                        ))}
+                    </FileUploaderContent>
+                  </FileUploader>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
-        )}
+          {form.formState.errors && (
+            <div className="text-sm text-destructive">
+              {Object.values(form.formState.errors).map((error) => (
+                <p key={error.message}>{error.message}</p>
+              ))}
+            </div>
+          )}
+        </div>
         <Button
           type="submit"
           className="grid-cols-2 gap-2 md:grid-cols-1"
           disabled={donation.isLoading}
         >
           <LiaHourglassEndSolid className="size-6" />
-          <span>Send</span>
+          <span>{t('submit')}</span>
         </Button>
       </form>
     </Form>
