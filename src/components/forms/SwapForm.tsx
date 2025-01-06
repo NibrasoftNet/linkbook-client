@@ -104,20 +104,24 @@ const SwapForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-[340px] md:w-[600px] lg:w-[700px] xl:w-[850px] mb-5 mx-auto items-center gap-3 py-4 md:py-5 px-5 md:px-10 border border-[#2777DF] shadow-[0px_3px_10px_rgba(39,119,223,0.188235)] rounded-[63px]"
+        className="mx-auto mb-5 w-[340px] items-center gap-3 rounded-[63px] border border-[#2777DF] px-5 py-4 shadow-[0px_3px_10px_rgba(39,119,223,0.188235)] md:w-[600px] md:px-10 md:py-5 lg:w-[700px] xl:w-[850px]"
       >
-        <h1 className="mb-5 text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-normal opacity-100">{t('product_details')}</h1>
+        <h1 className="mb-5 text-base font-normal opacity-100 md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
+          {t('product_details')}
+        </h1>
         <div className="space-y-4">
           <FormField
             control={form.control}
             name="product.name"
             render={({ field }) => {
               return (
-                <FormItem className="flex justify-center gap-3 md:gap-0 md:items-center md:flex-row flex-col items-start">
-                  <FormLabel className='self-start w-full md:w-1/4 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-normal text-[#2777DF] opacity-55'>{t('product_name')}</FormLabel>
+                <FormItem className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:gap-0">
+                  <FormLabel className="w-full self-start text-sm font-normal text-[#2777DF] opacity-55 md:w-1/4 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                    {t('product_name')}
+                  </FormLabel>
                   <FormControl>
                     <Input
-                      className='w-full md:w-3/4 !mt-0 border h-8 border-[#2777DF] rounded-[63px] opacity-45'
+                      className="!mt-0 h-8 w-full rounded-[63px] border border-[#2777DF] opacity-45 md:w-3/4"
                       placeholder={t('product_name')}
                       type="text"
                       {...field}
@@ -133,11 +137,13 @@ const SwapForm = ({
             name="quantity"
             render={() => {
               return (
-                <FormItem className="flex justify-center gap-3 md:gap-0 md:items-center md:flex-row flex-col items-start">
-                  <FormLabel className='self-start w-full md:w-1/4 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-normal text-[#2777DF] opacity-55'>{t('quantity')}</FormLabel>
+                <FormItem className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:gap-0">
+                  <FormLabel className="w-full self-start text-sm font-normal text-[#2777DF] opacity-55 md:w-1/4 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                    {t('quantity')}
+                  </FormLabel>
                   <FormControl>
                     <Input
-                      className='w-full md:w-3/4 !mt-0 border h-8 border-[#2777DF] rounded-[63px] opacity-45'
+                      className="!mt-0 h-8 w-full rounded-[63px] border border-[#2777DF] opacity-45 md:w-3/4"
                       placeholder={t('quantity')}
                       type="number"
                       {...form.register('quantity', {
@@ -154,8 +160,10 @@ const SwapForm = ({
             control={form.control}
             name="product.categoryId"
             render={({ field }) => (
-              <FormItem className="flex justify-center gap-3 md:gap-0 md:items-center md:flex-row flex-col items-start">
-                <FormLabel className='self-start w-full md:w-1/4 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-normal text-[#2777DF] opacity-55'>{t("category")}</FormLabel>
+              <FormItem className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:gap-0">
+                <FormLabel className="w-full self-start text-sm font-normal text-[#2777DF] opacity-55 md:w-1/4 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                  {t('category')}
+                </FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -169,8 +177,8 @@ const SwapForm = ({
                       >
                         {field.value
                           ? categories.data.result.find(
-                            (cat: any) => cat.value === field.value,
-                          )?.label
+                              (cat: any) => cat.value === field.value,
+                            )?.label
                           : `${t('category')}`}
                         <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
                       </Button>
@@ -214,13 +222,15 @@ const SwapForm = ({
             name="product.description"
             render={({ field }) => {
               return (
-                <FormItem className="flex justify-center gap-3 md:gap-0 md:items-center md:flex-row flex-col items-start">
-                  <FormLabel className='self-start w-full md:w-1/4 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-normal text-[#2777DF] opacity-55'>{t('product_description')}</FormLabel>
+                <FormItem className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:gap-0">
+                  <FormLabel className="w-full self-start text-sm font-normal text-[#2777DF] opacity-55 md:w-1/4 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                    {t('product_description')}
+                  </FormLabel>
                   <FormControl>
                     <Textarea
                       rows={1}
                       placeholder={t('description_placeholder')}
-                      className="resize-y overflow-hidden min-h-8 w-full md:w-3/4 !mt-0 border border-[#2777DF] rounded-[63px] opacity-45"
+                      className="!mt-0 min-h-8 w-full resize-y overflow-hidden rounded-[63px] border border-[#2777DF] opacity-45 md:w-3/4"
                       {...field}
                     />
                   </FormControl>
@@ -230,8 +240,9 @@ const SwapForm = ({
             }}
           />
           <div
-            className={`col-span-2 flex w-full items-center justify-center rounded-md ${form.watch('files') !== null ? 'pt-4' : 'pt-2'
-              }`}
+            className={`col-span-2 flex w-full items-center justify-center rounded-md ${
+              form.watch('files') !== null ? 'pt-4' : 'pt-2'
+            }`}
           >
             <FormField
               control={form.control}

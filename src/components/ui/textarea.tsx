@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { cn } from '@/lib/utils';
 
 export interface TextareaProps
@@ -9,7 +10,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
     // Combine the forwarded ref with the internal ref
-    React.useImperativeHandle(ref, () => textareaRef.current as HTMLTextAreaElement);
+    React.useImperativeHandle(
+      ref,
+      () => textareaRef.current as HTMLTextAreaElement,
+    );
 
     const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
       // Call the user-provided onInput handler if it exists
