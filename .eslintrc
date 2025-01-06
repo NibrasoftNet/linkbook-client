@@ -3,16 +3,16 @@
   "extends": [
     "airbnb-base",
     "next/core-web-vitals", // Needed to avoid warning in next.js build: 'The Next.js plugin was not detected in your ESLint configuration'
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
   "rules": {
     "prettier/prettier": [
       "error",
       {
         "singleQuote": true,
-        "endOfLine": "auto"
-      }
-    ] // Avoid conflict rule between Prettier and Airbnb Eslint
+        "endOfLine": "auto",
+      },
+    ], // Avoid conflict rule between Prettier and Airbnb Eslint
   },
   "overrides": [
     // Configuration for TypeScript files
@@ -22,25 +22,26 @@
         "@typescript-eslint",
         "unused-imports",
         "tailwindcss",
-        "simple-import-sort"
+        "simple-import-sort",
       ],
       "extends": [
         "plugin:tailwindcss/recommended",
         "airbnb",
         "airbnb-typescript",
         "next/core-web-vitals",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
       ],
       "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
       },
       "rules": {
+        "tailwindcss/classnames-order": "error",
         "prettier/prettier": [
           "error",
           {
             "singleQuote": true,
-            "endOfLine": "auto"
-          }
+            "endOfLine": "auto",
+          },
         ], // Avoid conflict rule between Prettier and Airbnb Eslint
         "import/extensions": "off", // Avoid missing file extension errors, TypeScript already provides a similar feature
         "react/function-component-definition": "off", // Disable Airbnb's specific function type
@@ -53,7 +54,7 @@
           "error",
           "ForInStatement",
           "LabeledStatement",
-          "WithStatement"
+          "WithStatement",
         ], // Overrides Airbnb configuration and enable no-restricted-syntax
         "import/prefer-default-export": "off", // Named export is easier to refactor automatically
         "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
@@ -63,7 +64,7 @@
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
           "error",
-          { "argsIgnorePattern": "^_" }
+          { "argsIgnorePattern": "^_" },
         ],
         "import/no-extraneous-dependencies": "off",
         "consistent-return": "off",
@@ -74,8 +75,8 @@
         "react-hooks/exhaustive-deps": "off",
         "no-console": "off",
         "no-alert": "off",
-        "tailwindcss/ no-custom-classnames": "off"
-      }
+        "tailwindcss/ no-custom-classnames": "off",
+      },
     },
     // Configuration for testing
     {
@@ -85,13 +86,13 @@
         "plugin:jest/recommended",
         "plugin:jest-formatting/recommended",
         "plugin:testing-library/react",
-        "plugin:jest-dom/recommended"
-      ]
+        "plugin:jest-dom/recommended",
+      ],
     },
     // Configuration for e2e testing (Playwright)
     {
       "files": ["**/*.spec.ts"],
-      "extends": ["plugin:playwright/recommended"]
+      "extends": ["plugin:playwright/recommended"],
     },
     // Configuration for Storybook
     {
@@ -101,10 +102,10 @@
         "import/no-extraneous-dependencies": [
           "off",
           {
-            "devDependencies": true
-          }
-        ]
-      }
-    }
-  ]
+            "devDependencies": true,
+          },
+        ],
+      },
+    },
+  ],
 }
