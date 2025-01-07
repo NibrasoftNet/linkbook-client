@@ -104,9 +104,9 @@ const SwapForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mx-auto mb-5 w-[340px] items-center gap-3 rounded-[63px] border border-[#2777DF] px-5 py-4 shadow-[0px_3px_10px_rgba(39,119,223,0.188235)] md:w-[600px] md:px-10 md:py-5 lg:w-[700px] xl:w-[850px]"
+        className="mx-auto mb-5 w-[340px] items-center gap-3 rounded-[63px] border border-[#2777DF] px-5 py-4 shadow-[0px_3px_10px_rgba(39,119,223,0.188235)] md:w-[430px] md:px-10 md:py-5 lg:w-[500px] xl:w-[600px]"
       >
-        <h1 className="mb-5 text-base font-normal opacity-100 md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
+        <h1 className="mb-5 font-inter text-base !font-normal opacity-100 md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
           {t('product_details')}
         </h1>
         <div className="space-y-4">
@@ -115,19 +115,21 @@ const SwapForm = ({
             name="product.name"
             render={({ field }) => {
               return (
-                <FormItem className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:gap-0">
-                  <FormLabel className="w-full self-start text-sm font-normal text-[#2777DF] opacity-55 md:w-1/4 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                <FormItem className="flex flex-col items-baseline justify-center gap-3 md:flex-row md:gap-0">
+                  <FormLabel className="w-full font-inter text-sm !font-normal text-[#2777DF] md:w-1/3 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
                     {t('product_name')}
                   </FormLabel>
-                  <FormControl>
-                    <Input
-                      className="!mt-0 h-8 w-full rounded-[63px] border border-[#2777DF] opacity-45 md:w-3/4"
-                      placeholder={t('product_name')}
-                      type="text"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
+                  <div className="flex w-full flex-col gap-2 md:w-2/3">
+                    <FormControl>
+                      <Input
+                        className="!mt-0 h-8 w-full rounded-[63px] border border-[#2777DF]/45 font-inter !font-normal"
+                        placeholder={t('product_name')}
+                        type="text"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </div>
                 </FormItem>
               );
             }}
@@ -137,21 +139,23 @@ const SwapForm = ({
             name="quantity"
             render={() => {
               return (
-                <FormItem className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:gap-0">
-                  <FormLabel className="w-full self-start text-sm font-normal text-[#2777DF] opacity-55 md:w-1/4 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                <FormItem className="flex flex-col items-baseline justify-center gap-3 md:flex-row md:gap-0">
+                  <FormLabel className="w-full font-inter text-sm !font-normal text-[#2777DF] md:w-1/3 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
                     {t('quantity')}
                   </FormLabel>
-                  <FormControl>
-                    <Input
-                      className="!mt-0 h-8 w-full rounded-[63px] border border-[#2777DF] opacity-45 md:w-3/4"
-                      placeholder={t('quantity')}
-                      type="number"
-                      {...form.register('quantity', {
-                        valueAsNumber: true,
-                      })}
-                    />
-                  </FormControl>
-                  <FormMessage />
+                  <div className="flex w-full flex-col gap-2 md:w-2/3">
+                    <FormControl>
+                      <Input
+                        className="!mt-0 h-8 w-full rounded-[63px] border border-[#2777DF]/45 font-inter !font-normal"
+                        placeholder={t('quantity')}
+                        type="number"
+                        {...form.register('quantity', {
+                          valueAsNumber: true,
+                        })}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </div>
                 </FormItem>
               );
             }}
@@ -160,8 +164,8 @@ const SwapForm = ({
             control={form.control}
             name="product.categoryId"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:gap-0">
-                <FormLabel className="w-full self-start text-sm font-normal text-[#2777DF] opacity-55 md:w-1/4 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+              <FormItem className="flex flex-col items-baseline justify-center gap-3 md:flex-row md:gap-0">
+                <FormLabel className="w-full font-inter text-sm !font-normal text-[#2777DF] md:w-1/3 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
                   {t('category')}
                 </FormLabel>
                 <Popover>
@@ -171,7 +175,7 @@ const SwapForm = ({
                         variant="outline"
                         role="combobox"
                         className={cn(
-                          'justify-between px-3 w-full md:w-3/4 !mt-0 border h-8 border-[#2777DF] rounded-[63px] opacity-45',
+                          'justify-between px-3 w-full md:w-2/3 !mt-0 border h-8 border-[#2777DF]/45 font-inter !font-normal rounded-[63px]',
                           !field.value && 'text-muted-foreground',
                         )}
                       >
@@ -222,19 +226,21 @@ const SwapForm = ({
             name="product.description"
             render={({ field }) => {
               return (
-                <FormItem className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:gap-0">
-                  <FormLabel className="w-full self-start text-sm font-normal text-[#2777DF] opacity-55 md:w-1/4 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+                <FormItem className="flex flex-col items-baseline justify-center gap-3 md:flex-row md:gap-0">
+                  <FormLabel className="w-full font-inter text-sm !font-normal text-[#2777DF] md:w-1/3 md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
                     {t('product_description')}
                   </FormLabel>
-                  <FormControl>
-                    <Textarea
-                      rows={1}
-                      placeholder={t('description_placeholder')}
-                      className="!mt-0 min-h-8 w-full resize-y overflow-hidden rounded-[63px] border border-[#2777DF] opacity-45 md:w-3/4"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
+                  <div className="flex w-full flex-col gap-2 md:w-2/3">
+                    <FormControl>
+                      <Textarea
+                        rows={1}
+                        placeholder={t('description_placeholder')}
+                        className="!mt-0 min-h-8 w-full resize-y overflow-hidden rounded-[63px] border border-[#2777DF]/45 font-inter !font-normal"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </div>
                 </FormItem>
               );
             }}
@@ -282,22 +288,24 @@ const SwapForm = ({
               )}
             />
           </div>
-          {form.formState.errors && (
+          {/* {form.formState.errors && (
             <div className="text-sm text-destructive">
               {Object.values(form.formState.errors).map((error) => (
                 <p key={error.message}>{error.message}</p>
               ))}
             </div>
-          )}
+          )} */}
         </div>
-        <Button
-          type="submit"
-          className="grid-cols-2 gap-2 md:grid-cols-1"
-          disabled={swap.isLoading}
-        >
-          <LiaHourglassEndSolid className="size-6" />
-          <span>{t('submit')}</span>
-        </Button>
+        <div className="flex w-full justify-center">
+          <Button
+            type="submit"
+            className="grid-cols-2 gap-2 md:grid-cols-1"
+            disabled={swap.isLoading}
+          >
+            <LiaHourglassEndSolid className="size-6" />
+            <span>{t('submit')}</span>
+          </Button>
+        </div>
       </form>
     </Form>
   );
