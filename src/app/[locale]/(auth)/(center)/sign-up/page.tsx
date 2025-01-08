@@ -1,9 +1,10 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Check, ChevronsUpDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaCheckCircle } from 'react-icons/fa';
 import { ImCancelCircle } from 'react-icons/im';
@@ -23,6 +24,13 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
+import {
   Form,
   FormControl,
   FormField,
@@ -31,11 +39,18 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { imagesUrls } from '@/lib/constants';
 import useFcmToken from '@/lib/useFcmToken';
+import { cn } from '@/lib/utils';
 import { Env } from '@/libs/Env';
 import { useAuth } from '@/providers/AuthContext';
 import { OperationEnum } from '@/types/auth.type';
+import type { CategoryTypeValue } from '@/types/category.type';
 import { SubscriptionStatusEnum } from '@/types/types';
 import { userRegisterFormSchema } from '@/validations/user-register-validation.schema';
 import useAddressStore from '@/zustand/addressStore';
@@ -43,6 +58,22 @@ import useAddressStore from '@/zustand/addressStore';
 export default function SignUp() {
   const auth = useAuth();
   const t = useTranslations('Auth');
+  const searchTranslate = useTranslations('SearchForm');
+  const allTranslatedCategories: CategoryTypeValue[] = [
+    {
+      label: searchTranslate('passionateReading'),
+      value: 1,
+    },
+    { label: searchTranslate('univStudent'), value: 2 },
+    {
+      label: searchTranslate('highSchoolStudent'),
+      value: 3,
+    },
+    {
+      label: searchTranslate('PrimarySchoolStudent'),
+      value: 4,
+    },
+  ];
   const { token } = useFcmToken();
   const { address } = useAddressStore();
   const form = useForm<z.infer<typeof userRegisterFormSchema>>({
@@ -53,6 +84,33 @@ export default function SignUp() {
     form.setValue('address', address);
   }, [address]);
 
+  // Get category from localStorage (client-side only)
+  const getCategory = (): number | null => {
+    if (typeof window !== 'undefined') {
+      // Check if running in the browser
+      const category = localStorage.getItem('selectedCategory');
+      return category ? parseInt(category, 10) : null;
+    }
+    return null;
+  };
+
+  // Save category to localStorage (client-side only)
+  const saveCategory = (category: number) => {
+    if (typeof window !== 'undefined') {
+      // Check if running in the browser
+      localStorage.setItem('selectedCategory', category.toString());
+    }
+  };
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(
+    getCategory(),
+  );
+  useEffect(() => {
+    setSelectedCategory(getCategory());
+  }, []);
+  const handleCategoryChange = (category: number) => {
+    setSelectedCategory(category);
+    saveCategory(category); // Save to localStorage
+  };
   const handleSubmit = async (
     values: z.infer<typeof userRegisterFormSchema>,
   ) => {
@@ -136,6 +194,57 @@ export default function SignUp() {
                       }}
                     />
                   </div>
+                  <FormItem className="w-full">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant="outline"
+                            role="combobox"
+                            className={cn(
+                              'w-full justify-between rounded-full !font-normal',
+                              !selectedCategory && 'text-muted-foreground',
+                            )}
+                          >
+                            {selectedCategory
+                              ? allTranslatedCategories.find(
+                                  (cat: any) => cat.value === selectedCategory,
+                                )?.label
+                              : searchTranslate('categorySelect')}
+                            <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-[200px] p-0">
+                        <Command>
+                          <CommandList>
+                            <CommandEmpty>No category found.</CommandEmpty>
+                            <CommandGroup>
+                              {allTranslatedCategories.map((cat: any) => (
+                                <CommandItem
+                                  value={cat.label}
+                                  key={cat.value}
+                                  onSelect={() =>
+                                    handleCategoryChange(cat.value)
+                                  }
+                                >
+                                  <Check
+                                    className={cn(
+                                      'mr-2 h-4 w-4',
+                                      cat.value === selectedCategory
+                                        ? 'opacity-100'
+                                        : 'opacity-0',
+                                    )}
+                                  />
+                                  {cat.label}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
+                  </FormItem>
                   <FormField
                     control={form.control}
                     name="email"
