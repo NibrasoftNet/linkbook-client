@@ -26,7 +26,6 @@ import { PrivateCommunityOperationEnum } from '@/types/community.type';
 dayjs.extend(relativeTime);
 const CommunityCard = ({ community }: { community: CommunityValueType }) => {
   const auth = useAuth();
-  console.log('creator: ', community.creator);
   return (
     <Card className="w-auto rounded-xl border p-4 min-[414px]:w-[400px] md:w-[500px]">
       <CardHeader className="flex w-full flex-row justify-between">
