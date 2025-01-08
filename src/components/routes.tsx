@@ -7,7 +7,11 @@ import {
   HiOutlineShoppingBag,
   HiOutlineUserGroup,
 } from 'react-icons/hi2';
-import { PiBookOpenTextBold, PiSwapBold } from 'react-icons/pi';
+import {
+  PiBookOpenTextBold,
+  PiMessengerLogoBold,
+  PiSwapBold,
+} from 'react-icons/pi';
 import { TbBrandFeedly, TbMapPinSearch } from 'react-icons/tb';
 
 import { defaultPaginationLimit } from '@/lib/constants';
@@ -52,6 +56,15 @@ export const routes: IRoute[] = [
     name: 'swaps',
     path: `/swaps/details?page=1&limit=${defaultPaginationLimit}`,
     icon: <PiSwapBold className="-mt-[7px] size-6 stroke-2 text-inherit" />,
+    collapse: false,
+    disabled: false,
+  },
+  {
+    name: 'chat',
+    path: '/chats',
+    icon: (
+      <PiMessengerLogoBold className="-mt-[7px] size-6 stroke-2 text-inherit" />
+    ),
     collapse: false,
     disabled: false,
   },
