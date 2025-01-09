@@ -19,7 +19,7 @@ import {
 import Links from '@/components/sidebar/components/Links';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
-import { imagesUrls } from '@/lib/constants';
+import { defaultPaginationLimit, imagesUrls } from '@/lib/constants';
 import { useAuth } from '@/providers/AuthContext';
 import { useNavigationLayout } from '@/providers/NavigationLayoutProvider';
 import type { IRoute } from '@/types/types';
@@ -77,19 +77,18 @@ function Sidebar(props: SidebarProps) {
         >
           <div className="flex h-full flex-col justify-between">
             <div>
-              <Button
-                className="absolute top-4 flex h-12 cursor-pointer flex-row bg-white p-0 text-zinc-200 dark:text-white/40"
-                onClick={() => setOpen(false)}
+              <Link
+                className="absolute top-2 flex cursor-pointer  flex-row bg-white p-0 px-8 text-zinc-200 dark:text-white/40"
+                href={`/community/details?page=1&limit=${defaultPaginationLimit}`}
               >
                 <Image
-                  src={imagesUrls.logoImageWithoutText}
+                  src={imagesUrls.logoImageHorizontal}
                   alt="Image"
-                  width="1920"
-                  height="1080"
+                  width="1097"
+                  height="383"
                   className="size-full object-cover dark:brightness-[0.2] dark:grayscale"
                 />
-                <h1 className="pr-8 text-black">LinkBook</h1>
-              </Button>
+              </Link>
               {/* <Link
                 href="/"
                 replace
@@ -116,7 +115,7 @@ function Sidebar(props: SidebarProps) {
               {/* <div className="my-8 h-px bg-zinc-200 dark:bg-white/10" /> */}
               <div className="my-8 h-px" />
               {/* Nav item */}
-              <ul>
+              <ul className="pt-7">
                 <Links routes={routes} />
               </ul>
             </div>

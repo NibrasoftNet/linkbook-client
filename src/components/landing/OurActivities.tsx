@@ -2,12 +2,10 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import {
-  AcademyHelmetIcon,
   CartIcon,
   CircleIcon,
   CurvedArrowIcon,
   CurvedArrowLeftIcon,
-  StickIcon,
 } from '@/icons/general';
 import { frederickaTheGreat } from '@/lib/constants';
 
@@ -24,14 +22,32 @@ const OurActivities = () => {
     {
       title: t('education_title'),
       description: t('education_description'),
-      icon: <AcademyHelmetIcon iconClass="size-20 text-white" />,
+      // icon: <AcademyHelmetIcon iconClass="size-20 text-white" />,
+      icon: (
+        <Image
+          className="size-20 text-white"
+          src="/assets/images/icons/optimization-icon.png"
+          alt="optimization icon"
+          width={80}
+          height={80}
+        />
+      ),
       colorClass: 'border-primary text-primary bg-primary',
       textColor: 'text-primary',
     },
     {
       title: t('entertainment_title'),
       description: t('entertainment_description'),
-      icon: <StickIcon iconClass="size-20 text-white" />,
+      // icon: <StickIcon iconClass="size-20 text-white" />,
+      icon: (
+        <Image
+          className="size-20 text-white"
+          src="/assets/images/icons/sustainability-icon.png"
+          alt="sustainability icon"
+          width={80}
+          height={80}
+        />
+      ),
       colorClass: 'border-tertiary text-tertiary bg-tertiary',
       textColor: 'text-tertiary',
     },
