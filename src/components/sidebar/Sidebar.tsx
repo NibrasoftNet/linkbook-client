@@ -79,7 +79,7 @@ function Sidebar(props: SidebarProps) {
             <div>
               <Link
                 className="absolute top-2 flex cursor-pointer  flex-row bg-white p-0 px-8 text-zinc-200 dark:text-white/40"
-                href={`/community/details?page=1&limit=${defaultPaginationLimit}`}
+                href={`/${session?.id}/community/details?page=1&limit=${defaultPaginationLimit}`}
               >
                 <Image
                   src={imagesUrls.logoImageHorizontal}
